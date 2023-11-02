@@ -18,7 +18,7 @@ public class DAOCliente implements InterfaceDAO<Cliente> {
 
     @Override
     public void create(Cliente objeto) {
-        Connection conexao = ConnectionFactory.getConnection();
+        Connection conexao = ConnectionFactory.getConnection();       
         String sqlExecutar = "INSERT INTO tblcliente "
                 + "(nome,fone1,fone2,email,status,complementoEndereco,cpf,rg,matricula,dataNascimento,tblendereco_id) "
                 + "VALUES(?,?,?,?,?,?,?,?,?,?,(SELECT id FROM TBLENDERECO WHERE logradouro LIKE ?))";
@@ -105,7 +105,7 @@ public class DAOCliente implements InterfaceDAO<Cliente> {
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = "SELECT C.id,C.nome,C.fone1,C.fone2,C.email,C.status,C.complementoEndereco,"
                 + "C.cpf,C.rg,C.matricula, C.dataNascimento, E.logradouro, E.cep FROM tblcliente C join tblendereco E "
-                + "on C.tblendereco_id = E.id where C.id = ?";
+                + "on C.tblendereco_id = E.id where C.nome = ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
         Cliente cliente = new Cliente();

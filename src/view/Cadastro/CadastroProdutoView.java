@@ -28,6 +28,16 @@ public class CadastroProdutoView extends javax.swing.JDialog {
         initComponents();
     }
 
+    public JComboBox<String> getjComboBoxTipoUnidade() {
+        return jComboBoxTipoUnidade;
+    }
+
+    public void setjComboBoxTipoUnidade(JComboBox<String> jComboBoxTipoUnidade) {
+        this.jComboBoxTipoUnidade = jComboBoxTipoUnidade;
+    }
+
+    
+    
     public JButton getjButtonBuscar() {
         return jButtonBuscar;
     }
@@ -222,6 +232,8 @@ public class CadastroProdutoView extends javax.swing.JDialog {
         jTextFieldCodigoBarra = new javax.swing.JTextField();
         jComboBoxStatus = new javax.swing.JComboBox<>();
         jLabelStatus = new javax.swing.JLabel();
+        jComboBoxTipoUnidade = new javax.swing.JComboBox<>();
+        jLabelTipo = new javax.swing.JLabel();
         jPanelFim = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -253,9 +265,13 @@ public class CadastroProdutoView extends javax.swing.JDialog {
 
         jLabelDescricao1.setText("Cod. Barra");
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "I" }));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
 
         jLabelStatus.setText("Status");
+
+        jComboBoxTipoUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade", "Fardo", "Caixa", "Cento", "KG", "Litro" }));
+
+        jLabelTipo.setText("Tipo");
 
         javax.swing.GroupLayout jPanelMeioLayout = new javax.swing.GroupLayout(jPanelMeio);
         jPanelMeio.setLayout(jPanelMeioLayout);
@@ -268,22 +284,24 @@ public class CadastroProdutoView extends javax.swing.JDialog {
                     .addComponent(jLabelDescricao)
                     .addComponent(jLabelID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
+                        .addComponent(jTextFieldID2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(509, 509, 509)
+                        .addComponent(jLabelStatus))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
+                        .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
                     .addGroup(jPanelMeioLayout.createSequentialGroup()
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanelMeioLayout.createSequentialGroup()
-                                .addComponent(jTextFieldID2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(509, 509, 509)
-                                .addComponent(jLabelStatus))
-                            .addGroup(jPanelMeioLayout.createSequentialGroup()
-                                .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxStatus, 0, 125, Short.MAX_VALUE)
-                            .addComponent(jTextFieldQuantidade)))
-                    .addComponent(jTextFieldCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelTipo)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBoxStatus, 0, 125, Short.MAX_VALUE)
+                    .addComponent(jTextFieldQuantidade)
+                    .addComponent(jComboBoxTipoUnidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMeioLayout.setVerticalGroup(
@@ -304,7 +322,9 @@ public class CadastroProdutoView extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDescricao1)
-                    .addComponent(jTextFieldCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTipo)
+                    .addComponent(jComboBoxTipoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
 
@@ -312,7 +332,6 @@ public class CadastroProdutoView extends javax.swing.JDialog {
         jPanelFim.setForeground(new java.awt.Color(255, 255, 0));
         jPanelFim.setPreferredSize(new java.awt.Dimension(631, 55));
 
-        jButtonNovo.setBackground(new java.awt.Color(255, 255, 255));
         jButtonNovo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Create.png"))); // NOI18N
         jButtonNovo.setText("Novo");
@@ -329,7 +348,6 @@ public class CadastroProdutoView extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonNovo);
 
-        jButtonCancelar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -343,7 +361,6 @@ public class CadastroProdutoView extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonCancelar);
 
-        jButtonGravar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonGravar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Go.png"))); // NOI18N
         jButtonGravar.setText("Gravar");
@@ -352,7 +369,6 @@ public class CadastroProdutoView extends javax.swing.JDialog {
         jButtonGravar.setPreferredSize(new java.awt.Dimension(120, 50));
         jPanelFim.add(jButtonGravar);
 
-        jButtonBuscar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonBuscar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
         jButtonBuscar.setText("Buscar");
@@ -365,7 +381,6 @@ public class CadastroProdutoView extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonBuscar);
 
-        jButtonSair.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSair.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
         jButtonSair.setText("Sair");
@@ -457,11 +472,13 @@ public class CadastroProdutoView extends javax.swing.JDialog {
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JComboBox<String> jComboBoxStatus;
+    private javax.swing.JComboBox<String> jComboBoxTipoUnidade;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelDescricao;
     private javax.swing.JLabel jLabelDescricao1;
     private javax.swing.JLabel jLabelID;
     private javax.swing.JLabel jLabelStatus;
+    private javax.swing.JLabel jLabelTipo;
     private javax.swing.JLabel jLtitulo;
     private javax.swing.JPanel jPanelFim;
     private javax.swing.JPanel jPanelMeio;

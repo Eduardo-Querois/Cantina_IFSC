@@ -120,7 +120,10 @@ public class ControllerCadastroCliente implements ActionListener {
             cliente.setNome(this.cadastroClienteView.getNome().getText());
             cliente.setCpf(this.cadastroClienteView.getCPF().getText());
             cliente.setRg(this.cadastroClienteView.getRG().getText());
+              
             cliente.setDataNascimento(this.cadastroClienteView.getDataNascismento().getText());
+            
+            
             cliente.setFone1(this.cadastroClienteView.getCelular().getText());
             cliente.setFone2(this.cadastroClienteView.getTelefone().getText());
             cliente.setEmail(this.cadastroClienteView.getEmail().getText());

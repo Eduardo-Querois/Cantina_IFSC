@@ -71,7 +71,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
         ControllerEnderecoView controllerEnderecoView = new ControllerEnderecoView(enderecoView);
         enderecoView.setVisible(true);
         
-        this.cadastroFuncionarioView.getEnderecoLogradouro().setText(controllerEnderecoView.);
+        this.cadastroFuncionarioView.getEnderecoLogradouro().setText(controllerEnderecoView.logradouroEndereco);
         
         }
         
@@ -97,7 +97,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
                 this.cadastroFuncionarioView.getCelular().setText(funcionario.getFone1() + " ");
                 this.cadastroFuncionarioView.getTelefone().setText(funcionario.getFone2() + " ");
                 this.cadastroFuncionarioView.getEmail().setText(funcionario.getEmail() + " ");
-                this.cadastroFuncionarioView.getStatus().setSelectedItem(funcionario.getStatus().toString() + " ");
+                this.cadastroFuncionarioView.getStatus().setSelectedItem(funcionario.getStatus().toString() + "");
                 this.cadastroFuncionarioView.getComplemento().setText(funcionario.getComplementoEndereco() + " ");
                 this.cadastroFuncionarioView.getEnderecoLogradouro().setText(funcionario.getEndereco().getLogradouro() + " ");
                 this.cadastroFuncionarioView.getCEP().setText(funcionario.getEndereco().getCep() + " ");
@@ -146,7 +146,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
                 Service.FuncionarioService.adicionar(funcionario);
 
             } else {
-                funcionario.setId(Integer.parseInt(this.cadastroFuncionarioView.getID().getText()));
+                funcionario.setId(Integer.parseInt(this.cadastroFuncionarioView.getID().getText().trim()));
                 Service.FuncionarioService.atualizar(funcionario);
             }
 

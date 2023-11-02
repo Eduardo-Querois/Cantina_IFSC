@@ -92,27 +92,28 @@
                       <Component id="jLabelID" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jTextFieldID2" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="509" max="-2" attributes="0"/>
-                                  <Component id="jLabelStatus" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jTextFieldDescricao" min="-2" pref="535" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jComboBoxStatus" pref="125" max="32767" attributes="0"/>
-                              <Component id="jTextFieldQuantidade" max="32767" attributes="0"/>
-                          </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jTextFieldID2" min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="509" max="-2" attributes="0"/>
+                          <Component id="jLabelStatus" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jTextFieldCodigoBarra" min="-2" pref="535" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jTextFieldDescricao" min="-2" pref="535" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jTextFieldCodigoBarra" min="-2" pref="535" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabelTipo" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jComboBoxStatus" pref="125" max="32767" attributes="0"/>
+                      <Component id="jTextFieldQuantidade" max="32767" attributes="0"/>
+                      <Component id="jComboBoxTipoUnidade" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -139,6 +140,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelDescricao1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldCodigoBarra" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxTipoUnidade" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="98" max="32767" attributes="0"/>
               </Group>
@@ -178,8 +181,8 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
-                <StringItem index="0" value="A"/>
-                <StringItem index="1" value="I"/>
+                <StringItem index="0" value="Ativo"/>
+                <StringItem index="1" value="Inativo"/>
               </StringArray>
             </Property>
           </Properties>
@@ -190,6 +193,28 @@
         <Component class="javax.swing.JLabel" name="jLabelStatus">
           <Properties>
             <Property name="text" type="java.lang.String" value="Status"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxTipoUnidade">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="6">
+                <StringItem index="0" value="Unidade"/>
+                <StringItem index="1" value="Fardo"/>
+                <StringItem index="2" value="Caixa"/>
+                <StringItem index="3" value="Cento"/>
+                <StringItem index="4" value="KG"/>
+                <StringItem index="5" value="Litro"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelTipo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tipo"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -211,9 +236,6 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButtonNovo">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Comic Sans MS" size="12" style="1"/>
             </Property>
@@ -240,9 +262,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCancelar">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Comic Sans MS" size="12" style="1"/>
             </Property>
@@ -262,9 +281,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonGravar">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Comic Sans MS" size="12" style="1"/>
             </Property>
@@ -281,9 +297,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonBuscar">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Comic Sans MS" size="12" style="1"/>
             </Property>
@@ -302,9 +315,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSair">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Comic Sans MS" size="12" style="1"/>
             </Property>

@@ -26,7 +26,7 @@ public class ControllerProdutoView implements ActionListener {
     public ControllerProdutoView(ProdutoView produtoView) {
         this.ProdutoView = produtoView;
 
-        this.ProdutoView.getjButton1().addActionListener(this);
+        this.ProdutoView.getjButtonBuscar().addActionListener(this);
         this.ProdutoView.getjButtonCarregar().addActionListener(this);
         this.ProdutoView.getjButtonSair().addActionListener(this);
 
@@ -42,19 +42,22 @@ public class ControllerProdutoView implements ActionListener {
         } else if (e.getSource() == this.ProdutoView.getjButtonSair()) {
             this.ProdutoView.dispose();
 
-        } else if (e.getSource() == this.ProdutoView.getjButton1()) {
-            contador++;
+        } else if (e.getSource() == this.ProdutoView.getjButtonBuscar()) {
+            
 
-            if (contador == 1) {
+            
                 DefaultTableModel tabela = (DefaultTableModel) this.ProdutoView.getjTable1().getModel();
+                tabela.setRowCount(0);
                 for (Produto produtoAtual : ProdutoService.carregar()) {
-                    tabela.addRow(new Object[]{produtoAtual.getId(),
+                    tabela.addRow(new Object[]{
+                        produtoAtual.getId(),
                         produtoAtual.getDescricao(),
                         produtoAtual.getCodigoBarra(),
                         produtoAtual.getQuantidade(),
+                        produtoAtual.getTipoUnidade(),
                         produtoAtual.getStatus()});
 
-                }
+                
 
             }
 
