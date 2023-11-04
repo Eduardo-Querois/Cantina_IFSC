@@ -30,6 +30,22 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
         return jButtonBuscar;
     }
 
+    public JButton getjButtonCliente() {
+        return jButtonCliente;
+    }
+
+    public void setjButtonCliente(JButton jButtonCliente) {
+        this.jButtonCliente = jButtonCliente;
+    }
+
+    public JTextField getNomeCliente() {
+        return NomeCliente;
+    }
+
+    public void setNomeCliente(JTextField NomeCliente) {
+        this.NomeCliente = NomeCliente;
+    }
+
     
     
     public void setjButtonBuscar(JButton jButtonBuscar) {
@@ -347,7 +363,7 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
         jLabelMatricula.setText("Matricula");
 
         try {
-            jFormattedTextFieldRG1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            jFormattedTextFieldRG1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-###.###.###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -386,9 +402,9 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
                         .addGroup(jPanelMeioLayout.createSequentialGroup()
                             .addGap(199, 199, 199)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(123, 123, 123)
+                            .addGap(117, 117, 117)
                             .addComponent(jLabelCPF1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGap(18, 18, 18)
                             .addComponent(jFormattedTextFieldRG1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanelMeioLayout.createSequentialGroup()
                             .addGap(54, 54, 54)
@@ -420,7 +436,7 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
                         .addGap(250, 250, 250)))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         jPanelMeioLayout.setVerticalGroup(
             jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,10 +446,11 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
                     .addComponent(jLabelID)
                     .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNome)
-                    .addComponent(jButtonCliente))
+                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonCliente)
+                    .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(NomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNome)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelID2)

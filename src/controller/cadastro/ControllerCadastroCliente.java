@@ -81,19 +81,19 @@ public class ControllerCadastroCliente implements ActionListener {
                 utilities.Utilities.ativaDesativa(false, this.cadastroClienteView.getjPanelFim());
                 utilities.Utilities.limpaComponentes(true, this.cadastroClienteView.getjPanelMeio());
 
-                this.cadastroClienteView.getID().setText(cliente.getId() + " ");
-                this.cadastroClienteView.getMatricula().setText(cliente.getMatricula() + " ");
-                this.cadastroClienteView.getNome().setText(cliente.getNome() + " ");
-                this.cadastroClienteView.getCPF().setText(cliente.getCpf() + " ");
-                this.cadastroClienteView.getRG().setText(cliente.getRg() + " ");
-                this.cadastroClienteView.getDataNascismento().setText(cliente.getDataNascimento() + " ");
-                this.cadastroClienteView.getCelular().setText(cliente.getFone1() + " ");
-                this.cadastroClienteView.getTelefone().setText(cliente.getFone2() + " ");
+                this.cadastroClienteView.getID().setText(cliente.getId() + "");
+                this.cadastroClienteView.getMatricula().setText(cliente.getMatricula() + "");
+                this.cadastroClienteView.getNome().setText(cliente.getNome() + "");
+                this.cadastroClienteView.getCPF().setText(cliente.getCpf() + "");
+                this.cadastroClienteView.getRG().setText(cliente.getRg() + "");
+                this.cadastroClienteView.getDataNascismento().setText(cliente.getDataNascimento() + "");
+                this.cadastroClienteView.getCelular().setText(cliente.getFone1() + "");
+                this.cadastroClienteView.getTelefone().setText(cliente.getFone2() + "");
                 this.cadastroClienteView.getEmail().setText(cliente.getEmail() + " ");
-                this.cadastroClienteView.getStatus().setSelectedItem(cliente.getStatus().toString() + " ");
-                this.cadastroClienteView.getComplemento().setText(cliente.getComplementoEndereco() + " ");
-                this.cadastroClienteView.getEnderecoLogradouro().setText(cliente.getEndereco().getLogradouro() + " ");
-                this.cadastroClienteView.getCEP().setText(cliente.getEndereco().getCep() + " ");
+                this.cadastroClienteView.getStatus().setSelectedItem(cliente.getStatus().toString() + "");
+                this.cadastroClienteView.getComplemento().setText(cliente.getComplementoEndereco() + "");
+                this.cadastroClienteView.getEnderecoLogradouro().setText(cliente.getEndereco().getLogradouro() + "");
+                this.cadastroClienteView.getCEP().setText(cliente.getEndereco().getCep() + "");
 
                 this.cadastroClienteView.getID().setEnabled(false);
                 this.cadastroClienteView.getMatricula().setEnabled(true);

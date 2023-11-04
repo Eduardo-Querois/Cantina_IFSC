@@ -4,15 +4,15 @@
  */
 package controller.Busca;
 
-import static DAO.Persiste.carteirinhaList;
-import static DAO.Persiste.clienteList;
 import Service.CarteirinhaService;
 import controller.cadastro.ControllerCadastroCarteirinha;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Carteirinha;
-import model.bo.Cliente;
 import view.Busca.CarteirinhaView;
 
 /**
@@ -21,7 +21,6 @@ import view.Busca.CarteirinhaView;
  */
 public class ControllerCarteirinhaView implements ActionListener {
 
-    int contador;
     CarteirinhaView carteirinhaView;
 
     public ControllerCarteirinhaView(CarteirinhaView carteirinhaView) {
@@ -29,26 +28,34 @@ public class ControllerCarteirinhaView implements ActionListener {
 
         this.carteirinhaView.getjButtonCarregar().addActionListener(this);
         this.carteirinhaView.getjButtonSair().addActionListener(this);
-        this.carteirinhaView.getjButton1().addActionListener(this);
+        this.carteirinhaView.getjButtonBuscar().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.carteirinhaView.getjButtonCarregar()) {
             ControllerCadastroCarteirinha.codigo = (int) this.carteirinhaView.getjTable1().getValueAt(this.carteirinhaView.getjTable1().getSelectedRow(), 0);
+
+            CarteirinhaService.carregar();
             this.carteirinhaView.dispose();
 
         } else if (e.getSource() == this.carteirinhaView.getjButtonSair()) {
             this.carteirinhaView.dispose();
 
-        } else if (e.getSource() == this.carteirinhaView.getjButton1()) {
-            DAO.Persiste.getInstance();
+        } else if (e.getSource() == this.carteirinhaView.getjButtonBuscar()) {
             
-            contador++;
-            
-            if (contador == 1) {
+            if (this.carteirinhaView.getjTextFieldBuscar().getText().trim().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Atenção! \nOpcão de Filtro Vazia...");
+            } else {
+                List<Carteirinha> carteirinhaList = new ArrayList<>();
+                if(this.carteirinhaView.getComboBoxFiltrar().getSelectedIndex() == 0){
+                carteirinhaList.add(CarteirinhaService.carregar(Integer.parseInt(this.carteirinhaView.getjTextFieldBuscar().getText())));
+                }
+                
+
                 DefaultTableModel tabela = (DefaultTableModel) this.carteirinhaView.getjTable1().getModel();
-                for (Carteirinha carteirinhaAtual : CarteirinhaService.carregar()) {
+                tabela.setRowCount(0);
+                for (Carteirinha carteirinhaAtual : carteirinhaList) {
                     tabela.addRow(new Object[]{carteirinhaAtual.getId(),
                         carteirinhaAtual.getCodigoBarra(),
                         carteirinhaAtual.getDataGeracao(),
@@ -61,9 +68,9 @@ public class ControllerCarteirinhaView implements ActionListener {
                     });
 
                 }
+
             }
+
         }
-
     }
-
 }

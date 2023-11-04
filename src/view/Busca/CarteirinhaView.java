@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -72,12 +73,12 @@ public class CarteirinhaView extends javax.swing.JDialog {
         this.comboBoxFiltrar = comboBoxFiltrar;
     }
 
-    public JButton getjButton1() {
-        return jButton1;
+    public JButton getjButtonBuscar() {
+        return jButtonBuscar;
     }
 
-    public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
+    public void setjButtonBuscar(JButton jButtonBuscar) {
+        this.jButtonBuscar = jButtonBuscar;
     }
 
     public JTable getjTable1() {
@@ -86,6 +87,14 @@ public class CarteirinhaView extends javax.swing.JDialog {
 
     public void setjTable1(JTable jTable1) {
         this.jTable1 = jTable1;
+    }
+
+    public JTextField getjTextFieldBuscar() {
+        return jTextFieldBuscar;
+    }
+
+    public void setjTextFieldBuscar(JTextField jTextFieldBuscar) {
+        this.jTextFieldBuscar = jTextFieldBuscar;
     }
 
 
@@ -106,8 +115,8 @@ public class CarteirinhaView extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTextFieldBuscar = new javax.swing.JTextField();
+        jButtonBuscar = new javax.swing.JButton();
         comboBoxFiltrar = new javax.swing.JComboBox<>();
         jPanelFim = new javax.swing.JPanel();
         jButtonCarregar = new javax.swing.JButton();
@@ -135,7 +144,7 @@ public class CarteirinhaView extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Codigo De Barra", "Data de Geracao", "Data de Cancelamento", "Matricula", "CPF", "RG", "Data Nascimento"
+                "ID", "Codigo De Barra", "Data de Geracao", "Data de Cancelamento", "Matricula", "Nome", "CPF", "RG", "Data Nascimento"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -147,19 +156,19 @@ public class CarteirinhaView extends javax.swing.JDialog {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 530, 30));
+        jPanel1.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 530, 30));
 
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 110, 30));
+        jButtonBuscar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        jButtonBuscar.setText("Buscar");
+        jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 110, 30));
 
-        comboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alfabetica", "Crescente", "Decrecente" }));
+        comboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "CodigoDeBarra", "DataDeGeracao", "Matricula", "Nome", "CPF", "RG", "DataNascimento" }));
         comboBoxFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxFiltrarActionPerformed(evt);
@@ -190,7 +199,6 @@ public class CarteirinhaView extends javax.swing.JDialog {
         flowLayout1.setAlignOnBaseline(true);
         jPanelFim.setLayout(flowLayout1);
 
-        jButtonCarregar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCarregar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonCarregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Load.png"))); // NOI18N
         jButtonCarregar.setText("Carregar");
@@ -206,7 +214,6 @@ public class CarteirinhaView extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonCarregar);
 
-        jButtonSair.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSair.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
         jButtonSair.setText("Sair");
@@ -243,9 +250,9 @@ public class CarteirinhaView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCarregarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldBuscarActionPerformed
 
     private void comboBoxFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFiltrarActionPerformed
         // TODO add your handling code here:
@@ -298,7 +305,7 @@ public class CarteirinhaView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBoxFiltrar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCarregar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLtitulo;
@@ -308,6 +315,6 @@ public class CarteirinhaView extends javax.swing.JDialog {
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldBuscar;
     // End of variables declaration//GEN-END:variables
 }

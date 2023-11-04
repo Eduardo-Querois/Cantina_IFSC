@@ -12,13 +12,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.bo.Carteirinha;
+import model.bo.Cliente;
 
 public class DAOCarteirinha implements InterfaceDAO<Carteirinha> {
 
     @Override
     public void create(Carteirinha objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO tblcarteirinha (codigoBarra,dataGeracao,dataCancelamento) VALUES(?,?,?)";
+        String sqlExecutar = "INSERT INTO tblcarteirinha "
+                + "(codigoBarra,dataGeracao,dataCancelamento,TBLCLIENTE_ID) "
+                + "VALUES(?,?,?, (SELECT ID FROM TBLCLIENTE WHERE MATRICULA LIKE ?))";
 
         PreparedStatement pstm = null;
 
@@ -27,6 +30,7 @@ public class DAOCarteirinha implements InterfaceDAO<Carteirinha> {
             pstm.setString(1, objeto.getCodigoBarra());
             pstm.setString(2, objeto.getDataCancelamento());
             pstm.setString(3, objeto.getDataGeracao());
+            pstm.setString(4, objeto.getCliente().getMatricula());
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -45,7 +49,11 @@ public class DAOCarteirinha implements InterfaceDAO<Carteirinha> {
     @Override
     public void update(Carteirinha objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "UPDATE tblcarteirinha SET codigoDescricao = ? ,dataGeracao = ? , dataCancelamento = ?  WHERE id = ?";
+        String sqlExecutar = "UPDATE tblcarteirinha SET codigoDescricao = ? ,"
+                                                     + "dataGeracao = ? ,"
+                                                    + " dataCancelamento = ?,"
+                                                    + " TBLCLIENTE_ID = (SELECT ID FROM TBLCLIENTE WHERE MATRICULA LIKE ?) "
+                                                    +  "WHERE id = ?";
         PreparedStatement pstm = null;
         Carteirinha carteirinha = new Carteirinha();
 
@@ -54,7 +62,8 @@ public class DAOCarteirinha implements InterfaceDAO<Carteirinha> {
             pstm.setString(1, objeto.getCodigoBarra());
             pstm.setString(2, objeto.getDataCancelamento());
             pstm.setString(3, objeto.getDataGeracao());
-            pstm.setInt(4, objeto.getId());
+            pstm.setString(4,objeto.getCliente().getMatricula());
+            pstm.setInt(5, objeto.getId());
             pstm.execute();
 
         } catch (SQLException ex) {
@@ -104,22 +113,30 @@ public class DAOCarteirinha implements InterfaceDAO<Carteirinha> {
     @Override
     public Carteirinha retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT id,codigoBarra,dataGeracao,dataCancelamento FROM tblcarteirinha WHERE id = ? ";
+        String sqlExecutar = "SELECT A.id,A.codigoBarra,A.dataGeracao,A.dataCancelamento, "
+                + "C.rg,C.CPF,C.matricula,C.dataNascimento from tblcarteirinha A join TBLCLIENTE C "
+                + "on A.TBLCLIENTE_ID = C.id "
+                + "WHERE A.id = ? ";
         PreparedStatement pstm = null;
         ResultSet rst = null;
 
         Carteirinha carteirinha = new Carteirinha();
-
+        Cliente cliente = new Cliente();
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setInt(1, parPK);
             rst = pstm.executeQuery();
 
             while (rst.next()) {
+                carteirinha.setCliente(cliente);
                 carteirinha.setId(rst.getInt("id"));
                 carteirinha.setCodigoBarra(rst.getString("codigoBarra"));
                 carteirinha.setDataCancelamento(rst.getString("dataGeracao"));
                 carteirinha.setDataCancelamento(rst.getString("dataCancelamento"));
+                carteirinha.getCliente().setCpf(rst.getString("cpf"));
+                carteirinha.getCliente().setRg(rst.getString("rg"));
+                carteirinha.getCliente().setMatricula(rst.getString("matricula"));
+                carteirinha.getCliente().setDataNascimento(rst.getString("dataNascimento"));
             }
 
         } catch (SQLException ex) {

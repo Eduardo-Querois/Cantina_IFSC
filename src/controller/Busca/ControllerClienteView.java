@@ -23,6 +23,12 @@ import view.Busca.ClienteView;
  */
 public class ControllerClienteView implements ActionListener {
 
+    public String clienteNome;
+    public String clienteCPF;
+    public String clienteRG;
+    public String clienteMatricula;     
+    public String clienteDataNascimento;
+    
     ClienteView clienteView;
 
     public ControllerClienteView(ClienteView clienteView) {
@@ -38,6 +44,13 @@ public class ControllerClienteView implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.clienteView.getjButtonCarregar()) {
             ControllerCadastroCliente.codigo = (int) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 0);
+            clienteNome = (String) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 2);
+            clienteCPF = (String) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 3);
+            clienteRG =  (String) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 4);
+            clienteMatricula = (String) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 1);
+            clienteDataNascimento = (String) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(),5);
+            
+            
             ClienteService.carregar();
             this.clienteView.dispose();
 
