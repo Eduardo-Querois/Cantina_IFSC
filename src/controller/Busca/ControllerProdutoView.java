@@ -4,12 +4,13 @@
  */
 package controller.Busca;
 
-import static DAO.Persiste.produtoList;
 import Service.ProdutoService;
-import controller.cadastro.ControllerCadastroBairro;
 import controller.cadastro.ControllerCadastroProduto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Produto;
 import view.Busca.ProdutoView;
@@ -37,18 +38,30 @@ public class ControllerProdutoView implements ActionListener {
 
         if (e.getSource() == this.ProdutoView.getjButtonCarregar()) {
             ControllerCadastroProduto.codigo = (int) this.ProdutoView.getjTable1().getValueAt(this.ProdutoView.getjTable1().getSelectedRow(), 0);
+            ProdutoService.carregar();
             this.ProdutoView.dispose();
 
         } else if (e.getSource() == this.ProdutoView.getjButtonSair()) {
             this.ProdutoView.dispose();
 
         } else if (e.getSource() == this.ProdutoView.getjButtonBuscar()) {
-            
 
-            
+            if (this.ProdutoView.getjTextFieldBuscar().getText().trim().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Atenção! \nOpcão de Filtro Vazia...");
+
+            } else {
+                List<Produto> produtoList = new ArrayList<>();
+                if(this.ProdutoView.getComboBoxFiltrar().getSelectedIndex() == 0){
+                    produtoList.add(ProdutoService.carregar(Integer.parseInt(this.ProdutoView.getjTextFieldBuscar().getText().trim())));
+                }
+                else{
+                    
+                    produtoList = ProdutoService.carregar(this.ProdutoView.getjTextFieldBuscar().getText().toString().trim());
+                }
+             
                 DefaultTableModel tabela = (DefaultTableModel) this.ProdutoView.getjTable1().getModel();
                 tabela.setRowCount(0);
-                for (Produto produtoAtual : ProdutoService.carregar()) {
+                for (Produto produtoAtual : produtoList) {
                     tabela.addRow(new Object[]{
                         produtoAtual.getId(),
                         produtoAtual.getDescricao(),
@@ -57,10 +70,9 @@ public class ControllerProdutoView implements ActionListener {
                         produtoAtual.getTipoUnidade(),
                         produtoAtual.getStatus()});
 
-                
+                }
 
             }
-
         }
 
     }

@@ -4,7 +4,6 @@
  */
 package controller.cadastro;
 
-import static DAO.Persiste.produtoList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.Busca.ProdutoView;
@@ -65,16 +64,19 @@ public class ControllerCadastroProduto implements ActionListener {
                 utilities.Utilities.ativaDesativa(false, this.cadastroProdutoView.getjPanelFim());
                 utilities.Utilities.limpaComponentes(true, this.cadastroProdutoView.getjPanelMeio());
                 
-                this.cadastroProdutoView.getjTextFieldID2().setText(produto.getId() + " ");
-                this.cadastroProdutoView.getjTextFieldDescricao().setText(produto.getDescricao() + " ");
-                this.cadastroProdutoView.getjTextFieldCodigoBarra().setText(produto.getCodigoBarra() + " ");
-                this.cadastroProdutoView.getjTextFieldQuantidade().setText(produto.getQuantidade() + " ");
-                this.cadastroProdutoView.getjComboBoxStatus().setSelectedItem(produto.getStatus().toString() + " ");
+                this.cadastroProdutoView.getjTextFieldID2().setText(produto.getId() + "");
+                this.cadastroProdutoView.getjTextFieldDescricao().setText(produto.getDescricao() + "");
+                this.cadastroProdutoView.getjTextFieldCodigoBarra().setText(produto.getCodigoBarra() + "");
+                this.cadastroProdutoView.getjTextFieldQuantidade().setText(produto.getQuantidade() + "");
+                this.cadastroProdutoView.getjComboBoxStatus().setSelectedItem(produto.getStatus().toString() + "");
+                this.cadastroProdutoView.getjComboBoxTipoUnidade().setSelectedItem(produto.getTipoUnidade() + "");
+                
                 this.cadastroProdutoView.getjTextFieldID2().setEnabled(false);
                 this.cadastroProdutoView.getjTextFieldDescricao().setEnabled(true);
                 this.cadastroProdutoView.getjTextFieldCodigoBarra().setEnabled(true);
                 this.cadastroProdutoView.getjTextFieldQuantidade().setEnabled(true);
                 this.cadastroProdutoView.getjComboBoxStatus().setEnabled(true);
+                this.cadastroProdutoView.getjComboBoxTipoUnidade().setEnabled(true);
             }
             
         } else if (e.getSource() == this.cadastroProdutoView.getjButtonGravar()) {
@@ -89,6 +91,7 @@ public class ControllerCadastroProduto implements ActionListener {
             produto.setCodigoBarra(this.cadastroProdutoView.getjTextFieldCodigoBarra().getText());
             produto.setQuantidade(this.cadastroProdutoView.getjTextFieldQuantidade().getText());
             produto.setStatus(this.cadastroProdutoView.getjComboBoxStatus().getSelectedItem().toString());
+            produto.setTipoUnidade(this.cadastroProdutoView.getjComboBoxTipoUnidade().getSelectedItem().toString());
             
             if (this.cadastroProdutoView.getjTextFieldID2().getText().trim().equalsIgnoreCase("")) {
                 

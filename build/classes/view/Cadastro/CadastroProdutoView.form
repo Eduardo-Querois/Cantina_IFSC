@@ -37,8 +37,8 @@
           <Group type="102" attributes="0">
               <Component id="jPanelTitulo" min="-2" pref="65" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanelMeio" min="-2" pref="250" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanelMeio" min="-2" pref="206" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanelFim" min="-2" pref="73" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -143,7 +143,7 @@
                       <Component id="jLabelTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxTipoUnidade" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="98" max="32767" attributes="0"/>
+                  <EmptySpace pref="54" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
