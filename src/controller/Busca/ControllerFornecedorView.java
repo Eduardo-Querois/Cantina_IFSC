@@ -20,7 +20,9 @@ import view.Busca.FornecedorView;
  * @author joao-
  */
 public class ControllerFornecedorView implements ActionListener {
-
+    
+    
+    public static String colunaFiltro;
     FornecedorView fornecedorView;
 
     public ControllerFornecedorView(FornecedorView fornecedorView) {
@@ -52,6 +54,7 @@ public class ControllerFornecedorView implements ActionListener {
 
                     fornecedorList.add(FornecedorService.carregar(Integer.parseInt(this.fornecedorView.getjTextFieldBuscar().getText())));
                 } else {
+                    colunaFiltro = this.fornecedorView.getComboBoxFiltrar().getSelectedItem().toString().trim();
                     fornecedorList = FornecedorService.carregar(this.fornecedorView.getjTextFieldBuscar().getText().trim());
                 }
 

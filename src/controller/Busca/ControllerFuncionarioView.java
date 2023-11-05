@@ -21,7 +21,9 @@ import view.Busca.FuncionarioView;
  * @author joao-
  */
 public class ControllerFuncionarioView implements ActionListener {
-
+    
+    
+    public static String colunaFiltro;
     FuncionarioView funcionarioView;
 
     public ControllerFuncionarioView(FuncionarioView funcionarioView) {
@@ -53,7 +55,7 @@ public class ControllerFuncionarioView implements ActionListener {
                 if(this.funcionarioView.getComboBoxFiltrar().getSelectedIndex() == 0){
                     funcionarioList.add(FuncionarioService.carregar(Integer.parseInt(this.funcionarioView.getjTextFieldBuscar().getText())));
                 } else {
-                
+                    colunaFiltro = this.funcionarioView.getComboBoxFiltrar().getSelectedItem().toString().trim();
                     funcionarioList = FuncionarioService.carregar(this.funcionarioView.getjTextFieldBuscar().getText().trim());
                     
                 }

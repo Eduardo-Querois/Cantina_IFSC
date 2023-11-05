@@ -21,6 +21,7 @@ import view.Busca.CarteirinhaView;
  */
 public class ControllerCarteirinhaView implements ActionListener {
 
+    public static String colunaFiltro;
     CarteirinhaView carteirinhaView;
 
     public ControllerCarteirinhaView(CarteirinhaView carteirinhaView) {
@@ -52,7 +53,7 @@ public class ControllerCarteirinhaView implements ActionListener {
                 carteirinhaList.add(CarteirinhaService.carregar(Integer.parseInt(this.carteirinhaView.getjTextFieldBuscar().getText())));
                 }
                 else{
-                
+                colunaFiltro = this.carteirinhaView.getComboBoxFiltrar().getSelectedItem().toString().trim();
                 carteirinhaList = CarteirinhaService.carregar(this.carteirinhaView.getjTextFieldBuscar().getText().trim());
                     
                 }

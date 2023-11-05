@@ -23,6 +23,7 @@ import view.Busca.CidadeView;
  */
 public class ControllerEnderecoView implements ActionListener {
 
+    public static String colunaFiltro;
     EnderecoView enderecoView;
     public static String logradouroEndereco;
 
@@ -62,6 +63,7 @@ public class ControllerEnderecoView implements ActionListener {
                     
                     enderecoList.add(EnderecoService.carregar(Integer.parseInt(this.enderecoView.getjTextBuscar().getText())));
                 } else{
+                    colunaFiltro = this.enderecoView.getComboBoxFiltrar().getSelectedItem().toString().trim();
                     enderecoList = EnderecoService.carregar(this.enderecoView.getjTextBuscar().getText().trim());
                     
                 }
