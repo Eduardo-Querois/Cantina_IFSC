@@ -53,7 +53,7 @@ public class DAOCarteirinha implements InterfaceDAO<Carteirinha> {
     @Override
     public void update(Carteirinha objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "UPDATE tblcarteirinha SET codigoDescricao = ? ,"
+        String sqlExecutar = "UPDATE tblcarteirinha SET codigoBarra = ? ,"
                 + "dataGeracao = ? ,"
                 + " dataCancelamento = ?,"
                 + " TBLCLIENTE_ID = (SELECT ID FROM TBLCLIENTE WHERE MATRICULA LIKE ?) "

@@ -34,6 +34,7 @@ public class ControllerCadastroCarteirinha implements ActionListener {
         this.cadastroCarteirinhaView.getjButtonBuscar().addActionListener(this);
         this.cadastroCarteirinhaView.getjButtonCliente().addActionListener(this);
         
+        
         utilities.Utilities.ativaDesativa(true, this.cadastroCarteirinhaView.getjPanelFim());
         utilities.Utilities.limpaComponentes(false, this.cadastroCarteirinhaView.getjPanelMeio());
         
@@ -50,7 +51,7 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             this.cadastroCarteirinhaView.getNomeCliente().setEnabled(false);
             this.cadastroCarteirinhaView.getjTextFieldMatricula().setEnabled(false);
             this.cadastroCarteirinhaView.getjFormattedTextFieldDataNascimento().setEnabled(false);
-            
+            this.cadastroCarteirinhaView.getjTextFieldMatricula().setEditable(false);
             
         } else if (e.getSource() == this.cadastroCarteirinhaView.getjButtonSair()) {
             this.cadastroCarteirinhaView.dispose();

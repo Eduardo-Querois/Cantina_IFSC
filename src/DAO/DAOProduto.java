@@ -59,7 +59,7 @@ public class DAOProduto implements InterfaceDAO<Produto> {
                 + "descricao = ?, "
                 + "codigoBarra = ?,"
                 + "quantidade = ?, "
-                + "status = ? "
+                + "status = ?, "
                 + "unidade = ? "
                 + "WHERE id = ?";
         PreparedStatement pstm = null;
@@ -176,8 +176,8 @@ public List<Produto> retrieve(String parString) {
    
        //pstm.setString(1,colunaFiltro); 
        pstm.setString(1, "%" + parString + "%");  // Usando parString diretamente
-       String coluna = colunaFiltro;
-       JOptionPane.showMessageDialog(null, "Coluna : " + coluna + " String : " + parString);
+
+     
         
         rst = pstm.executeQuery();
 

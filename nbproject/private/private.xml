@@ -17,10 +17,13 @@
         </group>
         <group>
             <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOCarteirinha.java</file>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOFuncionario.java</file>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOEndereco.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/cadastro/ControllerCadastroCarteirinha.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Busca/ControllerCidadeView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOCidade.java</file>
             <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOProduto.java</file>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/Service/EnderecoService.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOBairro.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Busca/ControllerProdutoView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Busca/CidadeView.java</file>
         </group>
     </open-files>
 </project-private>
