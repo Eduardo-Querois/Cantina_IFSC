@@ -52,6 +52,10 @@ public class ControllerFuncionarioView implements ActionListener {
                 List<Funcionario> funcionarioList = new ArrayList<>();
                 if(this.funcionarioView.getComboBoxFiltrar().getSelectedIndex() == 0){
                     funcionarioList.add(FuncionarioService.carregar(Integer.parseInt(this.funcionarioView.getjTextFieldBuscar().getText())));
+                } else {
+                
+                    funcionarioList = FuncionarioService.carregar(this.funcionarioView.getjTextFieldBuscar().getText().trim());
+                    
                 }
                 
 

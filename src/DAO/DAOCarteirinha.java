@@ -113,10 +113,11 @@ public class DAOCarteirinha implements InterfaceDAO<Carteirinha> {
     @Override
     public Carteirinha retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT A.id,A.codigoBarra,A.dataGeracao,A.dataCancelamento, "
-                + "C.rg,C.CPF,C.matricula,C.dataNascimento from tblcarteirinha A join TBLCLIENTE C "
-                + "on A.TBLCLIENTE_ID = C.id "
-                + "WHERE A.id = ? ";
+        String sqlExecutar = "SELECT A.ID, A.CODIGOBARRA, A.dataGeracao,"
+                + "A.DATACANCELAMENTO,C.RG,C.CPF,C.MATRICULA,C.DATANASCIMENTO, C.NOME "
+                + "FROM TBLCARTEIRINHA A JOIN TBLCLIENTE C "
+                + "ON A.TBLCLIENTE_ID = C.ID "
+                + "WHERE A.ID = ? ";
         PreparedStatement pstm = null;
         ResultSet rst = null;
 
@@ -131,12 +132,13 @@ public class DAOCarteirinha implements InterfaceDAO<Carteirinha> {
                 carteirinha.setCliente(cliente);
                 carteirinha.setId(rst.getInt("id"));
                 carteirinha.setCodigoBarra(rst.getString("codigoBarra"));
-                carteirinha.setDataCancelamento(rst.getString("dataGeracao"));
+                carteirinha.setDataGeracao(rst.getString("dataGeracao"));
                 carteirinha.setDataCancelamento(rst.getString("dataCancelamento"));
                 carteirinha.getCliente().setCpf(rst.getString("cpf"));
                 carteirinha.getCliente().setRg(rst.getString("rg"));
                 carteirinha.getCliente().setMatricula(rst.getString("matricula"));
                 carteirinha.getCliente().setDataNascimento(rst.getString("dataNascimento"));
+                carteirinha.getCliente().setNome(rst.getString("nome"));
             }
 
         } catch (SQLException ex) {

@@ -61,10 +61,9 @@ public class ControllerEnderecoView implements ActionListener {
                 if (this.enderecoView.getComboBoxFiltrar().getSelectedIndex() == 0) {
                     
                     enderecoList.add(EnderecoService.carregar(Integer.parseInt(this.enderecoView.getjTextBuscar().getText())));
-                } else if (this.enderecoView.getComboBoxFiltrar().getSelectedIndex() == 1) {
-                    
+                } else{
                     enderecoList = EnderecoService.carregar(this.enderecoView.getjTextBuscar().getText().trim());
-
+                    
                 }
 
                 DefaultTableModel tabela = (DefaultTableModel) this.enderecoView.getjTable1().getModel();

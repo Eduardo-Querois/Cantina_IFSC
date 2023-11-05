@@ -202,7 +202,7 @@ public class FornecedorView extends javax.swing.JDialog {
         jButtonBuscar.setText("Buscar");
         jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 110, 30));
 
-        comboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nome", "Razão Social", "CPNJ", "Logradouro", "CEP" }));
+        comboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "nome", "email", "complementoEndereco", "cnpj", "inscricaoEstadual", "razaoSocial" }));
         comboBoxFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxFiltrarActionPerformed(evt);

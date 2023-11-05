@@ -188,7 +188,7 @@ public class EnderecoView extends javax.swing.JDialog {
         jButtonBuscar.setText("Buscar");
         jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 110, 30));
 
-        comboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Logradouro" }));
+        comboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "logradouro", "cep" }));
         comboBoxFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxFiltrarActionPerformed(evt);
@@ -219,7 +219,6 @@ public class EnderecoView extends javax.swing.JDialog {
         flowLayout1.setAlignOnBaseline(true);
         jPanelFim.setLayout(flowLayout1);
 
-        jButtonCarregar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCarregar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonCarregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Load.png"))); // NOI18N
         jButtonCarregar.setText("Carregar");
@@ -236,7 +235,6 @@ public class EnderecoView extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonCarregar);
 
-        jButtonSair.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSair.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
         jButtonSair.setText("Sair");

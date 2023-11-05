@@ -108,20 +108,20 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
         this.jPanelTitulo = jPanelTitulo;
     }
 
-    public JFormattedTextField getjFormattedTextField1() {
-        return jFormattedTextField1;
+    public JFormattedTextField getDataCancelamento() {
+        return DataCancelamento;
     }
 
-    public void setjFormattedTextField1(JFormattedTextField jFormattedTextField1) {
-        this.jFormattedTextField1 = jFormattedTextField1;
+    public void setDataCancelamento(JFormattedTextField dataCancelamento) {
+        this.DataCancelamento = dataCancelamento;
     }
 
-    public JFormattedTextField getjFormattedTextField3() {
-        return jFormattedTextField3;
+    public JFormattedTextField getDataGeracao() {
+        return DataGeracao;
     }
 
-    public void setjFormattedTextField3(JFormattedTextField jFormattedTextField3) {
-        this.jFormattedTextField3 = jFormattedTextField3;
+    public void setDataGeracao(JFormattedTextField dataGeracao) {
+        this.DataGeracao = dataGeracao;
     }
 
     public JFormattedTextField getjFormattedTextFieldCPF() {
@@ -281,7 +281,7 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
         jLabelID1 = new javax.swing.JLabel();
         jTextFieldCodigoDeBarra = new javax.swing.JTextField();
         jLabelID2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        DataCancelamento = new javax.swing.JFormattedTextField();
         jLabelID3 = new javax.swing.JLabel();
         jFormattedTextFieldDataNascimento = new javax.swing.JFormattedTextField();
         jLabelCPF = new javax.swing.JLabel();
@@ -290,7 +290,7 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
         jLabelMatricula = new javax.swing.JLabel();
         jFormattedTextFieldRG1 = new javax.swing.JFormattedTextField();
         jTextFieldMatricula = new javax.swing.JTextField();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        DataGeracao = new javax.swing.JFormattedTextField();
         jLabelID4 = new javax.swing.JLabel();
         NomeCliente = new javax.swing.JTextField();
         jLabelNome = new javax.swing.JLabel();
@@ -337,7 +337,7 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
         jLabelID2.setText("Data de Geração");
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            DataCancelamento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -375,7 +375,7 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
         });
 
         try {
-            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            DataGeracao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -401,7 +401,7 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
                     .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanelMeioLayout.createSequentialGroup()
                             .addGap(199, 199, 199)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DataCancelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(117, 117, 117)
                             .addComponent(jLabelCPF1)
                             .addGap(18, 18, 18)
@@ -425,7 +425,7 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
-                                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(DataGeracao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(117, 117, 117)
                                         .addComponent(jLabelCPF)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -454,14 +454,14 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelID2)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DataGeracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCPF))
                 .addGap(27, 27, 27)
                 .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCPF1)
                     .addComponent(jFormattedTextFieldRG1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DataCancelamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelID3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -637,6 +637,8 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField DataCancelamento;
+    private javax.swing.JFormattedTextField DataGeracao;
     private javax.swing.JTextField NomeCliente;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCancelar;
@@ -644,8 +646,6 @@ public class CadastroCarteirinhaView extends javax.swing.JDialog {
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataNascimento;
     private javax.swing.JFormattedTextField jFormattedTextFieldRG1;

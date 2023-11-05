@@ -5,8 +5,10 @@
  */
 package DAO;
 
+
 import static DAO.Persiste.produtoList;
 import controller.Busca.ControllerProdutoView;
+import static controller.Busca.ControllerProdutoView.colunaFiltro;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.util.List;
@@ -158,22 +160,24 @@ public class DAOProduto implements InterfaceDAO<Produto> {
 public List<Produto> retrieve(String parString) {
     Connection conexao = ConnectionFactory.getConnection();
    ProdutoView produtoView = new ProdutoView(null, true);
+   ControllerProdutoView controllerProdutoView = new ControllerProdutoView(produtoView);
    // String coluna = produtoView.getComboBoxFiltrar().getSelectedItem().toString().trim();
-
+    
     String sqlExecutar = "SELECT id,descricao,codigoBarra,status,quantidade,unidade "
             + "FROM tblproduto "
-            + "WHERE ? LIKE ?";  // Usando LIKE para busca de substring
+            + "WHERE "+ colunaFiltro +" LIKE ?";  // Usando LIKE para busca de substring
 
     PreparedStatement pstm = null;
     ResultSet rst = null;
     List<Produto> produtoList = new ArrayList<>();
 
     try {
-        pstm = conexao.prepareStatement(sqlExecutar);
-       parString = produtoView.getjTextFieldBuscar().getText();
-       pstm.setString(1,produtoView.getComboBoxFiltrar().getSelectedItem().toString().trim()); 
-       pstm.setString(2, "%" + parString + "%");  // Usando parString diretamente
-       // JOptionPane.showMessageDialog(null, "Coluna : " + coluna + " String : " + parString);
+       pstm = conexao.prepareStatement(sqlExecutar);
+   
+       //pstm.setString(1,colunaFiltro); 
+       pstm.setString(1, "%" + parString + "%");  // Usando parString diretamente
+       String coluna = colunaFiltro;
+       JOptionPane.showMessageDialog(null, "Coluna : " + coluna + " String : " + parString);
         
         rst = pstm.executeQuery();
 

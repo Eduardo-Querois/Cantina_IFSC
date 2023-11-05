@@ -74,17 +74,19 @@ public class ControllerCadastroCarteirinha implements ActionListener {
                 
                 this.cadastroCarteirinhaView.getjTextFieldID().setText(carteirinha.getId() + "");
                 this.cadastroCarteirinhaView.getjTextFieldCodigoDeBarra().setText(carteirinha.getCodigoBarra() + "");
-                this.cadastroCarteirinhaView.getjFormattedTextField3().setText(carteirinha.getDataGeracao() + "");
-                this.cadastroCarteirinhaView.getjFormattedTextField1().setText(carteirinha.getDataCancelamento() + "");
+                this.cadastroCarteirinhaView.getDataGeracao().setText(carteirinha.getDataGeracao() + "");
+                this.cadastroCarteirinhaView.getDataCancelamento().setText(carteirinha.getDataCancelamento() + "");
                 this.cadastroCarteirinhaView.getjFormattedTextFieldCPF().setText(carteirinha.getCliente().getCpf() + "");
-                this.cadastroCarteirinhaView.getjFormattedTextFieldRG1().setText(carteirinha.getCliente().getRg() + "");
+               this.cadastroCarteirinhaView.getjFormattedTextFieldRG1().setText(carteirinha.getCliente().getRg() + "");
                 this.cadastroCarteirinhaView.getjTextFieldMatricula().setText(carteirinha.getCliente().getMatricula() + "");
                 this.cadastroCarteirinhaView.getjFormattedTextFieldDataNascimento().setText(carteirinha.getCliente().getDataNascimento() + "");
+               this.cadastroCarteirinhaView.getNomeCliente().setText(carteirinha.getCliente().getNome() + "");
+                
                 
                 this.cadastroCarteirinhaView.getjTextFieldID().setEnabled(false);
                 this.cadastroCarteirinhaView.getjTextFieldCodigoDeBarra().setEnabled(true);
-                this.cadastroCarteirinhaView.getjFormattedTextField3().setEnabled(true);
-                this.cadastroCarteirinhaView.getjFormattedTextField1().setEnabled(true);
+                this.cadastroCarteirinhaView.getDataGeracao().setEnabled(true);
+                this.cadastroCarteirinhaView.getDataCancelamento().setEnabled(true);
                 this.cadastroCarteirinhaView.getjFormattedTextFieldCPF().setEnabled(false);
                 this.cadastroCarteirinhaView.getjFormattedTextFieldRG1().setEnabled(false);
                 this.cadastroCarteirinhaView.getjTextFieldMatricula().setEnabled(true);
@@ -101,13 +103,13 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             carteirinha.setCliente(cliente);
             
             carteirinha.setCodigoBarra(this.cadastroCarteirinhaView.getjTextFieldCodigoDeBarra().getText());
-            carteirinha.setDataGeracao(this.cadastroCarteirinhaView.getjFormattedTextField3().getText());
-            carteirinha.setDataCancelamento(this.cadastroCarteirinhaView.getjFormattedTextField1().getText());
+            carteirinha.setDataGeracao(this.cadastroCarteirinhaView.getDataGeracao().getText());
+            carteirinha.setDataCancelamento(this.cadastroCarteirinhaView.getDataCancelamento().getText());
             carteirinha.getCliente().setCpf(this.cadastroCarteirinhaView.getjFormattedTextFieldCPF().getText());
             carteirinha.getCliente().setRg(this.cadastroCarteirinhaView.getjFormattedTextFieldRG1().getText());
             carteirinha.getCliente().setMatricula(this.cadastroCarteirinhaView.getjTextFieldMatricula().getText());
             carteirinha.getCliente().setDataNascimento(this.cadastroCarteirinhaView.getjFormattedTextFieldDataNascimento().getText());
-            
+            carteirinha.getCliente().setNome(this.cadastroCarteirinhaView.getNomeCliente().getText());
             if (this.cadastroCarteirinhaView.getjTextFieldID().getText().equalsIgnoreCase("")) {
                 Service.CarteirinhaService.adicionar(carteirinha);
                 

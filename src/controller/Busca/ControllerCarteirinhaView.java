@@ -51,6 +51,11 @@ public class ControllerCarteirinhaView implements ActionListener {
                 if(this.carteirinhaView.getComboBoxFiltrar().getSelectedIndex() == 0){
                 carteirinhaList.add(CarteirinhaService.carregar(Integer.parseInt(this.carteirinhaView.getjTextFieldBuscar().getText())));
                 }
+                else{
+                
+                carteirinhaList = CarteirinhaService.carregar(this.carteirinhaView.getjTextFieldBuscar().getText().trim());
+                    
+                }
                 
 
                 DefaultTableModel tabela = (DefaultTableModel) this.carteirinhaView.getjTable1().getModel();
@@ -61,6 +66,7 @@ public class ControllerCarteirinhaView implements ActionListener {
                         carteirinhaAtual.getDataGeracao(),
                         carteirinhaAtual.getDataCancelamento(),
                         carteirinhaAtual.getCliente().getMatricula(),
+                        carteirinhaAtual.getCliente().getNome(),
                         carteirinhaAtual.getCliente().getCpf(),
                         carteirinhaAtual.getCliente().getRg(),
                         carteirinhaAtual.getCliente().getDataNascimento()

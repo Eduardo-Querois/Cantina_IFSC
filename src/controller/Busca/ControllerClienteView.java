@@ -69,8 +69,8 @@ public class ControllerClienteView implements ActionListener {
             if (this.clienteView.getComboBoxFiltrar().getSelectedIndex() == 0) {
                 clienteList.add(ClienteService.carregar(Integer.parseInt(this.clienteView.getjTextFieldBuscar().getText())));
             }
-            else if(this.clienteView.getComboBoxFiltrar().getSelectedIndex() == 1){
-                clienteList = ClienteService.carregar(this.clienteView.getjTextFieldBuscar().getText());
+            else {
+                clienteList = ClienteService.carregar(this.clienteView.getjTextFieldBuscar().getText().trim());
             }
             
             DefaultTableModel tabela = (DefaultTableModel) this.clienteView.getjTable1().getModel();

@@ -21,6 +21,7 @@ import view.Busca.ProdutoView;
  */
 public class ControllerProdutoView implements ActionListener {
 
+    public static String colunaFiltro;
     ProdutoView ProdutoView;
     int contador;
 
@@ -33,6 +34,7 @@ public class ControllerProdutoView implements ActionListener {
 
     }
 
+    
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -48,14 +50,15 @@ public class ControllerProdutoView implements ActionListener {
 
             if (this.ProdutoView.getjTextFieldBuscar().getText().trim().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Atenção! \nOpcão de Filtro Vazia...");
-
+                
             } else {
+               
                 List<Produto> produtoList = new ArrayList<>();
                 if(this.ProdutoView.getComboBoxFiltrar().getSelectedIndex() == 0){
                     produtoList.add(ProdutoService.carregar(Integer.parseInt(this.ProdutoView.getjTextFieldBuscar().getText().trim())));
                 }
                 else{
-                    
+                    colunaFiltro = ProdutoView.getComboBoxFiltrar().getSelectedItem().toString().trim();
                     produtoList = ProdutoService.carregar(this.ProdutoView.getjTextFieldBuscar().getText().toString().trim());
                 }
              

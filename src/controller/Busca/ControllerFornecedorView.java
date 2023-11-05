@@ -51,7 +51,7 @@ public class ControllerFornecedorView implements ActionListener {
                 if (this.fornecedorView.getComboBoxFiltrar().getSelectedIndex() == 0) {
 
                     fornecedorList.add(FornecedorService.carregar(Integer.parseInt(this.fornecedorView.getjTextFieldBuscar().getText())));
-                } else if (this.fornecedorView.getComboBoxFiltrar().getSelectedIndex() == 1) {
+                } else {
                     fornecedorList = FornecedorService.carregar(this.fornecedorView.getjTextFieldBuscar().getText().trim());
                 }
 
