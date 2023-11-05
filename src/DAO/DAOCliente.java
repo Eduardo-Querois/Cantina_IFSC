@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import static controller.Busca.ControllerClienteView.colunaFiltro;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.util.List;
@@ -197,7 +198,56 @@ public class DAOCliente implements InterfaceDAO<Cliente> {
 
     @Override
     public List<Cliente> retrieve(String parString) {
-        return null;
+        Connection conexao = ConnectionFactory.getConnection();
+       
+        String sqlExecutar = "SELECT C.id,C.nome,C.fone1,C.fone2,C.email,C.status,"
+                + "C.complementoEndereco,C.cpf,C.rg,C.matricula,C.dataNascimento,"
+                + "E.logradouro, E.cep "
+                + " FROM tblcliente C join tblendereco E "
+                + "on C.tblendereco_id = E.id "
+                + " WHERE "+colunaFiltro+" LIKE ? ";
+                
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        List<Cliente> clienteList = new ArrayList<>();
+        
+        
+
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, "%" + parString + "%");
+            rst = pstm.executeQuery();
+
+            while (rst.next()) {
+                Cliente cliente = new Cliente();
+                Endereco endereco = new Endereco();
+                
+                cliente.setEndereco(endereco);
+                cliente.setId(rst.getInt("id"));
+                cliente.setNome(rst.getString("nome"));
+                cliente.setFone1(rst.getString("fone1"));
+                cliente.setFone2(rst.getString("fone2"));
+                cliente.setEmail(rst.getString("email"));
+                cliente.setStatus(rst.getString("status"));
+                cliente.setComplementoEndereco(rst.getString("complementoEndereco"));
+                cliente.setRg(rst.getString("rg"));
+                cliente.setMatricula(rst.getString("matricula"));
+                cliente.setDataNascimento(rst.getString("dataNascimento"));
+                cliente.getEndereco().setLogradouro(rst.getString("logradouro"));
+                cliente.getEndereco().setCep(rst.getString("cep"));
+                cliente.setCpf(rst.getString("cpf"));
+                clienteList.add(cliente);
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+
+            return clienteList;
+        }
     }
+   
 
 }

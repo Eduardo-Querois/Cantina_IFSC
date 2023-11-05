@@ -27,9 +27,10 @@ import view.Cadastro.CadastroEnderecoView;
  */
 public class ControllerCidadeView implements ActionListener {
 
+    public static String colunaFiltro;
     public static String cidadeEnderenco;
     CidadeView cidadeView;
-    int contador;
+    
 
     public ControllerCidadeView(CidadeView cidadeView) {
 
@@ -64,7 +65,8 @@ public class ControllerCidadeView implements ActionListener {
 
                     if (this.cidadeView.getComboBoxFiltrar().getSelectedIndex() == 0) {
                         cidadeList.add(CidadeService.carregar(Integer.parseInt(this.cidadeView.getjTextFieldBuscar().getText())));
-                    } else if (this.cidadeView.getComboBoxFiltrar().getSelectedIndex() == 1) {
+                    } else  {
+                        colunaFiltro = this.cidadeView.getComboBoxFiltrar().getSelectedItem().toString().trim();
                         cidadeList = CidadeService.carregar(this.cidadeView.getjTextFieldBuscar().getText());
                     }
                     

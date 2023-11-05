@@ -6,6 +6,7 @@
 package DAO;
 
 import com.mysql.cj.jdbc.PreparedStatementWrapper;
+import static controller.Busca.ControllerCidadeView.colunaFiltro;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.util.List;
@@ -137,7 +138,7 @@ public class DAOCidade implements InterfaceDAO<Cidade> {
      Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = "SELECT id,descricao,uf "
                             + "FROM tblcidade "
-                            + "WHERE descricao LIKE ? ";
+                            + "WHERE "+colunaFiltro+" LIKE ? ";
         PreparedStatement pstm = null;
         ResultSet rst = null;
         List<Cidade> cidadeList = new ArrayList<>();
@@ -153,7 +154,7 @@ public class DAOCidade implements InterfaceDAO<Cidade> {
                 Cidade cidade = new Cidade();
                 cidade.setId(rst.getInt("id"));
                 cidade.setDescricao(rst.getString("descricao"));
-             // cidade.setUf(rst.getString("uf"));
+                cidade.setUf(rst.getString("uf"));
                 cidadeList.add(cidade);
             }
 

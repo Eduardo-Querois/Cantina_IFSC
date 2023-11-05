@@ -54,11 +54,6 @@ public class EnderecoService {
     }
      
      
-       public static Endereco carregarBairro(int parPK) {
-        DAOEndereco enderecoDAO = new DAOEndereco();
-        return enderecoDAO.retrieveBairro(parPK);
 
-    }
- 
 //
 }

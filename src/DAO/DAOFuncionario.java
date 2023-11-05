@@ -6,6 +6,7 @@
 package DAO;
 
 import static DAO.Persiste.funcionarioList;
+import static controller.Busca.ControllerFuncionarioView.colunaFiltro;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.util.List;
@@ -197,9 +198,56 @@ public class DAOFuncionario implements InterfaceDAO<Funcionario> {
         }
     }
 
-    @Override
+  @Override
     public List<Funcionario> retrieve(String parString) {
-        return null;
+        Connection conexao = ConnectionFactory.getConnection();
+       
+        String sqlExecutar = "SELECT F.ID,F.NOME,F.FONE1,F.FONE2,"
+                + "F.EMAIL,F.STATUS,F.CPF,F.RG,F.USUARIO,F.SENHA,"
+                + "F.COMPLEMENTOENDERECO, E.LOGRADOURO,E.CEP "
+                + "FROM TBLFUNCIONARIO F JOIN TBLENDERECO E "
+                + "ON F.TBLENDERECO_ID = E.ID WHERE "+colunaFiltro+" LIKE ?;";
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        List<Funcionario> funcionarioList = new ArrayList<>();
+        
+        
+
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, "%" + parString + "%");
+            rst = pstm.executeQuery();
+
+            while (rst.next()) {
+                Funcionario funcionario = new Funcionario();
+                Endereco endereco = new Endereco();
+                
+               funcionario.setEndereco(endereco);
+                funcionario.setId(rst.getInt("id"));
+                funcionario.setNome(rst.getString("nome"));
+                funcionario.setFone1(rst.getString("fone1"));
+                funcionario.setFone2(rst.getString("fone2"));
+                funcionario.setEmail(rst.getString("email"));
+                funcionario.setStatus(rst.getString("status"));
+                funcionario.setComplementoEndereco(rst.getString("complementoEndereco"));
+                funcionario.setCpf(rst.getString("cpf"));
+                funcionario.setRg(rst.getString("rg"));
+                funcionario.setUsuario(rst.getString("usuario"));
+                funcionario.setSenha(rst.getString("senha"));
+                funcionario.getEndereco().setLogradouro(rst.getString("logradouro"));
+                funcionario.getEndereco().setCep(rst.getString("cep"));
+                funcionarioList.add(funcionario);
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+
+            return funcionarioList;
+        }
     }
+   
 
 }

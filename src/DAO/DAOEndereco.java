@@ -7,6 +7,7 @@ package DAO;
 
 import static DAO.Persiste.enderecoList;
 import controller.Busca.ControllerCidadeView;
+import static controller.Busca.ControllerEnderecoView.colunaFiltro;
 import controller.cadastro.ControllerCadastroEndereco;
 import java.sql.ResultSet;
 import java.sql.Connection;
@@ -168,9 +169,13 @@ public class DAOEndereco implements InterfaceDAO<Endereco> {
     @Override
     public List<Endereco> retrieve(String parString) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT id,cep,logradouro,status  "
-                            + "FROM tblendereco "
-                            + "WHERE logradouro LIKE ? ";
+       
+        String sqlExecutar = "SELECT E.ID,E.CEP , E.LOGRADOURO, E.STATUS, C.DESCRICAO AS CIDADE ,B.DESCRICAO AS BAIRRO "
+                + "FROM TBLENDERECO E JOIN TBLCIDADE C "
+                + "ON E.TBLCIDADE_ID = C.ID "
+                + "JOIN TBLBAIRRO B  "
+                + "ON E.TBLBAIRRO_ID = B.ID "
+                + "WHERE "+colunaFiltro +" = ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
         List<Endereco> enderecoList = new ArrayList<>();
@@ -188,6 +193,8 @@ public class DAOEndereco implements InterfaceDAO<Endereco> {
                 endereco.setLogradouro(rst.getString("logradouro"));
                 endereco.setCep(rst.getString("cep"));
                 endereco.setStatus(rst.getString("status"));
+                endereco.getCidade().setDescricao(rst.getString("cidade"));
+                endereco.getBairro().setDescricao(rst.getString("bairro"));
                 enderecoList.add(endereco);
             }
 
@@ -204,37 +211,5 @@ public class DAOEndereco implements InterfaceDAO<Endereco> {
     
     
     
-    public Endereco retrieveBairro(int parPK) {
-        Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT descricao FROM tblbairro WHERE id = ? ";
-        PreparedStatement pstm = null;
-        ResultSet rst = null;
-        
-        Endereco endereco = new Endereco();
-
-        try {
-            pstm = conexao.prepareStatement(sqlExecutar);
-            pstm.setInt(1, parPK);
-            rst = pstm.executeQuery();
-
-            while(rst.next()){
-                
-              
-             
-                
-                
-                
-            }
-            
-            
-        } catch (SQLException ex) {
-
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return endereco;
-
-        }
-    }
     
 }
