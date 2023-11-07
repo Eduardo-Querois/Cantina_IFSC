@@ -19,105 +19,81 @@ import view.Cadastro.CadastroFornecedorView;
  * @author WMW
  */
 public class ControllerCadastroFornecedor implements ActionListener {
-
+    
     CadastroFornecedorView cadastroFornecedorView;
-
+    
     public static int codigo;
-
+    
     public ControllerCadastroFornecedor(CadastroFornecedorView cadastroFornecedorView) {
-
+        
         this.cadastroFornecedorView = cadastroFornecedorView;
-
+        
         this.cadastroFornecedorView.getjButtonNovo().addActionListener(this);
         this.cadastroFornecedorView.getjButtonSair().addActionListener(this);
         this.cadastroFornecedorView.getjButtonCancelar().addActionListener(this);
         this.cadastroFornecedorView.getjButtonGravar().addActionListener(this);
         this.cadastroFornecedorView.getjButtonBuscar().addActionListener(this);
         this.cadastroFornecedorView.getjButtonEndereco().addActionListener(this);
-
+        
         utilities.Utilities.ativaDesativa(true, this.cadastroFornecedorView.getjPanelFim());
         utilities.Utilities.limpaComponentes(false, this.cadastroFornecedorView.getjPanelMeio());
-
+        
     }
     
-    
-    
-    
-    
-    
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.cadastroFornecedorView.getjButtonNovo()) {
-
+            
             utilities.Utilities.ativaDesativa(false, this.cadastroFornecedorView.getjPanelFim());
             utilities.Utilities.limpaComponentes(true, this.cadastroFornecedorView.getjPanelMeio());
-
-            this.cadastroFornecedorView.getEnderecoLogradouro().setEnabled(false);
-
-            this.cadastroFornecedorView.getID().setEnabled(false);
-
-        } 
-        
-        
-        
-        else if (e.getSource() == this.cadastroFornecedorView.getjButtonSair()) {
-            this.cadastroFornecedorView.dispose();
-
-        } 
-        
-        
-        
-        else if (e.getSource() == this.cadastroFornecedorView.getjButtonCancelar()) {
             
+            this.cadastroFornecedorView.getEnderecoLogradouro().setEnabled(false);
+            this.cadastroFornecedorView.getCEP().setEnabled(false);
+            this.cadastroFornecedorView.getID().setEnabled(false);
+            
+        } else if (e.getSource() == this.cadastroFornecedorView.getjButtonSair()) {
+            this.cadastroFornecedorView.dispose();
+            
+        } else if (e.getSource() == this.cadastroFornecedorView.getjButtonCancelar()) {
             
             utilities.Utilities.ativaDesativa(true, this.cadastroFornecedorView.getjPanelFim());
             utilities.Utilities.limpaComponentes(false, this.cadastroFornecedorView.getjPanelMeio());
-
-        } 
-        
-        
-       else if (e.getSource() == this.cadastroFornecedorView.getjButtonEndereco()) {
-
+            
+        } else if (e.getSource() == this.cadastroFornecedorView.getjButtonEndereco()) {
+            
             EnderecoView enderecoView = new EnderecoView(null, true);
             ControllerEnderecoView controllerEnderecoView = new ControllerEnderecoView(enderecoView);
             enderecoView.setVisible(true);
-
-            
             
             this.cadastroFornecedorView.getEnderecoLogradouro().setText(controllerEnderecoView.logradouroEndereco);
-
-        }
-       
-       
-       
-        
-        else if (e.getSource() == this.cadastroFornecedorView.getjButtonBuscar()) {
-
+            this.cadastroFornecedorView.getCEP().setText(controllerEnderecoView.enderecoCEP);
+            
+        } else if (e.getSource() == this.cadastroFornecedorView.getjButtonBuscar()) {
+            
             codigo = 0;
-
+            
             FornecedorView fornecedorView = new FornecedorView(null, true);
             ControllerFornecedorView controllerFornecedorView = new ControllerFornecedorView(fornecedorView);
             fornecedorView.setVisible(true);
-
+            
             if (codigo != 0) {
-
+                
                 Fornecedor fornecedor = new Fornecedor();
                 fornecedor = Service.FornecedorService.carregar(codigo);
                 
                 utilities.Utilities.ativaDesativa(false, this.cadastroFornecedorView.getjPanelFim());
                 utilities.Utilities.limpaComponentes(true, this.cadastroFornecedorView.getjPanelMeio());
-
+                
                 this.cadastroFornecedorView.getID().setText(fornecedor.getId() + "");
                 this.cadastroFornecedorView.getNome().setText(fornecedor.getNome() + "");
                 this.cadastroFornecedorView.getCelular().setText(fornecedor.getFone1() + "");
                 this.cadastroFornecedorView.getTelefone().setText(fornecedor.getFone2() + "");
                 this.cadastroFornecedorView.getEmail().setText(fornecedor.getEmail() + "");
-                this.cadastroFornecedorView.getStatus().setSelectedItem(fornecedor.getStatus().toString() + "");      
+                this.cadastroFornecedorView.getStatus().setSelectedItem(fornecedor.getStatus().toString() + "");                
                 this.cadastroFornecedorView.getComplemento().setText(fornecedor.getComplementoEndereco() + "");
                 this.cadastroFornecedorView.getCNPJ().setText(fornecedor.getCnpj().toString() + "");
                 this.cadastroFornecedorView.getInscricaoEstadual().setText(fornecedor.getInscricaoEstadual().toString() + "");
-                this.cadastroFornecedorView.getRazaoSocial().setText(fornecedor.getRazaoSocial().toString()+ "");
+                this.cadastroFornecedorView.getRazaoSocial().setText(fornecedor.getRazaoSocial().toString() + "");
                 this.cadastroFornecedorView.getEnderecoLogradouro().setText(fornecedor.getEndereco().getLogradouro() + "");
                 this.cadastroFornecedorView.getCEP().setText(fornecedor.getEndereco().getCep() + "");
                 
@@ -132,15 +108,12 @@ public class ControllerCadastroFornecedor implements ActionListener {
                 this.cadastroFornecedorView.getRazaoSocial().setEnabled(true);
                 this.cadastroFornecedorView.getInscricaoEstadual().setEnabled(true);
                 this.cadastroFornecedorView.getEnderecoLogradouro().setEnabled(false);
-                this.cadastroFornecedorView.getCEP().setEnabled(true);
-
+                this.cadastroFornecedorView.getCEP().setEnabled(false);
                 
             }
-
-            
             
         } else if (e.getSource() == this.cadastroFornecedorView.getjButtonGravar()) {
-
+            
             Fornecedor fornecedor = new Fornecedor();
             Endereco endereco = new Endereco();
             
@@ -157,20 +130,20 @@ public class ControllerCadastroFornecedor implements ActionListener {
             
             fornecedor.getEndereco().setLogradouro(this.cadastroFornecedorView.getEnderecoLogradouro().getText());
             fornecedor.getEndereco().setCep(this.cadastroFornecedorView.getCEP().getText());
-
+            
             if (this.cadastroFornecedorView.getID().getText().trim().equalsIgnoreCase("")) {
                 //Codigo para incluir
                 Service.FornecedorService.adicionar(fornecedor);
-
+                
             } else {
                 fornecedor.setId(Integer.parseInt(this.cadastroFornecedorView.getID().getText()));
                 Service.FornecedorService.atualizar(fornecedor);
             }
-
+            
             utilities.Utilities.ativaDesativa(true, this.cadastroFornecedorView.getjPanelFim());
             utilities.Utilities.limpaComponentes(false, this.cadastroFornecedorView.getjPanelMeio());
-
+            
         }
-
+        
     }
 }

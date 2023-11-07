@@ -26,6 +26,7 @@ public class ControllerEnderecoView implements ActionListener {
     public static String colunaFiltro;
     EnderecoView enderecoView;
     public static String logradouroEndereco;
+    public static String enderecoCEP;
 
     public ControllerEnderecoView(EnderecoView enderecoView) {
         this.enderecoView = enderecoView;
@@ -40,6 +41,7 @@ public class ControllerEnderecoView implements ActionListener {
         if (e.getSource() == this.enderecoView.getjButtonCarregar()) {
             ControllerCadastroEndereco.codigo = (int) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(), 0);
             String logradouro = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(), 2);
+            enderecoCEP = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(), 1);
             // String cidade = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(),4);
             // String bairro = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(),3);
 

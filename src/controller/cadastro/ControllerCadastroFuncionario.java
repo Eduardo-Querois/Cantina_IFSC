@@ -48,7 +48,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
             utilities.Utilities.limpaComponentes(true, this.cadastroFuncionarioView.getjPanelMeio());
 
             this.cadastroFuncionarioView.getEnderecoLogradouro().setEnabled(false);
-            
+            this.cadastroFuncionarioView.getCEP().setEnabled(false);
             this.cadastroFuncionarioView.getID().setEnabled(false);
 
         } 
@@ -72,7 +72,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
         enderecoView.setVisible(true);
         
         this.cadastroFuncionarioView.getEnderecoLogradouro().setText(controllerEnderecoView.logradouroEndereco);
-        
+        this.cadastroFuncionarioView.getCEP().setText(controllerEnderecoView.enderecoCEP);
         }
         
         
@@ -92,18 +92,18 @@ public class ControllerCadastroFuncionario implements ActionListener {
                 utilities.Utilities.ativaDesativa(false, this.cadastroFuncionarioView.getjPanelFim());
                 utilities.Utilities.limpaComponentes(true, this.cadastroFuncionarioView.getjPanelMeio());
 
-                this.cadastroFuncionarioView.getID().setText(funcionario.getId() + " ");
-                this.cadastroFuncionarioView.getNome().setText(funcionario.getNome() + " ");
-                this.cadastroFuncionarioView.getCelular().setText(funcionario.getFone1() + " ");
-                this.cadastroFuncionarioView.getTelefone().setText(funcionario.getFone2() + " ");
-                this.cadastroFuncionarioView.getEmail().setText(funcionario.getEmail() + " ");
+                this.cadastroFuncionarioView.getID().setText(funcionario.getId() + "");
+                this.cadastroFuncionarioView.getNome().setText(funcionario.getNome() + "");
+                this.cadastroFuncionarioView.getCelular().setText(funcionario.getFone1() + "");
+                this.cadastroFuncionarioView.getTelefone().setText(funcionario.getFone2() + "");
+                this.cadastroFuncionarioView.getEmail().setText(funcionario.getEmail() + "");
                 this.cadastroFuncionarioView.getStatus().setSelectedItem(funcionario.getStatus().toString() + "");
-                this.cadastroFuncionarioView.getComplemento().setText(funcionario.getComplementoEndereco() + " ");
-                this.cadastroFuncionarioView.getEnderecoLogradouro().setText(funcionario.getEndereco().getLogradouro() + " ");
-                this.cadastroFuncionarioView.getCEP().setText(funcionario.getEndereco().getCep() + " ");
-                this.cadastroFuncionarioView.getCPF().setText(funcionario.getCpf()+ " ");
-                this.cadastroFuncionarioView.getRG().setText(funcionario.getRg()+ " ");
-                this.cadastroFuncionarioView.getUsuario().setText(funcionario.getUsuario()+" ");
+                this.cadastroFuncionarioView.getComplemento().setText(funcionario.getComplementoEndereco() + "");
+                this.cadastroFuncionarioView.getEnderecoLogradouro().setText(funcionario.getEndereco().getLogradouro() + "");
+                this.cadastroFuncionarioView.getCEP().setText(funcionario.getEndereco().getCep() + "");
+                this.cadastroFuncionarioView.getCPF().setText(funcionario.getCpf()+ "");
+                this.cadastroFuncionarioView.getRG().setText(funcionario.getRg()+ "");
+                this.cadastroFuncionarioView.getUsuario().setText(funcionario.getUsuario()+"");
                 this.cadastroFuncionarioView.getSenha().setText(funcionario.getSenha());
 
                 this.cadastroFuncionarioView.getID().setEnabled(false);
@@ -114,7 +114,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
                 this.cadastroFuncionarioView.getStatus().setEnabled(true);
                 this.cadastroFuncionarioView.getComplemento().setEnabled(true);
                 this.cadastroFuncionarioView.getEnderecoLogradouro().setEnabled(false);
-                this.cadastroFuncionarioView.getCEP().setEnabled(true);
+                this.cadastroFuncionarioView.getCEP().setEnabled(false);
                 this.cadastroFuncionarioView.getCPF().setEnabled(true);
                 this.cadastroFuncionarioView.getRG().setEnabled(true);
                 this.cadastroFuncionarioView.getUsuario().setEnabled(true);

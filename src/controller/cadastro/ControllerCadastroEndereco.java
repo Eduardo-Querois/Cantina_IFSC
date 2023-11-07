@@ -90,21 +90,51 @@ public class ControllerCadastroEndereco implements ActionListener {
 
             }
 
-        } else if (e.getSource() == this.cadastroEnderecoView.getjButtonBairro()) {
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        else if (e.getSource() == this.cadastroEnderecoView.getjButtonBairro()) {
             BairroView bairroView = new BairroView(null, true);
             ControllerBairroView controllerBairroView = new ControllerBairroView(bairroView);
             bairroView.setVisible(true);
 
             this.cadastroEnderecoView.getjTextFieldBairro().setText(controllerBairroView.bairroEndereco);
 
-        } else if (e.getSource() == this.cadastroEnderecoView.getjButtonCidade()) {
+        }
+        
+        
+        
+        else if (e.getSource() == this.cadastroEnderecoView.getjButtonCidade()) {
             CidadeView cidadeView = new CidadeView(null, true);
             ControllerCidadeView controllerCidadeView = new ControllerCidadeView(cidadeView);
             cidadeView.setVisible(true);
 
             this.cadastroEnderecoView.getjTextFieldCidade().setText(controllerCidadeView.cidadeEnderenco);
 
-        } else if (e.getSource() == this.cadastroEnderecoView.getjButtonGravar()) {
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        else if (e.getSource() == this.cadastroEnderecoView.getjButtonGravar()) {
 
             Endereco endereco = new Endereco();
             Cidade cidade = new Cidade();

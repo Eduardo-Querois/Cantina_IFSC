@@ -25,7 +25,7 @@ public class ControllerFuncionarioView implements ActionListener {
     
     public static String colunaFiltro;
     FuncionarioView funcionarioView;
-
+    
     public ControllerFuncionarioView(FuncionarioView funcionarioView) {
         this.funcionarioView = funcionarioView;
 
