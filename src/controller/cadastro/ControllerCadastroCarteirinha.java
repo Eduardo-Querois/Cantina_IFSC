@@ -83,8 +83,10 @@ public class ControllerCadastroCarteirinha implements ActionListener {
                 this.cadastroCarteirinhaView.getjTextFieldMatricula().setText(carteirinha.getCliente().getMatricula() + "");
                 this.cadastroCarteirinhaView.getjFormattedTextFieldDataNascimento().setText(carteirinha.getCliente().getDataNascimento() + "");
                this.cadastroCarteirinhaView.getNomeCliente().setText(carteirinha.getCliente().getNome() + "");
+               this.cadastroCarteirinhaView.getStatus().setSelectedItem(carteirinha.getStatus()+ "");
                 
                 
+               this.cadastroCarteirinhaView.getStatus().setEnabled(true);
                 this.cadastroCarteirinhaView.getjTextFieldID().setEnabled(false);
                 this.cadastroCarteirinhaView.getjTextFieldCodigoDeBarra().setEnabled(true);
                 this.cadastroCarteirinhaView.getDataGeracao().setEnabled(true);
@@ -131,6 +133,8 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             
             carteirinha.setCliente(cliente);
             
+            
+            carteirinha.setStatus(this.cadastroCarteirinhaView.getStatus().getSelectedItem().toString());
             carteirinha.setCodigoBarra(this.cadastroCarteirinhaView.getjTextFieldCodigoDeBarra().getText());
             carteirinha.setDataGeracao(this.cadastroCarteirinhaView.getDataGeracao().getText());
             carteirinha.setDataCancelamento(this.cadastroCarteirinhaView.getDataCancelamento().getText());

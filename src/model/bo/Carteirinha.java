@@ -10,29 +10,35 @@ package model.bo;
  * @author aluno
  */
 public class Carteirinha {
+
     private int id;
     private String codigoBarra;
     private String dataGeracao;
     private String dataCancelamento;
+    private String status;
 
-    
     private Cliente cliente;
+
     public Carteirinha() {
     }
 
-    public Carteirinha(int id, String codigoBarra, String dataGeracao, String dataCancelamento, Cliente cliente) {
+    public Carteirinha(int id, String codigoBarra, String dataGeracao, String dataCancelamento, Cliente cliente, String status) {
         this.id = id;
         this.codigoBarra = codigoBarra;
         this.dataGeracao = dataGeracao;
         this.dataCancelamento = dataCancelamento;
         this.cliente = cliente;
+        this.status = status;
     }
 
-    
-    
-    
-    
-    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getDataCancelamento() {
         return dataCancelamento;
     }
@@ -72,21 +78,18 @@ public class Carteirinha {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
-    
 
     @Override
     public String toString() {
-        return this.getId()+" "+
-                this.getCodigoBarra()+" "+
-                this.getDataGeracao()+" "+
-                this.getDataCancelamento()+ " " +
-                this.cliente.getCpf() + " " +
-                this.cliente.getRg() + " " +          
-                this.cliente.getMatricula() + " "+
-                this.cliente.getDataNascimento() + " ";
+        return this.getId() + " "
+                + this.getCodigoBarra() + " "
+                + this.getDataGeracao() + " "
+                + this.getDataCancelamento() + " "
+                + this.cliente.getCpf() + " "
+                + this.cliente.getRg() + " "
+                + this.cliente.getMatricula() + " "
+                + this.cliente.getDataNascimento() + " ";
 
     }
-        
-    
+
 }

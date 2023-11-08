@@ -144,7 +144,7 @@ public class CarteirinhaView extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Codigo De Barra", "Data de Geracao", "Data de Cancelamento", "Matricula", "Nome", "CPF", "RG", "Data Nascimento"
+                "ID", "Codigo De Barra", "Data de Geracao", "Data de Cancelamento", "Matricula", "Nome", "CPF", "RG", "Data Nascimento", "status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

@@ -70,7 +70,9 @@ public class ControllerCarteirinhaView implements ActionListener {
                         carteirinhaAtual.getCliente().getNome(),
                         carteirinhaAtual.getCliente().getCpf(),
                         carteirinhaAtual.getCliente().getRg(),
-                        carteirinhaAtual.getCliente().getDataNascimento()
+                        carteirinhaAtual.getCliente().getDataNascimento(),
+                        carteirinhaAtual.getStatus()
+                            
 
                     });
 

@@ -41,8 +41,8 @@
           <Group type="102" attributes="0">
               <Component id="jPanelTitulo" min="-2" pref="65" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanelMeio" min="-2" pref="386" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanelMeio" min="-2" pref="357" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanelFim" min="-2" pref="63" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
