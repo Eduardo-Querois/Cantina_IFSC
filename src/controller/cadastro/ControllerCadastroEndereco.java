@@ -1,5 +1,6 @@
 package controller.cadastro;
 
+import com.sun.source.tree.BreakTree;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.Busca.BairroView;
@@ -10,6 +11,7 @@ import controller.Busca.ControllerEnderecoView;
 import controller.Busca.ControllerCidadeView;
 import controller.Busca.ControllerBairroView;
 import static controller.cadastro.ControllerCadastroBairro.codigo1;
+import javax.swing.JOptionPane;
 
 import model.bo.Bairro;
 import model.bo.Cidade;
@@ -90,71 +92,55 @@ public class ControllerCadastroEndereco implements ActionListener {
 
             }
 
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        else if (e.getSource() == this.cadastroEnderecoView.getjButtonBairro()) {
+        } else if (e.getSource() == this.cadastroEnderecoView.getjButtonBairro()) {
             BairroView bairroView = new BairroView(null, true);
             ControllerBairroView controllerBairroView = new ControllerBairroView(bairroView);
             bairroView.setVisible(true);
 
             this.cadastroEnderecoView.getjTextFieldBairro().setText(controllerBairroView.bairroEndereco);
 
-        }
-        
-        
-        
-        else if (e.getSource() == this.cadastroEnderecoView.getjButtonCidade()) {
+        } else if (e.getSource() == this.cadastroEnderecoView.getjButtonCidade()) {
             CidadeView cidadeView = new CidadeView(null, true);
             ControllerCidadeView controllerCidadeView = new ControllerCidadeView(cidadeView);
             cidadeView.setVisible(true);
 
             this.cadastroEnderecoView.getjTextFieldCidade().setText(controllerCidadeView.cidadeEnderenco);
 
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        else if (e.getSource() == this.cadastroEnderecoView.getjButtonGravar()) {
+        } else if (e.getSource() == this.cadastroEnderecoView.getjButtonGravar()) {
+            if (this.cadastroEnderecoView.getjComboBoxStatus().getSelectedIndex() == -1) {
+                JOptionPane.showMessageDialog(null, "Defina um Status do Endereco !");
+            }
 
-            Endereco endereco = new Endereco();
-            Cidade cidade = new Cidade();
-            Bairro bairro = new Bairro();
-            endereco.setBairro(bairro);
-            endereco.setCidade(cidade);
-
-            endereco.setCep(this.cadastroEnderecoView.getjTextFieldCEP().getText());
-            endereco.setLogradouro(this.cadastroEnderecoView.getjTextFieldLogradouro1().getText());
-            endereco.getCidade().setDescricao(this.cadastroEnderecoView.getjTextFieldCidade().getText());
-            endereco.getBairro().setDescricao(this.cadastroEnderecoView.getjTextFieldBairro().getText());
-            endereco.setStatus(this.cadastroEnderecoView.getjComboBoxStatus().getSelectedItem().toString());
-
-            if (this.cadastroEnderecoView.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
-
-                Service.EnderecoService.adicionar(endereco);
-
+            else if (this.cadastroEnderecoView.getjTextFieldBairro().getText().toString().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Defina um valor para o Campo de Bairro !");
+            } else if (this.cadastroEnderecoView.getjTextFieldCidade().getText().toString().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Defina um valor para o Campo de Cidade !");
+            } else if (this.cadastroEnderecoView.getjTextFieldLogradouro1().getText().toString().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Defina um valor para o Campo de Logradouro !");
+            } else if (this.cadastroEnderecoView.getjTextFieldCEP().getText().toString().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Defina um valor para o Campo de CEP !");
             } else {
-                endereco.setId(Integer.parseInt(this.cadastroEnderecoView.getjTextFieldID().getText()));
-                Service.EnderecoService.atualizar(endereco);
+
+                Endereco endereco = new Endereco();
+                Cidade cidade = new Cidade();
+                Bairro bairro = new Bairro();
+                endereco.setBairro(bairro);
+                endereco.setCidade(cidade);
+
+                endereco.setCep(this.cadastroEnderecoView.getjTextFieldCEP().getText());
+                endereco.setLogradouro(this.cadastroEnderecoView.getjTextFieldLogradouro1().getText());
+                endereco.getCidade().setDescricao(this.cadastroEnderecoView.getjTextFieldCidade().getText());
+                endereco.getBairro().setDescricao(this.cadastroEnderecoView.getjTextFieldBairro().getText());
+                endereco.setStatus(this.cadastroEnderecoView.getjComboBoxStatus().getSelectedItem().toString());
+
+                if (this.cadastroEnderecoView.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+
+                    Service.EnderecoService.adicionar(endereco);
+
+                } else {
+                    endereco.setId(Integer.parseInt(this.cadastroEnderecoView.getjTextFieldID().getText()));
+                    Service.EnderecoService.atualizar(endereco);
+                }
             }
 
             utilities.Utilities.ativaDesativa(true, this.cadastroEnderecoView.getjPanelFim());

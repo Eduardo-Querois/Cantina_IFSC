@@ -42,8 +42,8 @@ public class ControllerEnderecoView implements ActionListener {
             ControllerCadastroEndereco.codigo = (int) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(), 0);
             String logradouro = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(), 2);
             enderecoCEP = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(), 1);
-            // String cidade = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(),4);
-            // String bairro = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(),3);
+             //String cidade = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(),4);
+             //String bairro = (String) this.enderecoView.getjTable1().getValueAt(this.enderecoView.getjTable1().getSelectedRow(),3);
 
             logradouroEndereco = logradouro;
 

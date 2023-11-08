@@ -10,6 +10,7 @@ import controller.Busca.ControllerClienteView;
 import view.Cadastro.CadastroCarteirinhaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.bo.Carteirinha;
 import model.bo.Cliente;
 import view.Busca.CarteirinhaView;
@@ -97,6 +98,33 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             
         } else if (e.getSource() == this.cadastroCarteirinhaView.getjButtonGravar()) {
             
+            
+            
+            
+            
+            if(this.cadastroCarteirinhaView.getjTextFieldCodigoDeBarra().getText().equalsIgnoreCase("")){
+                JOptionPane.showMessageDialog(null, "Defina um valor valido para o Codigo de Barras !");
+                
+            }
+            else if(this.cadastroCarteirinhaView.getNomeCliente().getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "Defina um valor valido para o Nome do Cliente !");
+            }
+            
+            else if(this.cadastroCarteirinhaView.getjFormattedTextFieldRG1().getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "Defina um valor valido para o RG !");
+                
+            }
+            else if(this.cadastroCarteirinhaView.getjFormattedTextFieldCPF().getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "Defina um valor valido para o CPF !");
+            }
+            else if(this.cadastroCarteirinhaView.getDataGeracao().getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "Defina uma data para o campo de data de geração !");
+            }
+            else if(this.cadastroCarteirinhaView.getDataCancelamento().getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "Defina quando será a data de cancelamento da carteirinha ! !");
+            }
+            
+            else{
             Carteirinha carteirinha = new Carteirinha();
             Cliente cliente = new Cliente();
             
@@ -120,7 +148,7 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             }
             utilities.Utilities.ativaDesativa(true, this.cadastroCarteirinhaView.getjPanelFim());
             utilities.Utilities.limpaComponentes(false, this.cadastroCarteirinhaView.getjPanelMeio());
-            
+            }
         } 
         
         

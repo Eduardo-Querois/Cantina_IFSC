@@ -6,9 +6,7 @@
 package DAO;
 
 import static DAO.Persiste.enderecoList;
-import controller.Busca.ControllerCidadeView;
 import static controller.Busca.ControllerEnderecoView.colunaFiltro;
-import controller.cadastro.ControllerCadastroEndereco;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.util.List;
@@ -18,8 +16,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.bo.Bairro;
 import model.bo.Cidade;
-import view.Busca.CidadeView;
-import view.Cadastro.CadastroEnderecoView;
 
 public class DAOEndereco implements InterfaceDAO<Endereco> {
 
@@ -175,7 +171,7 @@ public class DAOEndereco implements InterfaceDAO<Endereco> {
                 + "ON E.TBLCIDADE_ID = C.ID "
                 + "JOIN TBLBAIRRO B  "
                 + "ON E.TBLBAIRRO_ID = B.ID "
-                + "WHERE "+colunaFiltro +" = ?";
+                + "WHERE "+ colunaFiltro +" LIKE ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
         List<Endereco> enderecoList = new ArrayList<>();
@@ -189,6 +185,11 @@ public class DAOEndereco implements InterfaceDAO<Endereco> {
 
             while (rst.next()) {
                 Endereco endereco = new Endereco();
+                Cidade cidade = new Cidade();
+                Bairro bairro = new Bairro();
+                
+                endereco.setCidade(cidade);
+                endereco.setBairro(bairro);
                 endereco.setId(rst.getInt("id"));
                 endereco.setLogradouro(rst.getString("logradouro"));
                 endereco.setCep(rst.getString("cep"));
