@@ -198,6 +198,15 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
     public void setRazaoSocial(JTextField RazaoSocial) {
         this.RazaoSocial = RazaoSocial;
     }
+
+    public JButton getjButtonCadastroEndereco1() {
+        return jButtonCadastroEndereco1;
+    }
+
+    public void setjButtonCadastroEndereco1(JButton jButtonCadastroEndereco1) {
+        this.jButtonCadastroEndereco1 = jButtonCadastroEndereco1;
+    }
+    
     
     
     /**
@@ -237,6 +246,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
         InscricaoEstadual = new javax.swing.JTextField();
         CNPJ = new javax.swing.JFormattedTextField();
         jLabelCNPJ = new javax.swing.JLabel();
+        jButtonCadastroEndereco1 = new javax.swing.JButton();
         jPanelFim = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -275,6 +285,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
         jLabelID.setText("ID");
 
         ID.setActionCommand("5");
+        ID.setName("id"); // NOI18N
 
         Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
         Status.setActionCommand("5");
@@ -367,6 +378,10 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
         jLabelCNPJ.setBackground(new java.awt.Color(255, 255, 255));
         jLabelCNPJ.setText("CNPJ");
 
+        jButtonCadastroEndereco1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/New.png"))); // NOI18N
+        jButtonCadastroEndereco1.setActionCommand("5");
+        jButtonCadastroEndereco1.setPreferredSize(new java.awt.Dimension(5, 19));
+
         javax.swing.GroupLayout jPanelMeioLayout = new javax.swing.GroupLayout(jPanelMeio);
         jPanelMeio.setLayout(jPanelMeioLayout);
         jPanelMeioLayout.setHorizontalGroup(
@@ -407,7 +422,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                                 .addGap(12, 12, 12)
                                 .addComponent(CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
                         .addComponent(jLabelTelefone)
@@ -422,6 +437,8 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                             .addComponent(Celular)
                             .addComponent(Status, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
+                        .addComponent(jButtonCadastroEndereco1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addComponent(jLabelCEP)
                         .addGap(18, 18, 18)
                         .addComponent(CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -439,7 +456,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                     .addGroup(jPanelMeioLayout.createSequentialGroup()
                         .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,7 +470,8 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                             .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(EnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabelEndereco))
-                            .addComponent(jButtonEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                            .addComponent(jButtonEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                            .addComponent(jButtonCadastroEndereco1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelComplemento)
@@ -483,7 +501,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                     .addComponent(RazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelInscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(InscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71))
+                .addGap(33, 33, 33))
         );
 
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
@@ -558,15 +576,15 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelMeio, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelMeio, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelMeio, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanelFim, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -574,11 +592,9 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        utilities.Utilities.ativaDesativa(true, jPanelFim);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        utilities.Utilities.ativaDesativa(false, jPanelFim);
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
@@ -587,7 +603,6 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        utilities.Utilities.ativaDesativa(true, jPanelFim);
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnderecoActionPerformed
@@ -706,6 +721,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> Status;
     private javax.swing.JFormattedTextField Telefone;
     private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonCadastroEndereco1;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEndereco;
     private javax.swing.JButton jButtonGravar;

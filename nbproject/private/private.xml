@@ -15,6 +15,12 @@
             <file>file:/C:/Users/eduar/Music/ProjetoCantinaBizurado/src/utilities/Utilities.java</file>
             <file>file:/C:/Users/eduar/Music/ProjetoCantinaBizurado/src/controller/ControllerCadastroBairro.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Cadastro/CadastroFornecedorView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Cadastro/CadastroFuncionarioView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOEndereco.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Cadastro/CadastroProdutoView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Busca/ControllerFornecedorView.java</file>
+        </group>
     </open-files>
 </project-private>

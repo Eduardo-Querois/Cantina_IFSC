@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTree;
 
 /**
  *
@@ -57,6 +58,75 @@ public class Utilities {
             componente.setEnabled(ativa);
         }
 
+    }
+
+    public static boolean campoVazio(JPanel jPanel) {
+        boolean aux = false;
+        Component[] componentes = jPanel.getComponents();
+
+        for (Component componente : componentes) {
+
+            if (componente instanceof JFormattedTextField) {
+
+                if (((JFormattedTextField) componente).getText().length() == 0) {
+                    aux = true;
+                }
+
+            }
+            if (componente instanceof JComboBox) {
+
+                if (((JComboBox) componente).getSelectedIndex() == -1) {
+                    aux = true;
+                }
+
+            }
+            if (componente instanceof JTextField) {
+                if (((JTextField) componente).getText().length() == 0) {
+
+                    if (componente.getName() != "id") {
+                        aux = true;
+                    }
+                }
+
+            }
+
+        }
+
+        return aux;
+    }
+    public static Component campoVazios(JPanel jPanel) {
+        Component aux = new JButton();
+        Component[] componentes = jPanel.getComponents();
+
+        for (Component componente : componentes) {
+
+            if (componente instanceof JFormattedTextField) {
+
+                if (((JFormattedTextField) componente).getText().length() == 2) {
+                    return componente;
+                }
+
+            }
+            if (componente instanceof JComboBox) {
+
+                if (((JComboBox) componente).getSelectedIndex() == -1) {
+                    return componente;
+                }
+
+            }
+            if (componente instanceof JTextField) {
+                if (((JTextField) componente).getText().length() == 0) {
+
+                    if (componente.getName() != "id") {
+                        return componente;
+                    }
+                }
+
+            }
+
+        }
+
+        return aux;
     }
 
 }

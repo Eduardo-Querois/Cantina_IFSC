@@ -36,6 +36,7 @@ public class ControllerCadastroCliente implements ActionListener {
         this.cadastroClienteView.getjButtonGravar().addActionListener(this);
         this.cadastroClienteView.getjButtonBuscar().addActionListener(this);
         this.cadastroClienteView.getjButtonEndereco().addActionListener(this);
+        this.cadastroClienteView.getjButtonCadastroEndereco().addActionListener(this);
 
         utilities.Utilities.ativaDesativa(true, this.cadastroClienteView.getjPanelFim());
         utilities.Utilities.limpaComponentes(false, this.cadastroClienteView.getjPanelMeio());
@@ -68,8 +69,7 @@ public class ControllerCadastroCliente implements ActionListener {
 
             this.cadastroClienteView.getEnderecoLogradouro().setText(controllerEnderecoView.logradouroEndereco);
             this.cadastroClienteView.getCEP().setText(controllerEnderecoView.enderecoCEP);
-            
-            
+
         } else if (e.getSource() == this.cadastroClienteView.getjButtonBuscar()) {
 
             codigo = 0;
@@ -116,48 +116,61 @@ public class ControllerCadastroCliente implements ActionListener {
             }
 
         } else if (e.getSource() == this.cadastroClienteView.getjButtonGravar()) {
-            Endereco endereco = new Endereco();
-            Cliente cliente = new Cliente();
 
-            cliente.setEndereco(endereco);
-            cliente.setMatricula(this.cadastroClienteView.getMatricula().getText());
-            cliente.setNome(this.cadastroClienteView.getNome().getText());
-            cliente.setCpf(this.cadastroClienteView.getCPF().getText());
-            cliente.setRg(this.cadastroClienteView.getRG().getText());
-              
-            cliente.setDataNascimento(this.cadastroClienteView.getDataNascismento().getText());
-            
-            
-            cliente.setFone1(this.cadastroClienteView.getCelular().getText());
-            cliente.setFone2(this.cadastroClienteView.getTelefone().getText());
-            cliente.setEmail(this.cadastroClienteView.getEmail().getText());
-            cliente.setStatus(this.cadastroClienteView.getStatus().getSelectedItem().toString());
-            cliente.setComplementoEndereco(this.cadastroClienteView.getComplemento().getText());
-            cliente.getEndereco().setLogradouro(this.cadastroClienteView.getEnderecoLogradouro().getText());
-            cliente.getEndereco().setCep(this.cadastroClienteView.getCEP().getText());
+            if (utilities.Utilities.campoVazio(this.cadastroClienteView.getjPanelMeio()) == true) {
+                JOptionPane.showMessageDialog(null, "Existem campos vazios!");
 
-            if(this.cadastroClienteView.getEnderecoLogradouro().getText().equalsIgnoreCase("")){
-                JOptionPane.showMessageDialog(null, "Informe o Endereco do Cliente!");
-            }
-
-            else{
-            
-            if (this.cadastroClienteView.getID().getText().trim().equalsIgnoreCase("")) {
-                //Codigo para incluir
-                Service.ClienteService.adicionar(cliente);
-
-                
             } else {
-                cliente.setId(Integer.parseInt(this.cadastroClienteView.getID().getText()));
-                Service.ClienteService.atualizar(cliente);
-                utilities.Utilities.ativaDesativa(true, this.cadastroClienteView.getjPanelFim());
-            utilities.Utilities.limpaComponentes(false, this.cadastroClienteView.getjPanelMeio());
-            }
+
+                Endereco endereco = new Endereco();
+                Cliente cliente = new Cliente();
+
+                cliente.setEndereco(endereco);
+                cliente.setMatricula(this.cadastroClienteView.getMatricula().getText());
+                cliente.setNome(this.cadastroClienteView.getNome().getText());
+                cliente.setCpf(this.cadastroClienteView.getCPF().getText());
+                cliente.setRg(this.cadastroClienteView.getRG().getText());
+
+                cliente.setDataNascimento(this.cadastroClienteView.getDataNascismento().getText());
+
+                cliente.setFone1(this.cadastroClienteView.getCelular().getText());
+                cliente.setFone2(this.cadastroClienteView.getTelefone().getText());
+                cliente.setEmail(this.cadastroClienteView.getEmail().getText());
+                cliente.setStatus(this.cadastroClienteView.getStatus().getSelectedItem().toString());
+                cliente.setComplementoEndereco(this.cadastroClienteView.getComplemento().getText());
+                cliente.getEndereco().setLogradouro(this.cadastroClienteView.getEnderecoLogradouro().getText());
+                cliente.getEndereco().setCep(this.cadastroClienteView.getCEP().getText());
+
+                if (this.cadastroClienteView.getEnderecoLogradouro().getText().equalsIgnoreCase("")) {
+                    JOptionPane.showMessageDialog(null, "Informe o Endereco do Cliente!");
+                } else {
+
+                    if (this.cadastroClienteView.getID().getText().trim().equalsIgnoreCase("")) {
+                        //Codigo para incluir
+                        Service.ClienteService.adicionar(cliente);
+
+                    } else {
+                        cliente.setId(Integer.parseInt(this.cadastroClienteView.getID().getText()));
+                        Service.ClienteService.atualizar(cliente);
+
+                    }
+                    utilities.Utilities.ativaDesativa(true, this.cadastroClienteView.getjPanelFim());
+                    utilities.Utilities.limpaComponentes(false, this.cadastroClienteView.getjPanelMeio());
+                }
             }
 
+        }
+        
+        
+        
+        else if(e.getSource() == this.cadastroClienteView.getjButtonCadastroEndereco()){
+            CadastroEnderecoView cadastroEnderecoView = new CadastroEnderecoView(null, true);
+            ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(cadastroEnderecoView);
+            cadastroEnderecoView.setVisible(true);
             
-
+        
         }
 
     }
+
 }

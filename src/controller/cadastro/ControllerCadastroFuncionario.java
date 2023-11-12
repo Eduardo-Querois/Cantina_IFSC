@@ -8,10 +8,12 @@ import controller.Busca.ControllerEnderecoView;
 import controller.Busca.ControllerFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.bo.Endereco;
 import model.bo.Funcionario;
 import view.Busca.EnderecoView;
 import view.Busca.FuncionarioView;
+import view.Cadastro.CadastroEnderecoView;
 import view.Cadastro.CadastroFuncionarioView;
 
 /**
@@ -34,6 +36,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
         this.cadastroFuncionarioView.getjButtonGravar().addActionListener(this);
         this.cadastroFuncionarioView.getjButtonBuscar().addActionListener(this);
         this.cadastroFuncionarioView.getjButtonEndereco().addActionListener(this);
+        this.cadastroFuncionarioView.getjButtonCadastroEndereco1().addActionListener(this);
 
         utilities.Utilities.ativaDesativa(true, this.cadastroFuncionarioView.getjPanelFim());
         utilities.Utilities.limpaComponentes(false, this.cadastroFuncionarioView.getjPanelMeio());
@@ -51,32 +54,21 @@ public class ControllerCadastroFuncionario implements ActionListener {
             this.cadastroFuncionarioView.getCEP().setEnabled(false);
             this.cadastroFuncionarioView.getID().setEnabled(false);
 
-        } 
-        
-        
-        
-        else if (e.getSource() == this.cadastroFuncionarioView.getjButtonSair()) {
+        } else if (e.getSource() == this.cadastroFuncionarioView.getjButtonSair()) {
             this.cadastroFuncionarioView.dispose();
 
-        }
-        
-        else if (e.getSource() == this.cadastroFuncionarioView.getjButtonCancelar()) {
+        } else if (e.getSource() == this.cadastroFuncionarioView.getjButtonCancelar()) {
             utilities.Utilities.ativaDesativa(true, this.cadastroFuncionarioView.getjPanelFim());
             utilities.Utilities.limpaComponentes(false, this.cadastroFuncionarioView.getjPanelMeio());
 
-        }
-        
-        else if (e.getSource() == this.cadastroFuncionarioView.getjButtonEndereco()){
-        EnderecoView enderecoView = new EnderecoView(null, true);
-        ControllerEnderecoView controllerEnderecoView = new ControllerEnderecoView(enderecoView);
-        enderecoView.setVisible(true);
-        
-        this.cadastroFuncionarioView.getEnderecoLogradouro().setText(controllerEnderecoView.logradouroEndereco);
-        this.cadastroFuncionarioView.getCEP().setText(controllerEnderecoView.enderecoCEP);
-        }
-        
-        
-        else if (e.getSource() == this.cadastroFuncionarioView.getjButtonBuscar()) {
+        } else if (e.getSource() == this.cadastroFuncionarioView.getjButtonEndereco()) {
+            EnderecoView enderecoView = new EnderecoView(null, true);
+            ControllerEnderecoView controllerEnderecoView = new ControllerEnderecoView(enderecoView);
+            enderecoView.setVisible(true);
+
+            this.cadastroFuncionarioView.getEnderecoLogradouro().setText(controllerEnderecoView.logradouroEndereco);
+            this.cadastroFuncionarioView.getCEP().setText(controllerEnderecoView.enderecoCEP);
+        } else if (e.getSource() == this.cadastroFuncionarioView.getjButtonBuscar()) {
 
             codigo = 0;
 
@@ -88,7 +80,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
 
                 Funcionario funcionario = new Funcionario();
                 funcionario = Service.FuncionarioService.carregar(codigo);
-                
+
                 utilities.Utilities.ativaDesativa(false, this.cadastroFuncionarioView.getjPanelFim());
                 utilities.Utilities.limpaComponentes(true, this.cadastroFuncionarioView.getjPanelMeio());
 
@@ -101,9 +93,9 @@ public class ControllerCadastroFuncionario implements ActionListener {
                 this.cadastroFuncionarioView.getComplemento().setText(funcionario.getComplementoEndereco() + "");
                 this.cadastroFuncionarioView.getEnderecoLogradouro().setText(funcionario.getEndereco().getLogradouro() + "");
                 this.cadastroFuncionarioView.getCEP().setText(funcionario.getEndereco().getCep() + "");
-                this.cadastroFuncionarioView.getCPF().setText(funcionario.getCpf()+ "");
-                this.cadastroFuncionarioView.getRG().setText(funcionario.getRg()+ "");
-                this.cadastroFuncionarioView.getUsuario().setText(funcionario.getUsuario()+"");
+                this.cadastroFuncionarioView.getCPF().setText(funcionario.getCpf() + "");
+                this.cadastroFuncionarioView.getRG().setText(funcionario.getRg() + "");
+                this.cadastroFuncionarioView.getUsuario().setText(funcionario.getUsuario() + "");
                 this.cadastroFuncionarioView.getSenha().setText(funcionario.getSenha());
 
                 this.cadastroFuncionarioView.getID().setEnabled(false);
@@ -123,6 +115,12 @@ public class ControllerCadastroFuncionario implements ActionListener {
 
         } else if (e.getSource() == this.cadastroFuncionarioView.getjButtonGravar()) {
 
+            if(utilities.Utilities.campoVazio(this.cadastroFuncionarioView.getjPanelMeio()) == true)
+            {
+                JOptionPane.showMessageDialog(null, "Existem campos vazios!");
+               
+            }
+            else{
             Funcionario funcionario = new Funcionario();
             Endereco endereco = new Endereco();
             
@@ -149,10 +147,18 @@ public class ControllerCadastroFuncionario implements ActionListener {
                 funcionario.setId(Integer.parseInt(this.cadastroFuncionarioView.getID().getText().trim()));
                 Service.FuncionarioService.atualizar(funcionario);
             }
-
+            
             utilities.Utilities.ativaDesativa(true, this.cadastroFuncionarioView.getjPanelFim());
             utilities.Utilities.limpaComponentes(false, this.cadastroFuncionarioView.getjPanelMeio());
+            }
 
+
+        }
+        
+        else if(e.getSource() == this.cadastroFuncionarioView.getjButtonCadastroEndereco1()){
+            CadastroEnderecoView cadastroEnderecoView = new CadastroEnderecoView(null, true);
+            ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(cadastroEnderecoView);
+            cadastroEnderecoView.setVisible(true);
         }
 
     }

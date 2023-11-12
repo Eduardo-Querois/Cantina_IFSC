@@ -209,6 +209,16 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
         this.Usuario = Usuario;
     }
 
+    public JButton getjButtonCadastroEndereco1() {
+        return jButtonCadastroEndereco1;
+    }
+
+    public void setjButtonCadastroEndereco1(JButton jButtonCadastroEndereco1) {
+        this.jButtonCadastroEndereco1 = jButtonCadastroEndereco1;
+    }
+
+    
+    
     
     
     /**
@@ -231,7 +241,6 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
         jLabelID = new javax.swing.JLabel();
         ID = new javax.swing.JTextField();
         Status = new javax.swing.JComboBox<>();
-        jLabelStatus = new javax.swing.JLabel();
         CPF = new javax.swing.JFormattedTextField();
         CEP = new javax.swing.JFormattedTextField();
         Telefone = new javax.swing.JFormattedTextField();
@@ -251,6 +260,7 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
         jLabelSenha = new javax.swing.JLabel();
         Usuario = new javax.swing.JTextField();
         jLabelUsuario = new javax.swing.JLabel();
+        jButtonCadastroEndereco1 = new javax.swing.JButton();
         jPanelFim = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -290,6 +300,7 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
         jLabelID.setText("ID");
 
         ID.setActionCommand("5");
+        ID.setName("id"); // NOI18N
 
         Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
         Status.setActionCommand("5");
@@ -298,9 +309,6 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
                 StatusActionPerformed(evt);
             }
         });
-
-        jLabelStatus.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelStatus.setText("Status");
 
         try {
             CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -386,6 +394,10 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
 
         jLabelUsuario.setText("Usuario");
 
+        jButtonCadastroEndereco1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/New.png"))); // NOI18N
+        jButtonCadastroEndereco1.setActionCommand("5");
+        jButtonCadastroEndereco1.setPreferredSize(new java.awt.Dimension(5, 19));
+
         javax.swing.GroupLayout jPanelMeioLayout = new javax.swing.GroupLayout(jPanelMeio);
         jPanelMeio.setLayout(jPanelMeioLayout);
         jPanelMeioLayout.setHorizontalGroup(
@@ -411,6 +423,8 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
                         .addComponent(EnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCadastroEndereco1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelCEP)
                         .addGap(18, 18, 18)
@@ -455,11 +469,6 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(Senha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMeioLayout.createSequentialGroup()
-                    .addContainerGap(937, Short.MAX_VALUE)
-                    .addComponent(jLabelStatus)
-                    .addGap(0, 53, Short.MAX_VALUE)))
         );
         jPanelMeioLayout.setVerticalGroup(
             jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,6 +493,7 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
                     .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 39, Short.MAX_VALUE)
                 .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonCadastroEndereco1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                     .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(EnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelEndereco)
@@ -508,11 +518,6 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
                     .addComponent(jLabelSenha)
                     .addComponent(Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
-            .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMeioLayout.createSequentialGroup()
-                    .addContainerGap(356, Short.MAX_VALUE)
-                    .addComponent(jLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 14, Short.MAX_VALUE)))
         );
 
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
@@ -603,11 +608,11 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        utilities.Utilities.ativaDesativa(true, jPanelFim);
+     
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        utilities.Utilities.ativaDesativa(false, jPanelFim);
+       
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
@@ -616,7 +621,7 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        utilities.Utilities.ativaDesativa(true, jPanelFim);
+    
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnderecoActionPerformed
@@ -716,6 +721,7 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField Telefone;
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonCadastroEndereco1;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEndereco;
     private javax.swing.JButton jButtonGravar;
@@ -731,7 +737,6 @@ public class CadastroFuncionarioView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelNome1;
     private javax.swing.JLabel jLabelRG;
     private javax.swing.JLabel jLabelSenha;
-    private javax.swing.JLabel jLabelStatus;
     private javax.swing.JLabel jLabelStaus;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JLabel jLabelUsuario;

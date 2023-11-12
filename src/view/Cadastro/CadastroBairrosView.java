@@ -181,12 +181,14 @@ public class CadastroBairrosView extends javax.swing.JDialog {
         jPanelMeio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("ID");
-        jPanelMeio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 14, -1, -1));
-        jPanelMeio.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 11, 78, -1));
+        jPanelMeio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+
+        jTextField1.setName("id"); // NOI18N
+        jPanelMeio.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 78, -1));
 
         jLabel2.setText("Descrição");
-        jPanelMeio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 78, -1, -1));
-        jPanelMeio.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 75, 603, -1));
+        jPanelMeio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
+        jPanelMeio.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 603, -1));
 
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
         jPanelFim.setForeground(new java.awt.Color(255, 255, 0));

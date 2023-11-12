@@ -209,6 +209,7 @@ public class CadastroCidadesView extends javax.swing.JDialog {
 
         jLabel3.setText("Descrição");
 
+        jTextField1.setName("id"); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

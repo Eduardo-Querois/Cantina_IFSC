@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import view.Cadastro.CadastroBairrosView;
 import view.Busca.BairroView;
 import controller.Busca.ControllerBairroView;
+import javax.swing.JOptionPane;
 import model.bo.Bairro;
 
 /**
@@ -84,22 +85,28 @@ public class ControllerCadastroBairro implements ActionListener {
 
         } else if (e.getSource() == this.cadastroBairrosView.getjButtonGravar()) {
 
-            Bairro bairro = new Bairro();
-
-            bairro.setDescricao(this.cadastroBairrosView.getjTextFieldDescricao().getText());
-
-            if (this.cadastroBairrosView.getjTextField1().getText().trim().equalsIgnoreCase("")) {
-                //Codigo para incluir
-                Service.BairroService.adicionar(bairro);
+            if (utilities.Utilities.campoVazio(this.cadastroBairrosView.getjPanelMeio()) == true) {
+                JOptionPane.showMessageDialog(null, "Existem campos vazios!");
 
             } else {
-                bairro.setId(Integer.parseInt(this.cadastroBairrosView.getjTextField1().getText()));
-                Service.BairroService.atualizar(bairro);
+
+                Bairro bairro = new Bairro();
+
+                bairro.setDescricao(this.cadastroBairrosView.getjTextFieldDescricao().getText());
+
+                if (this.cadastroBairrosView.getjTextField1().getText().trim().equalsIgnoreCase("")) {
+                    //Codigo para incluir
+                    Service.BairroService.adicionar(bairro);
+
+                } else {
+                    bairro.setId(Integer.parseInt(this.cadastroBairrosView.getjTextField1().getText()));
+                    Service.BairroService.atualizar(bairro);
+                }
+
+                utilities.Utilities.ativaDesativa(true, this.cadastroBairrosView.getjPanelFim());
+                utilities.Utilities.limpaComponentes(false, this.cadastroBairrosView.getjPanelMeio());
+
             }
-
-            utilities.Utilities.ativaDesativa(true, this.cadastroBairrosView.getjPanelFim());
-            utilities.Utilities.limpaComponentes(false, this.cadastroBairrosView.getjPanelMeio());
-
         }
 
     }

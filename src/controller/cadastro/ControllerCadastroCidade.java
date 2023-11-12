@@ -10,6 +10,7 @@ import view.Cadastro.CadastroCidadesView;
 import controller.Busca.ControllerCidadeView;
 import model.bo.Cidade;
 import static DAO.Persiste.cidadeList;
+import javax.swing.JOptionPane;
 import view.Busca.CidadeView;
 
 /**
@@ -51,59 +52,59 @@ public class ControllerCadastroCidade implements ActionListener {
             utilities.Utilities.ativaDesativa(true, this.cadastroCidadesView.getjPanelFim());
             utilities.Utilities.limpaComponentes(false, this.cadastroCidadesView.getjPanelMeio());
 
-        } 
-        
-        
-        
-        
-        
-        
-        else if (e.getSource() == this.cadastroCidadesView.getjButtonBuscar()) {
+        } else if (e.getSource() == this.cadastroCidadesView.getjButtonBuscar()) {
 
             codigo = 0;
-            
+
             CidadeView cidadeView = new CidadeView(null, true);
             ControllerCidadeView controllerCidadeView = new ControllerCidadeView(cidadeView);
 
             cidadeView.setVisible(true);
 
             if (codigo != 0) {
-                
+
+               
+
+                    Cidade cidade = new Cidade();
+                    cidade = Service.CidadeService.carregar(codigo);
+
+                    utilities.Utilities.ativaDesativa(false, this.cadastroCidadesView.getjPanelFim());
+                    utilities.Utilities.limpaComponentes(true, this.cadastroCidadesView.getjPanelMeio());
+
+                    this.cadastroCidadesView.getjTextField3().setText(cidade.getId() + "");
+                    this.cadastroCidadesView.getjTextField2().setText(cidade.getDescricao() + "");
+                    this.cadastroCidadesView.getjTextField1().setText(cidade.getUf() + "");
+                    this.cadastroCidadesView.getjTextField2().setEnabled(true);
+                    this.cadastroCidadesView.getjTextField1().setEnabled(true);
+                    this.cadastroCidadesView.getjTextField3().setEnabled(false);
+
+                }
+
+            } else if (e.getSource() == this.cadastroCidadesView.getjButtonGravar()) {
                 Cidade cidade = new Cidade();
-                cidade = Service.CidadeService.carregar(codigo);
                 
                 
-                utilities.Utilities.ativaDesativa(false, this.cadastroCidadesView.getjPanelFim());
-                utilities.Utilities.limpaComponentes(true, this.cadastroCidadesView.getjPanelMeio());
+                 if (utilities.Utilities.campoVazio(this.cadastroCidadesView.getjPanelMeio()) == true) {
+                    JOptionPane.showMessageDialog(null, "Existem campos vazios!");
 
-                this.cadastroCidadesView.getjTextField3().setText(cidade.getId() + "");
-                this.cadastroCidadesView.getjTextField2().setText(cidade.getDescricao() + "");
-                this.cadastroCidadesView.getjTextField1().setText(cidade.getUf() + "");
-                this.cadastroCidadesView.getjTextField2().setEnabled(true);
-                this.cadastroCidadesView.getjTextField1().setEnabled(true);
-                this.cadastroCidadesView.getjTextField3().setEnabled(false);
+                } else {
+                
+
+                cidade.setDescricao(this.cadastroCidadesView.getjTextField2().getText().trim());
+                cidade.setUf(this.cadastroCidadesView.getjTextField1().getText().trim());
+
+                if (this.cadastroCidadesView.getjTextField3().getText().trim().equalsIgnoreCase("")) {
+                    Service.CidadeService.adicionar(cidade);
+                } else {
+                    cidade.setId(Integer.parseInt(this.cadastroCidadesView.getjTextField3().getText()));
+                    Service.CidadeService.atualizar(cidade);
+                }
+
+                utilities.Utilities.ativaDesativa(true, this.cadastroCidadesView.getjPanelFim());
+                utilities.Utilities.limpaComponentes(false, this.cadastroCidadesView.getjPanelMeio());
 
             }
-            
-            
-            
-        } else if (e.getSource() == this.cadastroCidadesView.getjButtonGravar()) {
-            Cidade cidade = new Cidade();
-
-            cidade.setDescricao(this.cadastroCidadesView.getjTextField2().getText().trim());
-            cidade.setUf(this.cadastroCidadesView.getjTextField1().getText().trim());
-
-            if (this.cadastroCidadesView.getjTextField3().getText().trim().equalsIgnoreCase("")) {
-                Service.CidadeService.adicionar(cidade);
-            } else {
-                cidade.setId(Integer.parseInt(this.cadastroCidadesView.getjTextField3().getText()));
-                Service.CidadeService.atualizar(cidade);
-            }
-
-            utilities.Utilities.ativaDesativa(true, this.cadastroCidadesView.getjPanelFim());
-            utilities.Utilities.limpaComponentes(false, this.cadastroCidadesView.getjPanelMeio());
 
         }
-
     }
 }

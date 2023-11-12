@@ -77,9 +77,9 @@ public class ControllerCadastroEndereco implements ActionListener {
                 this.cadastroEnderecoView.getjTextFieldID().setText(endereco.getId() + "");
                 this.cadastroEnderecoView.getjTextFieldLogradouro1().setText(endereco.getLogradouro() + "");
                 this.cadastroEnderecoView.getjTextFieldCEP().setText(endereco.getCep() + "");
-                this.cadastroEnderecoView.getjTextFieldCidade().setText(endereco.getCidade().getDescricao() + " ");
-                this.cadastroEnderecoView.getjTextFieldBairro().setText(endereco.getBairro().getDescricao() + " ");
-                this.cadastroEnderecoView.getjComboBoxStatus().setSelectedItem(endereco.getStatus() + " ");
+                this.cadastroEnderecoView.getjTextFieldCidade().setText(endereco.getCidade().getDescricao() + "");
+                this.cadastroEnderecoView.getjTextFieldBairro().setText(endereco.getBairro().getDescricao() + "");
+                this.cadastroEnderecoView.getjComboBoxStatus().setSelectedItem(endereco.getStatus() + "");
 
                 this.cadastroEnderecoView.getjTextFieldID().setEnabled(false);
                 this.cadastroEnderecoView.getjTextFieldLogradouro1().setEnabled(true);
@@ -107,18 +107,10 @@ public class ControllerCadastroEndereco implements ActionListener {
             this.cadastroEnderecoView.getjTextFieldCidade().setText(controllerCidadeView.cidadeEnderenco);
 
         } else if (e.getSource() == this.cadastroEnderecoView.getjButtonGravar()) {
-            if (this.cadastroEnderecoView.getjComboBoxStatus().getSelectedIndex() == -1) {
-                JOptionPane.showMessageDialog(null, "Defina um Status do Endereco !");
-            }
 
-            else if (this.cadastroEnderecoView.getjTextFieldBairro().getText().toString().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Defina um valor para o Campo de Bairro !");
-            } else if (this.cadastroEnderecoView.getjTextFieldCidade().getText().toString().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Defina um valor para o Campo de Cidade !");
-            } else if (this.cadastroEnderecoView.getjTextFieldLogradouro1().getText().toString().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Defina um valor para o Campo de Logradouro !");
-            } else if (this.cadastroEnderecoView.getjTextFieldCEP().getText().toString().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Defina um valor para o Campo de CEP !");
+            if (utilities.Utilities.campoVazio(this.cadastroEnderecoView.getjPanelMeio()) == true) {
+                JOptionPane.showMessageDialog(null, "Existem campos vazios!");
+
             } else {
 
                 Endereco endereco = new Endereco();
@@ -141,10 +133,10 @@ public class ControllerCadastroEndereco implements ActionListener {
                     endereco.setId(Integer.parseInt(this.cadastroEnderecoView.getjTextFieldID().getText()));
                     Service.EnderecoService.atualizar(endereco);
                 }
-            }
 
-            utilities.Utilities.ativaDesativa(true, this.cadastroEnderecoView.getjPanelFim());
-            utilities.Utilities.limpaComponentes(false, this.cadastroEnderecoView.getjPanelMeio());
+                utilities.Utilities.ativaDesativa(true, this.cadastroEnderecoView.getjPanelFim());
+                utilities.Utilities.limpaComponentes(false, this.cadastroEnderecoView.getjPanelMeio());
+            }
 
         }
     }

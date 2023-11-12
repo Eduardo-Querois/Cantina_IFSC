@@ -263,6 +263,8 @@ public class CadastroProdutoView extends javax.swing.JDialog {
 
         jLabel2.setText("Quantidade");
 
+        jTextFieldID2.setName("id"); // NOI18N
+
         jLabelDescricao1.setText("Cod. Barra");
 
         jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));

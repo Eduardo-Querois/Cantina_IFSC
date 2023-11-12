@@ -14,14 +14,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Fornecedor;
 import view.Busca.FornecedorView;
+import java.lang.Number;
 
 /**
  *
  * @author joao-
  */
 public class ControllerFornecedorView implements ActionListener {
-    
-    
+
     public static String colunaFiltro;
     FornecedorView fornecedorView;
 
@@ -48,44 +48,41 @@ public class ControllerFornecedorView implements ActionListener {
         } else if (e.getSource() == this.fornecedorView.getjButtonBuscar()) {
             if (this.fornecedorView.getjTextFieldBuscar().getText().trim().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Atenção! \nOpcão de Filtro Vazia...");
+
+            }
+         else {
+            List<Fornecedor> fornecedorList = new ArrayList<>();
+            if (this.fornecedorView.getComboBoxFiltrar().getSelectedIndex() == 0) {
+
+                fornecedorList.add(FornecedorService.carregar(Integer.parseInt(this.fornecedorView.getjTextFieldBuscar().getText())));
             } else {
-                List<Fornecedor> fornecedorList = new ArrayList<>();
-                if (this.fornecedorView.getComboBoxFiltrar().getSelectedIndex() == 0) {
+                colunaFiltro = this.fornecedorView.getComboBoxFiltrar().getSelectedItem().toString().trim();
+                fornecedorList = FornecedorService.carregar(this.fornecedorView.getjTextFieldBuscar().getText().trim());
+            }
 
-                    fornecedorList.add(FornecedorService.carregar(Integer.parseInt(this.fornecedorView.getjTextFieldBuscar().getText())));
-                } else {
-                    colunaFiltro = this.fornecedorView.getComboBoxFiltrar().getSelectedItem().toString().trim();
-                    fornecedorList = FornecedorService.carregar(this.fornecedorView.getjTextFieldBuscar().getText().trim());
-                }
-
-                DefaultTableModel tabela = (DefaultTableModel) this.fornecedorView.getjTable1().getModel();
-                tabela.setRowCount(0);
-                for (Fornecedor fornecedorAtual : fornecedorList) {
-                    tabela.addRow(new Object[]{
-                        fornecedorAtual.getId(),
-                        fornecedorAtual.getNome(),
-                        fornecedorAtual.getRazaoSocial(),
-                        fornecedorAtual.getCnpj(),
-                        fornecedorAtual.getInscricaoEstadual(),
-                        fornecedorAtual.getFone1(),
-                        fornecedorAtual.getFone2(),
-                        fornecedorAtual.getEmail(),
-                        fornecedorAtual.getStatus(),
-                        fornecedorAtual.getEndereco().getLogradouro(),
-                        fornecedorAtual.getEndereco().getCep(),
-                        fornecedorAtual.getComplementoEndereco()
-                
-
-                    }
-            
-        
-    
-
-);
+            DefaultTableModel tabela = (DefaultTableModel) this.fornecedorView.getjTable1().getModel();
+            tabela.setRowCount(0);
+            for (Fornecedor fornecedorAtual : fornecedorList) {
+                tabela.addRow(new Object[]{
+                    fornecedorAtual.getId(),
+                    fornecedorAtual.getNome(),
+                    fornecedorAtual.getRazaoSocial(),
+                    fornecedorAtual.getCnpj(),
+                    fornecedorAtual.getInscricaoEstadual(),
+                    fornecedorAtual.getFone1(),
+                    fornecedorAtual.getFone2(),
+                    fornecedorAtual.getEmail(),
+                    fornecedorAtual.getStatus(),
+                    fornecedorAtual.getEndereco().getLogradouro(),
+                    fornecedorAtual.getEndereco().getCep(),
+                    fornecedorAtual.getComplementoEndereco()
 
                 }
+                );
+
             }
         }
     }
+}
 
 }
