@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.Templates;
+package view.Compra;
+
+import view.Templates.*;
 
 /**
  *
  * @author aluno
  */
-public class TemplateCadastro extends javax.swing.JDialog {
+public class CompraView extends javax.swing.JDialog {
     
     /**
      * Creates new form TemplateCadastro
      */
-    public TemplateCadastro(java.awt.Frame parent, boolean modal) {
+    public CompraView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         
         initComponents();
@@ -33,6 +35,27 @@ public class TemplateCadastro extends javax.swing.JDialog {
         jPanelTitulo = new javax.swing.JPanel();
         jLtitulo = new javax.swing.JLabel();
         jPanelMeio = new javax.swing.JPanel();
+        TabelaProduto = new javax.swing.JScrollPane();
+        TabelaListaProduto = new javax.swing.JTable();
+        Total = new javax.swing.JTextField();
+        jPanelImagem = new javax.swing.JPanel();
+        Imagem = new javax.swing.JLabel();
+        jPanelBuscar = new javax.swing.JPanel();
+        CodigoBarra = new javax.swing.JTextField();
+        PesquisarProduto = new javax.swing.JButton();
+        jLabelNomeCliente = new javax.swing.JLabel();
+        NomeCliente = new javax.swing.JTextField();
+        Id = new javax.swing.JTextField();
+        NomeFuncionario = new javax.swing.JTextField();
+        IdFuncionario = new javax.swing.JTextField();
+        jLabelNomeCliente1 = new javax.swing.JLabel();
+        jLabelID1 = new javax.swing.JLabel();
+        DataDeEmissao = new javax.swing.JFormattedTextField();
+        jLabelID2 = new javax.swing.JLabel();
+        jLabelDataDeEmissao = new javax.swing.JLabel();
+        HoraDeEmissao = new javax.swing.JFormattedTextField();
+        jLabelHoraDeEmissao = new javax.swing.JLabel();
+        jLabelNomeCliente2 = new javax.swing.JLabel();
         jPanelFim = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -44,32 +67,160 @@ public class TemplateCadastro extends javax.swing.JDialog {
         setBackground(new java.awt.Color(51, 51, 51));
         setResizable(false);
 
-        jPanelTitulo.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
+        jPanelTitulo.setForeground(new java.awt.Color(0, 102, 153));
         jPanelTitulo.setPreferredSize(new java.awt.Dimension(394, 56));
 
         jLtitulo.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLtitulo.setForeground(new java.awt.Color(255, 255, 255));
         jLtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLtitulo.setText("TITULO");
+        jLtitulo.setText("Compra");
         jPanelTitulo.add(jLtitulo);
 
         jPanelMeio.setPreferredSize(new java.awt.Dimension(800, 530));
+        jPanelMeio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanelMeioLayout = new javax.swing.GroupLayout(jPanelMeio);
-        jPanelMeio.setLayout(jPanelMeioLayout);
-        jPanelMeioLayout.setHorizontalGroup(
-            jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        TabelaListaProduto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Produto", "Valor", "Quantidade"
+            }
+        ));
+        TabelaProduto.setViewportView(TabelaListaProduto);
+        if (TabelaListaProduto.getColumnModel().getColumnCount() > 0) {
+            TabelaListaProduto.getColumnModel().getColumn(0).setMaxWidth(300);
+            TabelaListaProduto.getColumnModel().getColumn(1).setMaxWidth(100);
+            TabelaListaProduto.getColumnModel().getColumn(2).setMaxWidth(100);
+        }
+
+        jPanelMeio.add(TabelaProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 480, 330));
+        jPanelMeio.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 480, 60));
+
+        jPanelImagem.setBackground(new java.awt.Color(204, 204, 204));
+
+        Imagem.setBackground(new java.awt.Color(51, 153, 255));
+        Imagem.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        Imagem.setText("Imagem do Produto");
+
+        javax.swing.GroupLayout jPanelImagemLayout = new javax.swing.GroupLayout(jPanelImagem);
+        jPanelImagem.setLayout(jPanelImagemLayout);
+        jPanelImagemLayout.setHorizontalGroup(
+            jPanelImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagemLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanelMeioLayout.setVerticalGroup(
-            jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+        jPanelImagemLayout.setVerticalGroup(
+            jPanelImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelImagemLayout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(Imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanelFim.setBackground(new java.awt.Color(204, 204, 204));
-        jPanelFim.setForeground(new java.awt.Color(255, 255, 0));
+        jPanelMeio.add(jPanelImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+
+        jPanelBuscar.setBackground(new java.awt.Color(153, 153, 153));
+
+        CodigoBarra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CodigoBarraActionPerformed(evt);
+            }
+        });
+
+        PesquisarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        PesquisarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesquisarProdutoActionPerformed(evt);
+            }
+        });
+
+        jLabelNomeCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelNomeCliente.setText("Codígo de Barra");
+
+        javax.swing.GroupLayout jPanelBuscarLayout = new javax.swing.GroupLayout(jPanelBuscar);
+        jPanelBuscar.setLayout(jPanelBuscarLayout);
+        jPanelBuscarLayout.setHorizontalGroup(
+            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBuscarLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
+                        .addComponent(jLabelNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
+                        .addComponent(CodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(PesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))))
+        );
+        jPanelBuscarLayout.setVerticalGroup(
+            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBuscarLayout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(jLabelNomeCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(PesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+        );
+
+        jPanelMeio.add(jPanelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 670, 100));
+        jPanelMeio.add(NomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 290, 40));
+        jPanelMeio.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 80, 35));
+        jPanelMeio.add(NomeFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 290, 40));
+        jPanelMeio.add(IdFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 80, 35));
+
+        jLabelNomeCliente1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelNomeCliente1.setText("Colaborador");
+        jPanelMeio.add(jLabelNomeCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
+
+        jLabelID1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelID1.setText("ID Colaborador");
+        jPanelMeio.add(jLabelID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
+
+        DataDeEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        DataDeEmissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DataDeEmissaoActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(DataDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 160, 30));
+
+        jLabelID2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelID2.setText("ID Cliente");
+        jPanelMeio.add(jLabelID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
+
+        jLabelDataDeEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelDataDeEmissao.setText("Data de Emissão");
+        jPanelMeio.add(jLabelDataDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, -1, -1));
+
+        HoraDeEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance())));
+        HoraDeEmissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HoraDeEmissaoActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(HoraDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 430, 160, 30));
+
+        jLabelHoraDeEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelHoraDeEmissao.setText("Hora de Emissão");
+        jPanelMeio.add(jLabelHoraDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 410, -1, -1));
+
+        jLabelNomeCliente2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelNomeCliente2.setText("Nome Cliente");
+        jPanelMeio.add(jLabelNomeCliente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
+
+        jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
+        jPanelFim.setForeground(new java.awt.Color(0, 102, 153));
         jPanelFim.setPreferredSize(new java.awt.Dimension(631, 55));
 
-        jButtonNovo.setBackground(new java.awt.Color(255, 255, 255));
         jButtonNovo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Create.png"))); // NOI18N
         jButtonNovo.setText("Novo");
@@ -85,7 +236,6 @@ public class TemplateCadastro extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonNovo);
 
-        jButtonCancelar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -98,7 +248,6 @@ public class TemplateCadastro extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonCancelar);
 
-        jButtonGravar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonGravar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Go.png"))); // NOI18N
         jButtonGravar.setText("Gravar");
@@ -111,7 +260,6 @@ public class TemplateCadastro extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonGravar);
 
-        jButtonBuscar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonBuscar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
         jButtonBuscar.setText("Buscar");
@@ -123,7 +271,6 @@ public class TemplateCadastro extends javax.swing.JDialog {
         });
         jPanelFim.add(jButtonBuscar);
 
-        jButtonSair.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSair.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
         jButtonSair.setText("Sair");
@@ -134,15 +281,15 @@ public class TemplateCadastro extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMeio, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
-            .addComponent(jPanelFim, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
+            .addComponent(jPanelMeio, javax.swing.GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE)
+            .addComponent(jPanelFim, javax.swing.GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE)
             .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelMeio, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelFim, javax.swing.GroupLayout.PREFERRED_SIZE, 70, Short.MAX_VALUE))
@@ -168,6 +315,22 @@ public class TemplateCadastro extends javax.swing.JDialog {
         utilities.Utilities.ativaDesativa(true, jPanelFim);
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
+    private void CodigoBarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoBarraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CodigoBarraActionPerformed
+
+    private void PesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PesquisarProdutoActionPerformed
+
+    private void DataDeEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataDeEmissaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DataDeEmissaoActionPerformed
+
+    private void HoraDeEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoraDeEmissaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HoraDeEmissaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,21 +348,27 @@ public class TemplateCadastro extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TemplateCadastro dialog = new TemplateCadastro(new javax.swing.JFrame(), true);
+                CompraView dialog = new CompraView(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -212,13 +381,34 @@ public class TemplateCadastro extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CodigoBarra;
+    private javax.swing.JFormattedTextField DataDeEmissao;
+    private javax.swing.JFormattedTextField HoraDeEmissao;
+    private javax.swing.JTextField Id;
+    private javax.swing.JTextField IdFuncionario;
+    private javax.swing.JLabel Imagem;
+    private javax.swing.JTextField NomeCliente;
+    private javax.swing.JTextField NomeFuncionario;
+    private javax.swing.JButton PesquisarProduto;
+    private javax.swing.JTable TabelaListaProduto;
+    private javax.swing.JScrollPane TabelaProduto;
+    private javax.swing.JTextField Total;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JLabel jLabelDataDeEmissao;
+    private javax.swing.JLabel jLabelHoraDeEmissao;
+    private javax.swing.JLabel jLabelID1;
+    private javax.swing.JLabel jLabelID2;
+    private javax.swing.JLabel jLabelNomeCliente;
+    private javax.swing.JLabel jLabelNomeCliente1;
+    private javax.swing.JLabel jLabelNomeCliente2;
     private javax.swing.JLabel jLtitulo;
+    private javax.swing.JPanel jPanelBuscar;
     private javax.swing.JPanel jPanelFim;
+    private javax.swing.JPanel jPanelImagem;
     private javax.swing.JPanel jPanelMeio;
     private javax.swing.JPanel jPanelTitulo;
     // End of variables declaration//GEN-END:variables

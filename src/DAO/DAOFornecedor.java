@@ -145,7 +145,7 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
     public Fornecedor retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = "SELECT F.ID, F.NOME, F.FONE1, F.FONE2, F.EMAIL, F.STATUS, F.COMPLEMENTOENDERECO,"
-                + "F.CNPJ, F.INSCRICAOESTADUAL, F.RAZAOSOCIAL, E.LOGRADOURO, E.CEP "
+                + "F.CNPJ, F.INSCRICAOESTADUAL, F.RAZAOSOCIAL, E.LOGRADOURO,E.CIDADE,E.BAIRRO, E.CEP "
                 + "FROM TBLFORNECEDOR F JOIN TBLENDERECO E ON F.TBLENDERECO_ID = E.ID WHERE F.ID = ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
@@ -159,7 +159,8 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
             rst = pstm.executeQuery();
 
             while (rst.next()) {
-
+                
+                
                 fornecedor.setEndereco(endereco);
                 fornecedor.setId(rst.getInt("id"));
                 fornecedor.setNome(rst.getString("nome"));
@@ -173,7 +174,10 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
                 fornecedor.setRazaoSocial(rst.getString("razaoSocial"));
                 fornecedor.getEndereco().setLogradouro(rst.getString("logradouro"));
                 fornecedor.getEndereco().setCep(rst.getString("cep"));
-
+                fornecedor.getEndereco().getBairro().setDescricao(rst.getString("baiiro"));
+                fornecedor.getEndereco().getCidade().setDescricao(rst.getString("cidade"));
+                
+               
             }
 
         } catch (SQLException ex) {
@@ -191,7 +195,7 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
         Connection conexao = ConnectionFactory.getConnection();
 
         String sqlExecutar = "SELECT F.ID, F.NOME, F.FONE1, F.FONE2, F.EMAIL, F.STATUS, F.COMPLEMENTOENDERECO,"
-                + "F.CNPJ, F.INSCRICAOESTADUAL, F.RAZAOSOCIAL, E.LOGRADOURO, E.CEP "
+                + "F.CNPJ, F.INSCRICAOESTADUAL, F.RAZAOSOCIAL, E.LOGRADOURO,E.CIDADE,E.BAIRRO, E.CEP "
                 + "FROM TBLFORNECEDOR F JOIN TBLENDERECO E ON F.TBLENDERECO_ID = E.ID WHERE F."+ colunaFiltro +" LIKE ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
@@ -220,6 +224,8 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
                 fornecedor.setRazaoSocial(rst.getString("razaoSocial"));
                 fornecedor.getEndereco().setLogradouro(rst.getString("logradouro"));
                 fornecedor.getEndereco().setCep(rst.getString("cep"));
+                fornecedor.getEndereco().getCidade().setDescricao(rst.getString("cidade"));
+                fornecedor.getEndereco().getBairro().setDescricao("bairro");
                 fornecedorList.add(fornecedor);
             }
 

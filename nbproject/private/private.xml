@@ -16,11 +16,14 @@
             <file>file:/C:/Users/eduar/Music/ProjetoCantinaBizurado/src/controller/ControllerCadastroBairro.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Cadastro/CadastroFornecedorView.java</file>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Cadastro/CadastroFuncionarioView.java</file>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOEndereco.java</file>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Cadastro/CadastroProdutoView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOFornecedor.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/cadastro/ControllerCadastroFornecedor.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Busca/ControllerEnderecoView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Cadastro/CadastroCarteirinhaView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Templates/TemplateCadastro.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Busca/FornecedorView.java</file>
             <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Busca/ControllerFornecedorView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Compra/CompraView.java</file>
         </group>
     </open-files>
 </project-private>

@@ -206,6 +206,24 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
     public void setjButtonCadastroEndereco1(JButton jButtonCadastroEndereco1) {
         this.jButtonCadastroEndereco1 = jButtonCadastroEndereco1;
     }
+
+    public JTextField getBairro() {
+        return Bairro;
+    }
+
+    public void setBairro(JTextField Bairro) {
+        this.Bairro = Bairro;
+    }
+
+    public JTextField getCidade() {
+        return Cidade;
+    }
+
+    public void setCidade(JTextField Cidade) {
+        this.Cidade = Cidade;
+    }
+    
+    
     
     
     
@@ -221,6 +239,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
         jPanelTitulo = new javax.swing.JPanel();
         jLtitulo = new javax.swing.JLabel();
         jPanelMeio = new javax.swing.JPanel();
+        jButtonEndereco = new javax.swing.JButton();
         Nome = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
         EnderecoLogradouro = new javax.swing.JTextField();
@@ -238,7 +257,6 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
         jLabelTelefone = new javax.swing.JLabel();
         jLabelNome1 = new javax.swing.JLabel();
         Complemento = new javax.swing.JTextField();
-        jButtonEndereco = new javax.swing.JButton();
         jLabelComplemento = new javax.swing.JLabel();
         jLabelRazaoSocial = new javax.swing.JLabel();
         RazaoSocial = new javax.swing.JTextField();
@@ -247,6 +265,10 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
         CNPJ = new javax.swing.JFormattedTextField();
         jLabelCNPJ = new javax.swing.JLabel();
         jButtonCadastroEndereco1 = new javax.swing.JButton();
+        Bairro = new javax.swing.JTextField();
+        jLabelCidade = new javax.swing.JLabel();
+        Cidade = new javax.swing.JTextField();
+        jLabelBairro = new javax.swing.JLabel();
         jPanelFim = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -268,6 +290,17 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
         jPanelTitulo.add(jLtitulo);
 
         jPanelMeio.setPreferredSize(new java.awt.Dimension(800, 530));
+        jPanelMeio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        jButtonEndereco.setActionCommand("5");
+        jButtonEndereco.setPreferredSize(new java.awt.Dimension(5, 19));
+        jButtonEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnderecoActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(jButtonEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 30, 30));
 
         Nome.setActionCommand("5");
         Nome.addActionListener(new java.awt.event.ActionListener() {
@@ -275,17 +308,24 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                 NomeActionPerformed(evt);
             }
         });
+        jPanelMeio.add(Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 387, -1));
+        jPanelMeio.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 387, -1));
 
         EnderecoLogradouro.setActionCommand("5");
+        jPanelMeio.add(EnderecoLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 387, -1));
 
         jLabelEmail.setText("Email");
+        jPanelMeio.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 20));
 
         jLabelEndereco.setText("Endereço");
+        jPanelMeio.add(jLabelEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabelID.setText("ID");
+        jPanelMeio.add(jLabelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 20, 20));
 
         ID.setActionCommand("5");
         ID.setName("id"); // NOI18N
+        jPanelMeio.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, -1));
 
         Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
         Status.setActionCommand("5");
@@ -294,6 +334,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                 StatusActionPerformed(evt);
             }
         });
+        jPanelMeio.add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 31, 159, -1));
 
         try {
             CEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -305,6 +346,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                 CEPActionPerformed(evt);
             }
         });
+        jPanelMeio.add(CEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 159, 160, -1));
 
         try {
             Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
@@ -312,6 +354,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         Telefone.setActionCommand("5");
+        jPanelMeio.add(Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 119, 159, -1));
 
         try {
             Celular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -319,16 +362,22 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         Celular.setActionCommand("5");
+        jPanelMeio.add(Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 79, 159, -1));
 
         jLabelStaus.setText("Status");
+        jPanelMeio.add(jLabelStaus, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 32, -1, 20));
 
         jLabelCelular.setText("Celular");
+        jPanelMeio.add(jLabelCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, -1, 20));
 
         jLabelCEP.setText("CEP");
+        jPanelMeio.add(jLabelCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 160, -1, 20));
 
         jLabelTelefone.setText("Telefone");
+        jPanelMeio.add(jLabelTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 120, -1, 20));
 
         jLabelNome1.setText("Nome");
+        jPanelMeio.add(jLabelNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 20));
 
         Complemento.setActionCommand("5");
         Complemento.addActionListener(new java.awt.event.ActionListener() {
@@ -336,20 +385,14 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                 ComplementoActionPerformed(evt);
             }
         });
-
-        jButtonEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
-        jButtonEndereco.setActionCommand("5");
-        jButtonEndereco.setPreferredSize(new java.awt.Dimension(5, 19));
-        jButtonEndereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEnderecoActionPerformed(evt);
-            }
-        });
+        jPanelMeio.add(Complemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 159, -1));
 
         jLabelComplemento.setText("Complemento");
+        jPanelMeio.add(jLabelComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         jLabelRazaoSocial.setBackground(new java.awt.Color(255, 255, 255));
         jLabelRazaoSocial.setText("Razão Social");
+        jPanelMeio.add(jLabelRazaoSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
 
         RazaoSocial.setActionCommand("7");
         RazaoSocial.addActionListener(new java.awt.event.ActionListener() {
@@ -357,9 +400,11 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                 RazaoSocialActionPerformed(evt);
             }
         });
+        jPanelMeio.add(RazaoSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 159, -1));
 
         jLabelInscricaoEstadual.setBackground(new java.awt.Color(255, 255, 255));
         jLabelInscricaoEstadual.setText("Inscrição Estadual");
+        jPanelMeio.add(jLabelInscricaoEstadual, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 105, 20));
 
         InscricaoEstadual.setActionCommand("7");
         InscricaoEstadual.addActionListener(new java.awt.event.ActionListener() {
@@ -367,6 +412,7 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
                 InscricaoEstadualActionPerformed(evt);
             }
         });
+        jPanelMeio.add(InscricaoEstadual, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 173, -1));
 
         try {
             CNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
@@ -374,135 +420,38 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         CNPJ.setActionCommand("7");
+        jPanelMeio.add(CNPJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 160, -1));
 
         jLabelCNPJ.setBackground(new java.awt.Color(255, 255, 255));
         jLabelCNPJ.setText("CNPJ");
+        jPanelMeio.add(jLabelCNPJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 50, -1));
 
         jButtonCadastroEndereco1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/New.png"))); // NOI18N
         jButtonCadastroEndereco1.setActionCommand("5");
         jButtonCadastroEndereco1.setPreferredSize(new java.awt.Dimension(5, 19));
+        jPanelMeio.add(jButtonCadastroEndereco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 30, 30));
 
-        javax.swing.GroupLayout jPanelMeioLayout = new javax.swing.GroupLayout(jPanelMeio);
-        jPanelMeio.setLayout(jPanelMeioLayout);
-        jPanelMeioLayout.setHorizontalGroup(
-            jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMeioLayout.createSequentialGroup()
-                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMeioLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelEndereco)
-                            .addComponent(jLabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelNome1)
-                                .addComponent(jLabelEmail)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelMeioLayout.createSequentialGroup()
-                                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanelMeioLayout.createSequentialGroup()
-                                        .addComponent(jLabelRazaoSocial)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(RazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(EnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanelMeioLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanelMeioLayout.createSequentialGroup()
-                                .addComponent(jLabelComplemento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Complemento, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelMeioLayout.createSequentialGroup()
-                                .addComponent(jLabelCNPJ)
-                                .addGap(12, 12, 12)
-                                .addComponent(CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
-                        .addComponent(jLabelTelefone)
-                        .addGap(18, 18, 18)
-                        .addComponent(Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelStaus)
-                            .addComponent(jLabelCelular))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Celular)
-                            .addComponent(Status, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
-                        .addComponent(jButtonCadastroEndereco1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                        .addComponent(jLabelCEP)
-                        .addGap(18, 18, 18)
-                        .addComponent(CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
-                        .addComponent(jLabelInscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(InscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(54, 54, 54))
-        );
-        jPanelMeioLayout.setVerticalGroup(
-            jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMeioLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMeioLayout.createSequentialGroup()
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(EnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelEndereco))
-                            .addComponent(jButtonEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                            .addComponent(jButtonCadastroEndereco1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelComplemento)
-                            .addComponent(Complemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43))
-                    .addGroup(jPanelMeioLayout.createSequentialGroup()
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelStaus, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCNPJ)
-                    .addComponent(CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelRazaoSocial)
-                    .addComponent(RazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelInscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
-        );
+        Bairro.setActionCommand("5");
+        Bairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BairroActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(Bairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 159, -1));
+
+        jLabelCidade.setText("Cidade");
+        jPanelMeio.add(jLabelCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        Cidade.setActionCommand("5");
+        Cidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CidadeActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(Cidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 159, -1));
+
+        jLabelBairro.setText("Bairro");
+        jPanelMeio.add(jLabelBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
 
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
         jPanelFim.setForeground(new java.awt.Color(255, 255, 0));
@@ -583,9 +532,9 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelMeio, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelFim, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelMeio, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelFim, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -633,6 +582,14 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
     private void InscricaoEstadualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscricaoEstadualActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InscricaoEstadualActionPerformed
+
+    private void BairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BairroActionPerformed
+
+    private void CidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CidadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -708,9 +665,11 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Bairro;
     private javax.swing.JFormattedTextField CEP;
     private javax.swing.JFormattedTextField CNPJ;
     private javax.swing.JFormattedTextField Celular;
+    private javax.swing.JTextField Cidade;
     private javax.swing.JTextField Complemento;
     private javax.swing.JTextField Email;
     private javax.swing.JTextField EnderecoLogradouro;
@@ -727,9 +686,11 @@ public class CadastroFornecedorView extends javax.swing.JDialog {
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
     private javax.swing.JLabel jLabelCNPJ;
     private javax.swing.JLabel jLabelCelular;
+    private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComplemento;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelEndereco;

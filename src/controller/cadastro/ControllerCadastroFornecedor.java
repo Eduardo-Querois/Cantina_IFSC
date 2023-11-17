@@ -50,9 +50,13 @@ public class ControllerCadastroFornecedor implements ActionListener {
             utilities.Utilities.ativaDesativa(false, this.cadastroFornecedorView.getjPanelFim());
             utilities.Utilities.limpaComponentes(true, this.cadastroFornecedorView.getjPanelMeio());
             
+            this.cadastroFornecedorView.getCidade().setEnabled(false);
+            this.cadastroFornecedorView.getBairro().setEnabled(false);
             this.cadastroFornecedorView.getEnderecoLogradouro().setEnabled(false);
             this.cadastroFornecedorView.getCEP().setEnabled(false);
             this.cadastroFornecedorView.getID().setEnabled(false);
+            
+            
             
         } else if (e.getSource() == this.cadastroFornecedorView.getjButtonSair()) {
             this.cadastroFornecedorView.dispose();
@@ -70,6 +74,8 @@ public class ControllerCadastroFornecedor implements ActionListener {
             
             this.cadastroFornecedorView.getEnderecoLogradouro().setText(controllerEnderecoView.logradouroEndereco);
             this.cadastroFornecedorView.getCEP().setText(controllerEnderecoView.enderecoCEP);
+            this.cadastroFornecedorView.getCidade().setText(controllerEnderecoView.enderecoCidade);
+            this.cadastroFornecedorView.getBairro().setText(controllerEnderecoView.enderecoBairro);
             
         } else if (e.getSource() == this.cadastroFornecedorView.getjButtonBuscar()) {
             
@@ -99,6 +105,8 @@ public class ControllerCadastroFornecedor implements ActionListener {
                 this.cadastroFornecedorView.getRazaoSocial().setText(fornecedor.getRazaoSocial().toString() + "");
                 this.cadastroFornecedorView.getEnderecoLogradouro().setText(fornecedor.getEndereco().getLogradouro() + "");
                 this.cadastroFornecedorView.getCEP().setText(fornecedor.getEndereco().getCep() + "");
+                this.cadastroFornecedorView.getCidade().setText(fornecedor.getEndereco().getCidade() + "");
+                this.cadastroFornecedorView.getBairro().setText(fornecedor.getEndereco().getBairro() + "");
                 
                 this.cadastroFornecedorView.getID().setEnabled(false);
                 this.cadastroFornecedorView.getNome().setEnabled(true);
@@ -112,6 +120,8 @@ public class ControllerCadastroFornecedor implements ActionListener {
                 this.cadastroFornecedorView.getInscricaoEstadual().setEnabled(true);
                 this.cadastroFornecedorView.getEnderecoLogradouro().setEnabled(false);
                 this.cadastroFornecedorView.getCEP().setEnabled(false);
+                this.cadastroFornecedorView.getCidade().setEnabled(false);
+                this.cadastroFornecedorView.getBairro().setEnabled(false);
                 
             }
             
