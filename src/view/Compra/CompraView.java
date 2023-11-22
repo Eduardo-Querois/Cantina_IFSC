@@ -5,6 +5,13 @@
  */
 package view.Compra;
 
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import view.Templates.*;
 
 /**
@@ -35,15 +42,10 @@ public class CompraView extends javax.swing.JDialog {
         jPanelTitulo = new javax.swing.JPanel();
         jLtitulo = new javax.swing.JLabel();
         jPanelMeio = new javax.swing.JPanel();
-        TabelaProduto = new javax.swing.JScrollPane();
         TabelaListaProduto = new javax.swing.JTable();
         Total = new javax.swing.JTextField();
         jPanelImagem = new javax.swing.JPanel();
         Imagem = new javax.swing.JLabel();
-        jPanelBuscar = new javax.swing.JPanel();
-        CodigoBarra = new javax.swing.JTextField();
-        PesquisarProduto = new javax.swing.JButton();
-        jLabelNomeCliente = new javax.swing.JLabel();
         NomeCliente = new javax.swing.JTextField();
         Id = new javax.swing.JTextField();
         NomeFuncionario = new javax.swing.JTextField();
@@ -56,6 +58,9 @@ public class CompraView extends javax.swing.JDialog {
         HoraDeEmissao = new javax.swing.JFormattedTextField();
         jLabelHoraDeEmissao = new javax.swing.JLabel();
         jLabelNomeCliente2 = new javax.swing.JLabel();
+        jLabelNomeCliente = new javax.swing.JLabel();
+        PesquisarProduto = new javax.swing.JButton();
+        CodigoBarra = new javax.swing.JTextField();
         jPanelFim = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -91,14 +96,12 @@ public class CompraView extends javax.swing.JDialog {
                 "Produto", "Valor", "Quantidade"
             }
         ));
-        TabelaProduto.setViewportView(TabelaListaProduto);
+        jPanelMeio.add(TabelaListaProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 480, 320));
         if (TabelaListaProduto.getColumnModel().getColumnCount() > 0) {
             TabelaListaProduto.getColumnModel().getColumn(0).setMaxWidth(300);
             TabelaListaProduto.getColumnModel().getColumn(1).setMaxWidth(100);
             TabelaListaProduto.getColumnModel().getColumn(2).setMaxWidth(100);
         }
-
-        jPanelMeio.add(TabelaProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 480, 330));
         jPanelMeio.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 480, 60));
 
         jPanelImagem.setBackground(new java.awt.Color(204, 204, 204));
@@ -124,54 +127,6 @@ public class CompraView extends javax.swing.JDialog {
         );
 
         jPanelMeio.add(jPanelImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
-
-        jPanelBuscar.setBackground(new java.awt.Color(153, 153, 153));
-
-        CodigoBarra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CodigoBarraActionPerformed(evt);
-            }
-        });
-
-        PesquisarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
-        PesquisarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PesquisarProdutoActionPerformed(evt);
-            }
-        });
-
-        jLabelNomeCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelNomeCliente.setText("Codígo de Barra");
-
-        javax.swing.GroupLayout jPanelBuscarLayout = new javax.swing.GroupLayout(jPanelBuscar);
-        jPanelBuscar.setLayout(jPanelBuscarLayout);
-        jPanelBuscarLayout.setHorizontalGroup(
-            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBuscarLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
-                        .addComponent(jLabelNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
-                        .addComponent(CodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(PesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))))
-        );
-        jPanelBuscarLayout.setVerticalGroup(
-            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBuscarLayout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(jLabelNomeCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-        );
-
-        jPanelMeio.add(jPanelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 670, 100));
         jPanelMeio.add(NomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 290, 40));
         jPanelMeio.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 80, 35));
         jPanelMeio.add(NomeFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 290, 40));
@@ -217,6 +172,26 @@ public class CompraView extends javax.swing.JDialog {
         jLabelNomeCliente2.setText("Nome Cliente");
         jPanelMeio.add(jLabelNomeCliente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
 
+        jLabelNomeCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelNomeCliente.setText("Codígo de Barra");
+        jPanelMeio.add(jLabelNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        PesquisarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        PesquisarProduto.setActionCommand("0");
+        PesquisarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesquisarProdutoActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(PesquisarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 100, 40));
+
+        CodigoBarra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CodigoBarraActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(CodigoBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 440, 40));
+
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
         jPanelFim.setForeground(new java.awt.Color(0, 102, 153));
         jPanelFim.setPreferredSize(new java.awt.Dimension(631, 55));
@@ -224,6 +199,7 @@ public class CompraView extends javax.swing.JDialog {
         jButtonNovo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Create.png"))); // NOI18N
         jButtonNovo.setText("Novo");
+        jButtonNovo.setActionCommand("0");
         jButtonNovo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButtonNovo.setMaximumSize(new java.awt.Dimension(50, 80));
         jButtonNovo.setMinimumSize(new java.awt.Dimension(50, 80));
@@ -239,6 +215,7 @@ public class CompraView extends javax.swing.JDialog {
         jButtonCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setActionCommand("1");
         jButtonCancelar.setEnabled(false);
         jButtonCancelar.setPreferredSize(new java.awt.Dimension(120, 50));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -251,6 +228,7 @@ public class CompraView extends javax.swing.JDialog {
         jButtonGravar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Go.png"))); // NOI18N
         jButtonGravar.setText("Gravar");
+        jButtonGravar.setActionCommand("1");
         jButtonGravar.setEnabled(false);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(120, 50));
         jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
@@ -263,6 +241,7 @@ public class CompraView extends javax.swing.JDialog {
         jButtonBuscar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.setActionCommand("0");
         jButtonBuscar.setPreferredSize(new java.awt.Dimension(120, 50));
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,6 +253,7 @@ public class CompraView extends javax.swing.JDialog {
         jButtonSair.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
         jButtonSair.setText("Sair");
+        jButtonSair.setActionCommand("0");
         jButtonSair.setPreferredSize(new java.awt.Dimension(120, 50));
         jPanelFim.add(jButtonSair);
 
@@ -315,14 +295,6 @@ public class CompraView extends javax.swing.JDialog {
         utilities.Utilities.ativaDesativa(true, jPanelFim);
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
-    private void CodigoBarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoBarraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CodigoBarraActionPerformed
-
-    private void PesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PesquisarProdutoActionPerformed
-
     private void DataDeEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataDeEmissaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DataDeEmissaoActionPerformed
@@ -331,6 +303,182 @@ public class CompraView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_HoraDeEmissaoActionPerformed
 
+    private void PesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PesquisarProdutoActionPerformed
+
+    private void CodigoBarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoBarraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CodigoBarraActionPerformed
+
+    public JTextField getCodigoBarra() {
+        return CodigoBarra;
+    }
+
+    public void setCodigoBarra(JTextField CodigoBarra) {
+        this.CodigoBarra = CodigoBarra;
+    }
+
+    public JFormattedTextField getDataDeEmissao() {
+        return DataDeEmissao;
+    }
+
+    public void setDataDeEmissao(JFormattedTextField DataDeEmissao) {
+        this.DataDeEmissao = DataDeEmissao;
+    }
+
+    public JFormattedTextField getHoraDeEmissao() {
+        return HoraDeEmissao;
+    }
+
+    public void setHoraDeEmissao(JFormattedTextField HoraDeEmissao) {
+        this.HoraDeEmissao = HoraDeEmissao;
+    }
+
+    public JTextField getId() {
+        return Id;
+    }
+
+    public void setId(JTextField Id) {
+        this.Id = Id;
+    }
+
+    public JTextField getIdFuncionario() {
+        return IdFuncionario;
+    }
+
+    public void setIdFuncionario(JTextField IdFuncionario) {
+        this.IdFuncionario = IdFuncionario;
+    }
+
+    public JTextField getNomeCliente() {
+        return NomeCliente;
+    }
+
+    public void setNomeCliente(JTextField NomeCliente) {
+        this.NomeCliente = NomeCliente;
+    }
+
+    public JLabel getImagem() {
+        return Imagem;
+    }
+
+    public void setImagem(JLabel Imagem) {
+        this.Imagem = Imagem;
+    }
+
+    
+    
+    public JTextField getNomeFuncionario() {
+        return NomeFuncionario;
+    }
+
+    public void setNomeFuncionario(JTextField NomeFuncionario) {
+        this.NomeFuncionario = NomeFuncionario;
+    }
+
+    public JButton getPesquisarProduto() {
+        return PesquisarProduto;
+    }
+
+    public void setPesquisarProduto(JButton PesquisarProduto) {
+        this.PesquisarProduto = PesquisarProduto;
+    }
+
+    public JTable getTabelaListaProduto() {
+        return TabelaListaProduto;
+    }
+
+    public void setTabelaListaProduto(JTable TabelaListaProduto) {
+        this.TabelaListaProduto = TabelaListaProduto;
+    }
+
+ 
+
+    public JTextField getTotal() {
+        return Total;
+    }
+
+    public void setTotal(JTextField Total) {
+        this.Total = Total;
+    }
+
+    public JButton getjButtonBuscar() {
+        return jButtonBuscar;
+    }
+
+    public void setjButtonBuscar(JButton jButtonBuscar) {
+        this.jButtonBuscar = jButtonBuscar;
+    }
+
+    public JButton getjButtonCancelar() {
+        return jButtonCancelar;
+    }
+
+    public void setjButtonCancelar(JButton jButtonCancelar) {
+        this.jButtonCancelar = jButtonCancelar;
+    }
+
+    public JButton getjButtonGravar() {
+        return jButtonGravar;
+    }
+
+    public void setjButtonGravar(JButton jButtonGravar) {
+        this.jButtonGravar = jButtonGravar;
+    }
+
+    public JButton getjButtonNovo() {
+        return jButtonNovo;
+    }
+
+    public void setjButtonNovo(JButton jButtonNovo) {
+        this.jButtonNovo = jButtonNovo;
+    }
+
+    public JButton getjButtonSair() {
+        return jButtonSair;
+    }
+
+    public void setjButtonSair(JButton jButtonSair) {
+        this.jButtonSair = jButtonSair;
+    }
+
+  
+
+    public JPanel getjPanelFim() {
+        return jPanelFim;
+    }
+
+    public void setjPanelFim(JPanel jPanelFim) {
+        this.jPanelFim = jPanelFim;
+    }
+
+    public JPanel getjPanelImagem() {
+        return jPanelImagem;
+    }
+
+    public void setjPanelImagem(JPanel jPanelImagem) {
+        this.jPanelImagem = jPanelImagem;
+    }
+
+    public JPanel getjPanelMeio() {
+        return jPanelMeio;
+    }
+
+    public void setjPanelMeio(JPanel jPanelMeio) {
+        this.jPanelMeio = jPanelMeio;
+    }
+
+    public JPanel getjPanelTitulo() {
+        return jPanelTitulo;
+    }
+
+    public void setjPanelTitulo(JPanel jPanelTitulo) {
+        this.jPanelTitulo = jPanelTitulo;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -391,7 +539,6 @@ public class CompraView extends javax.swing.JDialog {
     private javax.swing.JTextField NomeFuncionario;
     private javax.swing.JButton PesquisarProduto;
     private javax.swing.JTable TabelaListaProduto;
-    private javax.swing.JScrollPane TabelaProduto;
     private javax.swing.JTextField Total;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCancelar;
@@ -406,7 +553,6 @@ public class CompraView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelNomeCliente1;
     private javax.swing.JLabel jLabelNomeCliente2;
     private javax.swing.JLabel jLtitulo;
-    private javax.swing.JPanel jPanelBuscar;
     private javax.swing.JPanel jPanelFim;
     private javax.swing.JPanel jPanelImagem;
     private javax.swing.JPanel jPanelMeio;

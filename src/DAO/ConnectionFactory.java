@@ -25,7 +25,7 @@ public class ConnectionFactory {
     public static final String driver = "com.mysql.jdbc.Driver";
     public static final String banco = "jdbc:mysql://localhost:3306/cantinaprd";
     public static final String usuario = "root";
-    public static final String senha = "ifsc";
+    public static final String senha = "";
 
     public static Connection getConnection() {
         try {
