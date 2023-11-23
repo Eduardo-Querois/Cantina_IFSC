@@ -178,17 +178,39 @@ public class CadastroBairrosView extends javax.swing.JDialog {
         jPanelTitulo.add(jLtitulo);
 
         jPanelMeio.setPreferredSize(new java.awt.Dimension(800, 530));
-        jPanelMeio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("ID");
-        jPanelMeio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
         jTextField1.setName("id"); // NOI18N
-        jPanelMeio.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 78, -1));
 
         jLabel2.setText("Descrição");
-        jPanelMeio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
-        jPanelMeio.add(jTextFieldDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 603, -1));
+
+        javax.swing.GroupLayout jPanelMeioLayout = new javax.swing.GroupLayout(jPanelMeio);
+        jPanelMeio.setLayout(jPanelMeioLayout);
+        jPanelMeioLayout.setHorizontalGroup(
+            jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMeioLayout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelMeioLayout.setVerticalGroup(
+            jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMeioLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addGap(4, 4, 4)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel2)
+                .addGap(4, 4, 4)
+                .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
 
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
         jPanelFim.setForeground(new java.awt.Color(255, 255, 0));
@@ -257,9 +279,9 @@ public class CadastroBairrosView extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMeio, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
-            .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
-            .addComponent(jPanelFim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
+            .addComponent(jPanelMeio, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(jPanelFim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

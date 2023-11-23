@@ -59,12 +59,9 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         jLabelNomeCliente = new javax.swing.JLabel();
         PesquisarProduto = new javax.swing.JButton();
         CodigoBarra = new javax.swing.JTextField();
+        PesquisarProduto1 = new javax.swing.JButton();
+        PesquisarProduto2 = new javax.swing.JButton();
         jPanelFim = new javax.swing.JPanel();
-        jButtonNovo = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
-        jButtonGravar = new javax.swing.JButton();
-        jButtonBuscar = new javax.swing.JButton();
-        jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -157,6 +154,22 @@ public class PontoDeVendaView extends javax.swing.JDialog {
             }
         });
 
+        PesquisarProduto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Create.png"))); // NOI18N
+        PesquisarProduto1.setActionCommand("0");
+        PesquisarProduto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesquisarProduto1ActionPerformed(evt);
+            }
+        });
+
+        PesquisarProduto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/No-entry.png"))); // NOI18N
+        PesquisarProduto2.setActionCommand("0");
+        PesquisarProduto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesquisarProduto2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelMeioLayout = new javax.swing.GroupLayout(jPanelMeio);
         jPanelMeio.setLayout(jPanelMeioLayout);
         jPanelMeioLayout.setHorizontalGroup(
@@ -194,10 +207,17 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                             .addComponent(jLabelHoraDeEmissao)
                             .addComponent(HoraDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TabelaListaProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
-                    .addComponent(Total))
-                .addContainerGap())
+                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMeioLayout.createSequentialGroup()
+                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Total)
+                            .addComponent(TabelaListaProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMeioLayout.createSequentialGroup()
+                        .addComponent(PesquisarProduto1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(PesquisarProduto2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(165, 165, 165))))
         );
         jPanelMeioLayout.setVerticalGroup(
             jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,12 +226,6 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                 .addComponent(jLabelNomeCliente)
                 .addGap(3, 3, 3)
                 .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMeioLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(TabelaListaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 16, Short.MAX_VALUE))
                     .addGroup(jPanelMeioLayout.createSequentialGroup()
                         .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,11 +253,20 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                         .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelDataDeEmissao)
                             .addComponent(jLabelHoraDeEmissao))
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DataDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(HoraDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24))))
+                        .addGap(3, 3, 3))
+                    .addGroup(jPanelMeioLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(TabelaListaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)))
+                .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PesquisarProduto1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelMeioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(DataDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(HoraDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PesquisarProduto2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
 
         if (TabelaListaProduto.getColumnModel().getColumnCount() > 0) {
@@ -255,67 +278,6 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
         jPanelFim.setForeground(new java.awt.Color(0, 102, 153));
         jPanelFim.setPreferredSize(new java.awt.Dimension(631, 55));
-
-        jButtonNovo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Create.png"))); // NOI18N
-        jButtonNovo.setText("Novo");
-        jButtonNovo.setActionCommand("0");
-        jButtonNovo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButtonNovo.setMaximumSize(new java.awt.Dimension(50, 80));
-        jButtonNovo.setMinimumSize(new java.awt.Dimension(50, 80));
-        jButtonNovo.setName(""); // NOI18N
-        jButtonNovo.setPreferredSize(new java.awt.Dimension(120, 50));
-        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNovoActionPerformed(evt);
-            }
-        });
-        jPanelFim.add(jButtonNovo);
-
-        jButtonCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel.png"))); // NOI18N
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.setActionCommand("1");
-        jButtonCancelar.setEnabled(false);
-        jButtonCancelar.setPreferredSize(new java.awt.Dimension(120, 50));
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-        jPanelFim.add(jButtonCancelar);
-
-        jButtonGravar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Go.png"))); // NOI18N
-        jButtonGravar.setText("Gravar");
-        jButtonGravar.setActionCommand("1");
-        jButtonGravar.setEnabled(false);
-        jButtonGravar.setPreferredSize(new java.awt.Dimension(120, 50));
-        jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGravarActionPerformed(evt);
-            }
-        });
-        jPanelFim.add(jButtonGravar);
-
-        jButtonBuscar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
-        jButtonBuscar.setText("Buscar");
-        jButtonBuscar.setActionCommand("0");
-        jButtonBuscar.setPreferredSize(new java.awt.Dimension(120, 50));
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarActionPerformed(evt);
-            }
-        });
-        jPanelFim.add(jButtonBuscar);
-
-        jButtonSair.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
-        jButtonSair.setText("Sair");
-        jButtonSair.setActionCommand("0");
-        jButtonSair.setPreferredSize(new java.awt.Dimension(120, 50));
-        jPanelFim.add(jButtonSair);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,28 +297,11 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelMeio, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelFim, javax.swing.GroupLayout.PREFERRED_SIZE, 70, Short.MAX_VALUE))
+                .addComponent(jPanelFim, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        utilities.Utilities.ativaDesativa(true, jPanelFim);
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
-
-    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        utilities.Utilities.ativaDesativa(false, jPanelFim);
-    }//GEN-LAST:event_jButtonNovoActionPerformed
-
-    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButtonBuscarActionPerformed
-
-    private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        utilities.Utilities.ativaDesativa(true, jPanelFim);
-    }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void DataDeEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataDeEmissaoActionPerformed
         // TODO add your handling code here:
@@ -377,6 +322,14 @@ public class PontoDeVendaView extends javax.swing.JDialog {
     private void NomeFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeFuncionarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NomeFuncionarioActionPerformed
+
+    private void PesquisarProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarProduto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PesquisarProduto1ActionPerformed
+
+    private void PesquisarProduto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarProduto2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PesquisarProduto2ActionPerformed
 
     public JTextField getCodigoBarra() {
         return CodigoBarra;
@@ -597,13 +550,10 @@ public class PontoDeVendaView extends javax.swing.JDialog {
     private javax.swing.JTextField NomeCliente;
     private javax.swing.JTextField NomeFuncionario;
     private javax.swing.JButton PesquisarProduto;
+    private javax.swing.JButton PesquisarProduto1;
+    private javax.swing.JButton PesquisarProduto2;
     private javax.swing.JTable TabelaListaProduto;
     private javax.swing.JTextField Total;
-    private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonGravar;
-    private javax.swing.JButton jButtonNovo;
-    private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabelDataDeEmissao;
     private javax.swing.JLabel jLabelHoraDeEmissao;
     private javax.swing.JLabel jLabelID1;
