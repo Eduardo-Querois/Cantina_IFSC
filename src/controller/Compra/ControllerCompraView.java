@@ -7,10 +7,10 @@ package controller.Compra;
 import controller.Busca.ControllerProdutoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.Busca.BuscaCompraView;
+import view.Busca.BuscaPontoDeVendaView;
 import view.Busca.ProdutoView;
-import view.Compra.CompraView;
-import view.Compra.CompraView;
+import view.Compra.PontoDeVendaView;
+import view.Compra.PontoDeVendaView;
 
 /**
  *
@@ -18,10 +18,10 @@ import view.Compra.CompraView;
  */
 public class ControllerCompraView implements ActionListener {
 
-    CompraView compraView;
+    PontoDeVendaView compraView;
     public static int codigo;
 
-    public ControllerCompraView(CompraView compraView) {
+    public ControllerCompraView(PontoDeVendaView compraView) {
         this.compraView = compraView;
         this.compraView.getjButtonBuscar().addActionListener(this);
         this.compraView.getjButtonCancelar().addActionListener(this);
@@ -59,7 +59,7 @@ public class ControllerCompraView implements ActionListener {
             this.compraView.dispose();
 
         } else if (e.getSource() == this.compraView.getjButtonBuscar()) {
-            BuscaCompraView buscaCompraView = new BuscaCompraView(null, true);
+            BuscaPontoDeVendaView buscaCompraView = new BuscaPontoDeVendaView(null, true);
             ControllerBuscaCompraView controllerBuscaCompraView = new ControllerBuscaCompraView(buscaCompraView);
             buscaCompraView.setVisible(true);
 

@@ -6,7 +6,7 @@ package controller.Compra;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.Busca.BuscaCompraView;
+import view.Busca.BuscaPontoDeVendaView;
 
 /**
  *
@@ -14,9 +14,9 @@ import view.Busca.BuscaCompraView;
  */
 public class ControllerBuscaCompraView implements ActionListener{
 
-    BuscaCompraView buscaCompraView;
+    BuscaPontoDeVendaView buscaCompraView;
     
-    public ControllerBuscaCompraView(BuscaCompraView buscaCompraView){
+    public ControllerBuscaCompraView(BuscaPontoDeVendaView buscaCompraView){
     this.buscaCompraView = buscaCompraView;
     
     this.buscaCompraView.getjButtonBuscar().addActionListener(this);

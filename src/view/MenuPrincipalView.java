@@ -23,7 +23,7 @@ import javax.swing.JMenuItem;
 import view.Cadastro.CadastroClienteView;
 import view.Cadastro.CadastroFornecedorView;
 import view.Cadastro.CadastroFuncionarioView;
-import view.Compra.CompraView;
+import view.Compra.PontoDeVendaView;
 
 /**
  *
@@ -330,7 +330,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
 
     private void CompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompraActionPerformed
-        CompraView compraView = new CompraView(null, true);
+        PontoDeVendaView compraView = new PontoDeVendaView(null, true);
         ControllerCompraView controllerCompraView = new ControllerCompraView(compraView);
         compraView.setVisible(true);
         
