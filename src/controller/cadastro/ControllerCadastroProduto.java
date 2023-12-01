@@ -67,9 +67,7 @@ public class ControllerCadastroProduto implements ActionListener {
                 this.cadastroProdutoView.getjTextFieldID2().setText(produto.getId() + "");
                 this.cadastroProdutoView.getjTextFieldDescricao().setText(produto.getDescricao() + "");
                 this.cadastroProdutoView.getjTextFieldCodigoBarra().setText(produto.getCodigoBarra() + "");
-                this.cadastroProdutoView.getjTextFieldQuantidade().setText(produto.getQuantidade() + "");
                 this.cadastroProdutoView.getjComboBoxStatus().setSelectedItem(produto.getStatus().toString() + "");
-                this.cadastroProdutoView.getjComboBoxTipoUnidade().setSelectedItem(produto.getTipoUnidade() + "");
 
                 this.cadastroProdutoView.getjTextFieldID2().setEnabled(false);
                 this.cadastroProdutoView.getjTextFieldDescricao().setEnabled(true);
@@ -90,9 +88,7 @@ public class ControllerCadastroProduto implements ActionListener {
 
                 produto.setDescricao(this.cadastroProdutoView.getjTextFieldDescricao().getText());
                 produto.setCodigoBarra(this.cadastroProdutoView.getjTextFieldCodigoBarra().getText());
-                produto.setQuantidade(this.cadastroProdutoView.getjTextFieldQuantidade().getText());
                 produto.setStatus(this.cadastroProdutoView.getjComboBoxStatus().getSelectedItem().toString());
-                produto.setTipoUnidade(this.cadastroProdutoView.getjComboBoxTipoUnidade().getSelectedItem().toString());
 
                 if (this.cadastroProdutoView.getjTextFieldID2().getText().trim().equalsIgnoreCase("")) {
 

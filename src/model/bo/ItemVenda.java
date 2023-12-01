@@ -10,29 +10,17 @@ package model.bo;
  * @author aluno
  */
 public class ItemVenda {
+
     private int id;
     private float qtdProduto;
     private float valorUnitario;
-    private char status;
+    private String status;
 
     private Venda venda;
-    private Compra compra;
+    private Carteirinha carteirinha;
+    private Produto produto;
+
     public ItemVenda() {
-    }
-
-    public ItemVenda(int id, float qtdProduto, float valorUnitario, char status) {
-        this.id = id;
-        this.qtdProduto = qtdProduto;
-        this.valorUnitario = valorUnitario;
-        this.status = status;
-    }
-
-    public char getStatus() {
-        return status;
-    }
-
-    public void setStatus(char status) {
-        this.status = status;
     }
 
     public int getId() {
@@ -59,6 +47,14 @@ public class ItemVenda {
         this.valorUnitario = valorUnitario;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Venda getVenda() {
         return venda;
     }
@@ -67,37 +63,37 @@ public class ItemVenda {
         this.venda = venda;
     }
 
-    public Compra getCompra() {
-        return compra;
+    public Carteirinha getCarteirinha() {
+        return carteirinha;
     }
 
-    public void setCompra(Compra compra) {
-        this.compra = compra;
+    public void setCarteirinha(Carteirinha carteirinha) {
+        this.carteirinha = carteirinha;
     }
-    
-    
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 
     @Override
     public String toString() {
-        return this.getId() + " " +
-                this.getQtdProduto() + " " +
-                this.getValorUnitario() + " "+
-                this.getStatus() + " " +
-                this.venda.getId() + " " +
-                this.venda.getDataHoraVenda() + " " +
-                this.venda.getValorDesconto() + " " +
-                this.venda.getFlagTipoDesconto()+ " "+
-                this.venda.getObservacao() + " " +
-                this.venda.getStatus() + " " +
-                this.compra.getId()+ " "+ 
-                this.compra.getNumeronf()+ " "+
-                this.compra.getDataHoraCompra()+ " "+
-                this.compra.getValorDesconto() + " "+
-                this.compra.getFlagTipoDesconto() + " "+
-                this.compra.getStatus()+" "+
-                this.compra.getObservacao() + " ";
+        return this.getId() + " "
+                + this.getQtdProduto() + " "
+                + this.getValorUnitario() + " "
+                + this.getStatus() + " "
+                + this.venda.getId() + " "
+                + this.venda.getDataHoraVenda() + " "
+                + this.venda.getValorDesconto() + " "
+                + this.venda.getFlagTipoDesconto() + " "
+                + this.venda.getObservacao() + " "
+                + this.venda.getStatus();
     
     
     
-}
+    }
+
 }

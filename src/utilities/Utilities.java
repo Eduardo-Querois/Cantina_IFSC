@@ -32,13 +32,23 @@ public class Utilities {
                 if (((JButton) componente).getActionCommand() == "0") {
 
                     componente.setEnabled(ativa);
-                } else {
+                }
+                
+                else {
                     componente.setEnabled(!ativa);
+                    
+                     if (componente instanceof JTextField) {
+
+                 
                 }
             }
         }
 
     }
+            
+        }
+        
+    
 
     public static void limpaComponentes(boolean ativa, JPanel jPanel) {
         Component[] componentes = jPanel.getComponents();

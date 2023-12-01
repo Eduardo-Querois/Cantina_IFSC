@@ -18,24 +18,44 @@ public class Venda {
     private String observacao;
     private char status;
 
-    
+    private Cliente cliente;
     private Funcionario funcionario;
     
     public Venda() {
     }
 
-    public Venda(int id, String dataHoraVenda, float valorDesconto, char flagTipoDesconto, String observacao, char status) {
+    public Venda(Funcionario funcionario,Cliente cliente,int id,String dataHoraVenda, float valorDesconto, char flagTipoDesconto, String observacao, char status) {
         this.id = id;
         this.dataHoraVenda = dataHoraVenda;
         this.valorDesconto = valorDesconto;
         this.flagTipoDesconto = flagTipoDesconto;
         this.observacao = observacao;
         this.status = status;
+        this.funcionario = funcionario;
+        this.cliente = cliente;
     }
 
     public char getStatus() {
         return status;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    
+    
 
     public void setStatus(char status) {
         this.status = status;

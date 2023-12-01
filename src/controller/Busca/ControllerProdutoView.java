@@ -5,6 +5,7 @@
 package controller.Busca;
 
 import Service.ProdutoService;
+import controller.Compra.ControllerPontoDeVenda;
 import controller.cadastro.ControllerCadastroProduto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Produto;
 import view.Busca.ProdutoView;
+import view.Compra.PontoDeVendaView;
 
 /**
  *
@@ -22,6 +24,7 @@ import view.Busca.ProdutoView;
 public class ControllerProdutoView implements ActionListener {
 
     public static String colunaFiltro;
+    public static String nomeProduto;
     ProdutoView ProdutoView;
     int contador;
 
@@ -48,6 +51,19 @@ public class ControllerProdutoView implements ActionListener {
 
         } else if (e.getSource() == this.ProdutoView.getjButtonBuscar()) {
 
+            PontoDeVendaView pontoDeVendaView = new PontoDeVendaView(null, true);
+            ControllerPontoDeVenda controllerPontoDeVenda = new ControllerPontoDeVenda(pontoDeVendaView);
+            
+//            if (vendaToProduto = true){
+//            
+//                nomeProduto = (String) this.ProdutoView.getjTable1().getValueAt(this.ProdutoView.getjTable1().getSelectedRow(), 1);
+//                
+//               // pontoDeVendaView.getProdutoNome().setText((String) pontoDeVendaView.getTabelaListaProduto().getValueAt(pontoDeVendaView.getTabelaListaProduto().getSelectedRow(), 1));
+//                ProdutoView.dispose();
+//
+//            }
+//            
+            
             if (this.ProdutoView.getjTextFieldBuscar().getText().trim().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Atenção! \nOpcão de Filtro Vazia...");
                 
@@ -69,8 +85,6 @@ public class ControllerProdutoView implements ActionListener {
                         produtoAtual.getId(),
                         produtoAtual.getDescricao(),
                         produtoAtual.getCodigoBarra(),
-                        produtoAtual.getQuantidade(),
-                        produtoAtual.getTipoUnidade(),
                         produtoAtual.getStatus()});
 
                 }

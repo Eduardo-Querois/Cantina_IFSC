@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.Compra.ControllerCompraView;
+import controller.Compra.ControllerPontoDeVenda;
 import controller.cadastro.ControllerCadastroEndereco;
 import controller.cadastro.ControllerCadastroBairro;
 import view.Cadastro.CadastroEnderecoView;
@@ -20,6 +20,7 @@ import controller.cadastro.ControllerCadastroCliente;
 import controller.cadastro.ControllerCadastroFornecedor;
 import controller.cadastro.ControllerCadastroFuncionario;
 import javax.swing.JMenuItem;
+import view.Busca.BuscaPontoDeVendaView;
 import view.Cadastro.CadastroClienteView;
 import view.Cadastro.CadastroFornecedorView;
 import view.Cadastro.CadastroFuncionarioView;
@@ -77,7 +78,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenuMovimentos = new javax.swing.JMenu();
-        Compra = new javax.swing.JMenuItem();
+        PontoDeVenda = new javax.swing.JMenuItem();
         jMenuContas = new javax.swing.JMenu();
         jMenuItemAPagar = new javax.swing.JMenuItem();
         jMenuItemAVencer = new javax.swing.JMenuItem();
@@ -211,14 +212,14 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuMovimentos.setText("Movimentos");
 
-        Compra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Buy.png"))); // NOI18N
-        Compra.setText("Compra");
-        Compra.addActionListener(new java.awt.event.ActionListener() {
+        PontoDeVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Buy.png"))); // NOI18N
+        PontoDeVenda.setText("PDV");
+        PontoDeVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CompraActionPerformed(evt);
+                PontoDeVendaActionPerformed(evt);
             }
         });
-        jMenuMovimentos.add(Compra);
+        jMenuMovimentos.add(PontoDeVenda);
 
         jMenuContas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Clipboard.png"))); // NOI18N
         jMenuContas.setText("Contas");
@@ -329,12 +330,12 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         cadastroFuncionarioView.setVisible(true);
     }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
 
-    private void CompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompraActionPerformed
-        PontoDeVendaView compraView = new PontoDeVendaView(null, true);
-        ControllerCompraView controllerCompraView = new ControllerCompraView(compraView);
-        compraView.setVisible(true);
+    private void PontoDeVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PontoDeVendaActionPerformed
+        PontoDeVendaView pontoDeVendaView = new PontoDeVendaView(null, true);
+        ControllerPontoDeVenda controllerPontoDeVenda = new ControllerPontoDeVenda(pontoDeVendaView);
+        pontoDeVendaView.setVisible(true);
         
-    }//GEN-LAST:event_CompraActionPerformed
+    }//GEN-LAST:event_PontoDeVendaActionPerformed
 
 
     
@@ -387,7 +388,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Compra;
+    private javax.swing.JMenuItem PontoDeVenda;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenuAjuda;
     private javax.swing.JMenuBar jMenuBar1;

@@ -13,19 +13,15 @@ public class Produto {
     private int id;
     private String descricao;
     private String codigoBarra;
-    private String quantidade;
     private String status;
-    private String tipoUnidade;
 
     public Produto() {
     }
 
-    public Produto(int id, String descricao, String codigoBarra,String quantidade, String status, String tipoUnidade) {
+    public Produto(int id, String descricao, String codigoBarra, String status) {
         this.id = id;
         this.descricao = descricao;
         this.codigoBarra = codigoBarra;
-        this.quantidade = quantidade;
-        this.tipoUnidade = tipoUnidade;
         this.status = status;
     }
 
@@ -41,14 +37,6 @@ public class Produto {
         return id;
     }
 
-    public String getTipoUnidade() {
-        return tipoUnidade;
-    }
-
-    public void setTipoUnidade(String tipoUnidade) {
-        this.tipoUnidade = tipoUnidade;
-    }
-    
 
     public void setId(int id) {
         this.id = id;
@@ -66,13 +54,6 @@ public class Produto {
         return codigoBarra;
     }
 
-    public String getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(String quantidade) {
-        this.quantidade = quantidade;
-    }
 
     
     
@@ -85,7 +66,6 @@ public class Produto {
         return this.getId() + " "+
                 this.getDescricao() + " "+
                 this.getCodigoBarra()+ " "+
-                this.getQuantidade()+ " "+
                 this.getStatus() + " ";
                 
     }
