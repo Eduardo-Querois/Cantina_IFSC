@@ -48,7 +48,11 @@ public class ControllerCarteirinhaView implements ActionListener {
             if (this.carteirinhaView.getjTextFieldBuscar().getText().trim().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Atenção! \nOpcão de Filtro Vazia...");
             } else {
+                
+                
                 List<Carteirinha> carteirinhaList = new ArrayList<>();
+                
+                
                 if(this.carteirinhaView.getComboBoxFiltrar().getSelectedIndex() == 0){
                 carteirinhaList.add(CarteirinhaService.carregar(Integer.parseInt(this.carteirinhaView.getjTextFieldBuscar().getText())));
                 }

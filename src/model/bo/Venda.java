@@ -20,20 +20,30 @@ public class Venda {
 
     private Cliente cliente;
     private Funcionario funcionario;
-    
-    public Venda() {
-    }
+    private Produto produto;
 
-    public Venda(Funcionario funcionario,Cliente cliente,int id,String dataHoraVenda, float valorDesconto, char flagTipoDesconto, String observacao, char status) {
+    public Venda(){};
+    public Venda(int id, String dataHoraVenda, float valorDesconto, char flagTipoDesconto, String observacao, char status, Cliente cliente, Funcionario funcionario, Produto produto) {
         this.id = id;
         this.dataHoraVenda = dataHoraVenda;
         this.valorDesconto = valorDesconto;
         this.flagTipoDesconto = flagTipoDesconto;
         this.observacao = observacao;
         this.status = status;
-        this.funcionario = funcionario;
         this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.produto = produto;
     }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+    
+    
 
     public char getStatus() {
         return status;
@@ -103,16 +113,16 @@ public class Venda {
 
     @Override
     public String toString() {
-        return  this.getId() + " " +
-                this.getDataHoraVenda() + " " +
-                this.getValorDesconto() + " " +
-                this.getFlagTipoDesconto()+ " "+
-                this.getObservacao() + " " +
-                this.getStatus() + " "+ 
-                this.funcionario.getCpf()+" "+
-                this.funcionario.getRg()+" "+
-                this.funcionario.getUsuario()+" "+
-                this.funcionario.getSenha()+" ";        
+        return  this.getId() + "" +
+                this.getDataHoraVenda() + "" +
+                this.getValorDesconto() + "" +
+                this.getFlagTipoDesconto()+ ""+
+                this.getObservacao() + "" +
+                this.getStatus() + "";
+//                this.funcionario.getCpf()+""+
+//                this.funcionario.getRg()+""+
+//                this.funcionario.getUsuario()+""+
+//                this.funcionario.getSenha()+"";        
     }
                 
     }

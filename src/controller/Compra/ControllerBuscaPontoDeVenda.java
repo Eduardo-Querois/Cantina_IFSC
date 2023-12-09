@@ -41,6 +41,24 @@ public class ControllerBuscaPontoDeVenda implements ActionListener {
         } else if (e.getSource() == this.buscaCompraView.getjButtonBuscar()) {
 
             
+           
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             List<Venda> vendaList = new ArrayList<>();
          

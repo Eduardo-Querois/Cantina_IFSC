@@ -16,10 +16,13 @@
             <file>file:/C:/Users/eduar/Music/ProjetoCantinaBizurado/src/controller/ControllerCadastroBairro.java</file>
         </group>
         <group>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOVenda.java</file>
             <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/view/Compra/PontoDeVendaView.java</file>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Compra/ControllerBuscaPontoDeVenda.java</file>
-            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Busca/ControllerProdutoView.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/Service/ProdutoService.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/DAO/DAOProduto.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Busca/ControllerFuncionarioView.java</file>
             <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/controller/Compra/ControllerPontoDeVenda.java</file>
+            <file>file:/C:/Users/eduar/OneDrive/Documentos/Projetos/Cantina_IFSC/src/Service/VendaService.java</file>
         </group>
     </open-files>
 </project-private>

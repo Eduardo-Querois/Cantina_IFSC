@@ -50,5 +50,16 @@ public class ProdutoService {
 
     }
     
+     public static Produto carregarProduto(String cod){
+        DAOProduto produtoDAO = new DAOProduto();
+        return produtoDAO.RetornaDeLadinho(cod);
+     
+     } 
+     
+//       public static Produto carregarIDproduto(String cod){
+//        DAOProduto produtoDAO = new DAOProduto();
+//        return produtoDAO.RetornaIDproduto(cod);
+//     
+//     } 
     
 }

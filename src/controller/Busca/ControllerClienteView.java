@@ -62,6 +62,8 @@ public class ControllerClienteView implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Atenção! \nOpcão de Filtro Vazia...");
 
             } else {
+                
+                
                 List<Cliente> clienteList = new ArrayList<>();
 
                 if (this.clienteView.getComboBoxFiltrar().getSelectedIndex() == 0) {

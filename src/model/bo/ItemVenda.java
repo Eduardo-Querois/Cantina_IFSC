@@ -20,8 +20,21 @@ public class ItemVenda {
     private Carteirinha carteirinha;
     private Produto produto;
 
-    public ItemVenda() {
+    
+    
+    public ItemVenda(){};
+
+    public ItemVenda(int id, float qtdProduto, float valorUnitario, String status, Venda venda, Carteirinha carteirinha, Produto produto) {
+        this.id = id;
+        this.qtdProduto = qtdProduto;
+        this.valorUnitario = valorUnitario;
+        this.status = status;
+        this.venda = venda;
+        this.carteirinha = carteirinha;
+        this.produto = produto;
     }
+    
+    
 
     public int getId() {
         return id;

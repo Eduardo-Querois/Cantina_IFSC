@@ -51,5 +51,11 @@ public class VendaService {
 
     }
      
+     public static  String carregaDeLadinho(String info){
+     DAOVenda vendaDAO = new DAOVenda();
+     return vendaDAO.retornoNome(info);
+     
+     }
+     
     
 }

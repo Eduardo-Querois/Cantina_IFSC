@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.Compra.ControllerAbrirCaixa;
 import controller.Compra.ControllerPontoDeVenda;
 import controller.cadastro.ControllerCadastroEndereco;
 import controller.cadastro.ControllerCadastroBairro;
@@ -24,6 +25,7 @@ import view.Busca.BuscaPontoDeVendaView;
 import view.Cadastro.CadastroClienteView;
 import view.Cadastro.CadastroFornecedorView;
 import view.Cadastro.CadastroFuncionarioView;
+import view.Compra.AbreCaixaView;
 import view.Compra.PontoDeVendaView;
 
 /**
@@ -212,8 +214,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuMovimentos.setText("Movimentos");
 
+        PontoDeVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         PontoDeVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Buy.png"))); // NOI18N
-        PontoDeVenda.setText("PDV");
+        PontoDeVenda.setText("Abrir Caixa");
         PontoDeVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PontoDeVendaActionPerformed(evt);
@@ -331,10 +334,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
 
     private void PontoDeVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PontoDeVendaActionPerformed
-        PontoDeVendaView pontoDeVendaView = new PontoDeVendaView(null, true);
-        ControllerPontoDeVenda controllerPontoDeVenda = new ControllerPontoDeVenda(pontoDeVendaView);
-        pontoDeVendaView.setVisible(true);
         
+        AbreCaixaView abreCaixaView = new AbreCaixaView(null, true);
+        ControllerAbrirCaixa controllerAbrirCaixa = new ControllerAbrirCaixa(abreCaixaView);
+        abreCaixaView.setVisible(true);
+    
     }//GEN-LAST:event_PontoDeVendaActionPerformed
 
 

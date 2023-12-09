@@ -5,7 +5,6 @@
  */
 package DAO;
 
-
 import static DAO.Persiste.produtoList;
 import controller.Busca.ControllerProdutoView;
 import static controller.Busca.ControllerProdutoView.colunaFiltro;
@@ -55,7 +54,7 @@ public class DAOProduto implements InterfaceDAO<Produto> {
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = "UPDATE tblproduto SET "
                 + "descricao = ?, "
-                + "codigoBarra = ?,"  
+                + "codigoBarra = ?,"
                 + "status = ?, "
                 + "WHERE id = ?";
         PreparedStatement pstm = null;
@@ -100,7 +99,7 @@ public class DAOProduto implements InterfaceDAO<Produto> {
                 produto.setId(rst.getInt("id"));
                 produto.setDescricao(rst.getString("descricao"));
                 produto.setCodigoBarra(rst.getString("codigoBarra"));
-               
+
                 produto.setStatus(rst.getString("status"));
 
                 produtoList.add(produto);
@@ -134,7 +133,7 @@ public class DAOProduto implements InterfaceDAO<Produto> {
                 produto.setId(rst.getInt("id"));
                 produto.setDescricao(rst.getString("descricao"));
                 produto.setCodigoBarra(rst.getString("codigoBarra"));
-               
+
                 produto.setStatus(rst.getString("status"));
             }
 
@@ -149,46 +148,116 @@ public class DAOProduto implements InterfaceDAO<Produto> {
     }
 
     @Override
-public List<Produto> retrieve(String parString) {
-    Connection conexao = ConnectionFactory.getConnection();
-   ProdutoView produtoView = new ProdutoView(null, true);
-   ControllerProdutoView controllerProdutoView = new ControllerProdutoView(produtoView);
-   // String coluna = produtoView.getComboBoxFiltrar().getSelectedItem().toString().trim();
-    
-    String sqlExecutar = "SELECT id,descricao,codigoBarra,status "
-            + "FROM tblproduto "
-            + "WHERE "+ colunaFiltro +" LIKE ?";  // Usando LIKE para busca de substring
+    public List<Produto> retrieve(String parString) {
+        Connection conexao = ConnectionFactory.getConnection();
+        ProdutoView produtoView = new ProdutoView(null, true);
+        ControllerProdutoView controllerProdutoView = new ControllerProdutoView(produtoView);
+        // String coluna = produtoView.getComboBoxFiltrar().getSelectedItem().toString().trim();
 
-    PreparedStatement pstm = null;
-    ResultSet rst = null;
-    List<Produto> produtoList = new ArrayList<>();
+        String sqlExecutar = "SELECT id,descricao,codigoBarra,status "
+                + "FROM tblproduto "
+                + "WHERE " + colunaFiltro + " LIKE ?";  // Usando LIKE para busca de substring
 
-    try {
-       pstm = conexao.prepareStatement(sqlExecutar);
-   
-       //pstm.setString(1,colunaFiltro); 
-       pstm.setString(1, "%" + parString + "%");  // Usando parString diretamente
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        List<Produto> produtoList = new ArrayList<>();
 
-     
-        
-        rst = pstm.executeQuery();
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
 
-        while (rst.next()) {
-            Produto produto = new Produto();
-            produto.setId(rst.getInt("id"));
-            produto.setDescricao(rst.getString("descricao"));
-            produto.setCodigoBarra(rst.getString("codigoBarra"));
-            produto.setStatus(rst.getString("status"));
-           
-            produtoList.add(produto);
+            //pstm.setString(1,colunaFiltro); 
+            pstm.setString(1, "%" + parString + "%");  // Usando parString diretamente
+
+            rst = pstm.executeQuery();
+
+            while (rst.next()) {
+                Produto produto = new Produto();
+                produto.setId(rst.getInt("id"));
+                produto.setDescricao(rst.getString("descricao"));
+                produto.setCodigoBarra(rst.getString("codigoBarra"));
+                produto.setStatus(rst.getString("status"));
+
+                produtoList.add(produto);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
         }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    } finally {
-        ConnectionFactory.closeConnection(conexao, pstm, rst);
+
+        return produtoList;  // Retornar a lista fora do bloco finally
     }
 
-    return produtoList;  // Retornar a lista fora do bloco finally
-}
+    public Produto RetornaDeLadinho(String cod) {
+        Connection conexao = ConnectionFactory.getConnection();
+        ProdutoView produtoView = new ProdutoView(null, true);
+        ControllerProdutoView controllerProdutoView = new ControllerProdutoView(produtoView);
+        // String coluna = produtoView.getComboBoxFiltrar().getSelectedItem().toString().trim();
 
+        String sqlExecutar = "SELECT id,descricao "
+                + "FROM tblproduto "
+                + "WHERE codigoBarra LIKE ?";
+
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        Produto produto = new Produto();
+
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+
+            //pstm.setString(1,colunaFiltro); 
+            pstm.setString(1, "%" + cod + "%");  // Usando parString diretamente
+
+            rst = pstm.executeQuery();
+
+            while (rst.next()) {
+                
+                produto.setId(rst.getInt("id"));
+                produto.setDescricao(rst.getString("descricao"));
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+        }
+
+        return produto;
+    }
+
+//    public Produto RetornaIDproduto(String cod) {
+//        Connection conexao = ConnectionFactory.getConnection();
+//        ProdutoView produtoView = new ProdutoView(null, true);
+//        ControllerProdutoView controllerProdutoView = new ControllerProdutoView(produtoView);
+//        // String coluna = produtoView.getComboBoxFiltrar().getSelectedItem().toString().trim();
+//
+//        String sqlExecutar = "SELECT ID "
+//                + "FROM tblproduto "
+//                + "WHERE codigoBarra LIKE ?";
+//
+//        PreparedStatement pstm = null;
+//        ResultSet rst = null;
+//        Produto produto = new Produto();
+//
+//        try {
+//            pstm = conexao.prepareStatement(sqlExecutar);
+//
+//            //pstm.setString(1,colunaFiltro); 
+//            pstm.setString(1, "%" + cod + "%");  // Usando parString diretamente
+//
+//            rst = pstm.executeQuery();
+//
+//            while (rst.next()) {
+//
+//                produto.setDescricao(rst.getString("ID"));
+//
+//            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        } finally {
+//            ConnectionFactory.closeConnection(conexao, pstm, rst);
+//        }
+//
+//        return produto;
+//    }
 }
