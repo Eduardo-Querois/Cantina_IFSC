@@ -5,29 +5,35 @@
  */
 package model.bo;
 
-
 /**
  *
  * @author aluno
  */
 public class Venda {
+
     private int id;
-    private String dataHoraVenda;
-    private float valorDesconto;
-    private char flagTipoDesconto;
+    private String dataVenda;
+    private String horaVenda;
+    private float valorVenda;
+//    private char flagTipoDesconto;
     private String observacao;
-    private char status;
+    private String status;
 
     private Cliente cliente;
     private Funcionario funcionario;
     private Produto produto;
 
-    public Venda(){};
-    public Venda(int id, String dataHoraVenda, float valorDesconto, char flagTipoDesconto, String observacao, char status, Cliente cliente, Funcionario funcionario, Produto produto) {
+    public Venda() {
+    }
+
+    ;
+
+    public Venda(int id, String dataVenda, String horaVenda, float valorVenda, char flagTipoDesconto, String observacao, String status, Cliente cliente, Funcionario funcionario, Produto produto) {
         this.id = id;
-        this.dataHoraVenda = dataHoraVenda;
-        this.valorDesconto = valorDesconto;
-        this.flagTipoDesconto = flagTipoDesconto;
+        this.dataVenda = dataVenda;
+        this.horaVenda = horaVenda;
+        this.valorVenda = valorVenda;
+//        this.flagTipoDesconto = flagTipoDesconto;
         this.observacao = observacao;
         this.status = status;
         this.cliente = cliente;
@@ -42,10 +48,8 @@ public class Venda {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-    
-    
 
-    public char getStatus() {
+    public String getStatus() {
         return status;
     }
 
@@ -64,11 +68,9 @@ public class Venda {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-    
-    
 
-    public void setStatus(char status) {
-        this.status = status;
+    public String setStatus(String status) {
+        return status;
     }
 
     public int getId() {
@@ -79,28 +81,28 @@ public class Venda {
         this.id = id;
     }
 
-    public String getDataHoraVenda() {
-        return dataHoraVenda;
+    public String getDataVenda() {
+        return dataVenda;
     }
 
-    public void setDataHoraVenda(String dataHoraVenda) {
-        this.dataHoraVenda = dataHoraVenda;
+    public void setDataVenda(String dataVenda) {
+        this.dataVenda = dataVenda;
     }
 
-    public float getValorDesconto() {
-        return valorDesconto;
+    public String getHoraVenda() {
+        return horaVenda;
     }
 
-    public void setValorDesconto(float valorDesconto) {
-        this.valorDesconto = valorDesconto;
+    public void setHoraVenda(String horaVenda) {
+        this.horaVenda = horaVenda;
     }
 
-    public char getFlagTipoDesconto() {
-        return flagTipoDesconto;
+    public float getValorVenda() {
+        return valorVenda;
     }
 
-    public void setFlagTipoDesconto(char flagTipoDesconto) {
-        this.flagTipoDesconto = flagTipoDesconto;
+    public void setValorVenda(float valorVenda) {
+        this.valorVenda = valorVenda;
     }
 
     public String getObservacao() {
@@ -113,19 +115,16 @@ public class Venda {
 
     @Override
     public String toString() {
-        return  this.getId() + "" +
-                this.getDataHoraVenda() + "" +
-                this.getValorDesconto() + "" +
-                this.getFlagTipoDesconto()+ ""+
-                this.getObservacao() + "" +
-                this.getStatus() + "";
-//                this.funcionario.getCpf()+""+
-//                this.funcionario.getRg()+""+
-//                this.funcionario.getUsuario()+""+
-//                this.funcionario.getSenha()+"";        
+        return this.getId() + ""
+                + this.getDataVenda() + ""
+                + this.getHoraVenda() + ""
+                + this.getValorVenda() + ""
+                + this.getObservacao() + ""
+                + this.getStatus() + ""
+                + this.funcionario.getCpf() + ""
+                + this.funcionario.getRg() + ""
+                + this.funcionario.getUsuario() + ""
+                + this.funcionario.getSenha() + "";
     }
-                
-    }
-    
-    
-    
+
+}

@@ -11,21 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Venda;
-import view.Busca.BuscaPontoDeVendaView;
+import view.Busca.VendaView;
 import view.Busca.ProdutoView;
 
 /**
  *
  * @author eduar
  */
-public class ControllerBuscaPontoDeVenda implements ActionListener {
+public class ControllerVendaView implements ActionListener {
 
-    BuscaPontoDeVendaView buscaCompraView;
+    VendaView buscaCompraView;
     public static boolean vendaToProduto = false;
 
-    public ControllerBuscaPontoDeVenda(BuscaPontoDeVendaView buscaCompraView) {
+    public ControllerVendaView(VendaView buscaCompraView) {
         this.buscaCompraView = buscaCompraView;
-       // this.buscaCompraView.getm
+        // this.buscaCompraView.getm
 
         this.buscaCompraView.getjButtonBuscar().addActionListener(this);
         this.buscaCompraView.getjButtonCarregar().addActionListener(this);
@@ -40,39 +40,22 @@ public class ControllerBuscaPontoDeVenda implements ActionListener {
             this.buscaCompraView.dispose();
         } else if (e.getSource() == this.buscaCompraView.getjButtonBuscar()) {
 
-            
-           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             List<Venda> vendaList = new ArrayList<>();
-         
 
             DefaultTableModel tableLista = (DefaultTableModel) this.buscaCompraView.getjTable1().getModel();
             for (Venda vendaAtual : vendaList) {
                 tableLista.addRow(new Object[]{
                     vendaAtual.getId(),
                     vendaAtual.getCliente().getNome(),
-                    vendaAtual.getFlagTipoDesconto(),
-                    vendaAtual.getStatus(),
-                    vendaAtual.getDataHoraVenda(),
-                    vendaAtual.getValorDesconto(),
-                    vendaAtual.getObservacao()
+                    vendaAtual.getValorVenda(),
+                    //                    //vendaAtual.getFlagTipoDesconto(),
+                    //                    //vendaAtual.getDataHoraVenda(),
+                    //                    //vendaAtual.getValorDesconto(),
+                    vendaAtual.getDataVenda(),
+                    vendaAtual.getHoraVenda(),
+                    vendaAtual.getObservacao(),
+                    vendaAtual.getFuncionario().getId(),
+                    vendaAtual.getStatus()
 
                 });
 

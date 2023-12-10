@@ -4,7 +4,6 @@
  */
 package controller.Compra;
 
-import controller.Busca.ControllerProdutoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,14 +13,14 @@ import javax.swing.table.DefaultTableModel;
 import model.bo.ItemVenda;
 import model.bo.Produto;
 import model.bo.Venda;
-import view.Busca.BuscaPontoDeVendaView;
-import view.Busca.ProdutoView;
 import view.Compra.PontoDeVendaView;
-import view.Compra.PontoDeVendaView;
-import Service.ItemVendaService;
 import Service.ProdutoService;
-import Service.VendaService;
-import javax.swing.JTextField;
+import controller.Busca.ControllerClienteView;
+import java.text.SimpleDateFormat;
+import view.Busca.ClienteView;
+import java.util.Date;
+import model.bo.Cliente;
+import model.bo.Funcionario;
 
 /**
  *
@@ -37,25 +36,93 @@ public class ControllerPontoDeVenda implements ActionListener {
         //this.pontoDeVendaView.getJMenuBar().setVisible(false);
 
         this.pontoDeVendaView.getPassaInfo().addActionListener(this);
-        this.pontoDeVendaView.getCalculaTotal().addActionListener(this);
         this.pontoDeVendaView.getCancelaItem().addActionListener(this);
         this.pontoDeVendaView.getFechaCaixa().addActionListener(this);
         this.pontoDeVendaView.getLerCodigoBarra().addActionListener(this);
+        this.pontoDeVendaView.getClienteButton().addActionListener(this);
+        this.pontoDeVendaView.getFinalizaVenda().addActionListener(this);
 
         utilities.Utilities.ativaDesativa(true, this.pontoDeVendaView.getjPanelMeio());
-        this.pontoDeVendaView.getCalculaTotal().addActionListener(this);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        List<Venda> vendaList = new ArrayList<>();
-        List<ItemVenda> itemVendaList = new ArrayList<>();
         DefaultTableModel tabela = (DefaultTableModel) this.pontoDeVendaView.getTabelaListaProduto().getModel();
-
-        if (e.getSource() == this.pontoDeVendaView.getCalculaTotal()) {
+        if (e.getSource() == this.pontoDeVendaView.getFinalizaVenda()) {
 
             JOptionPane.showMessageDialog(pontoDeVendaView, "Função do F5");
 
+            Date dataAtual = new Date();
+            SimpleDateFormat dataFormato = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat horaFormato = new SimpleDateFormat("HH:mm:ss");
+            String dataFormatada = dataFormato.format(dataAtual);
+            String horaFormatada = horaFormato.format(dataAtual);
+
+            this.pontoDeVendaView.getDataDeEmissao().setText(dataFormatada);
+            this.pontoDeVendaView.getHoraDeEmissao().setText(horaFormatada);
+
+            
+        
+            if(utilities.Utilities.campoVazio(this.pontoDeVendaView.getjPanelMeio()) == true){
+                JOptionPane.showMessageDialog(null, "Existem campos Vazios!");
+            
+            } else {
+                
+                Venda venda = new Venda();
+                ItemVenda itemVenda = new ItemVenda();
+                Funcionario funcionario = new Funcionario();
+                Cliente cliente = new Cliente();
+                Produto produto = new Produto();
+                
+                itemVenda.setProduto(produto);
+                itemVenda.setVenda(venda);
+                venda.setFuncionario(funcionario);
+                venda.setCliente(cliente);
+                
+                
+                venda.setObservacao(this.pontoDeVendaView.getObservacao().getText().toString().trim());
+                
+                if(this.pontoDeVendaView.getStatus().getSelectedIndex() == 0){
+                venda.setStatus(this.pontoDeVendaView.getStatus().getSelectedItem().toString().replace("[V] Venda", "V").trim());
+                }else {
+                venda.setStatus(this.pontoDeVendaView.getStatus().getSelectedItem().toString().replace("[C] Cancelado", "C").trim());
+                }
+                
+                venda.getFuncionario().setId(Integer.parseInt(this.pontoDeVendaView.getIdFuncionario().getText().trim()));
+                venda.getCliente().setId(Integer.parseInt(this.pontoDeVendaView.getIdCliente().getText().trim()));
+                
+                
+                
+            
+            
+            
+            }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         } else if (e.getSource() == this.pontoDeVendaView.getLerCodigoBarra()) {
 
             if (this.pontoDeVendaView.getCodigoBarra().getText().equalsIgnoreCase("")) {
@@ -83,7 +150,7 @@ public class ControllerPontoDeVenda implements ActionListener {
                     this.pontoDeVendaView.getQuantidade().setText(quantidade.replace("x", ""));
 
                     Produto produto = new Produto();
-                    produto = ProdutoService.carregarProduto(this.pontoDeVendaView.getCodigoBarra().getText().trim());
+                    produto = ProdutoService.carregarProduto(this.pontoDeVendaView.getCodigoBarra().getText().substring(tamanho - 13).trim());
 
                     this.pontoDeVendaView.getProdutoNome1().setText(produto.getDescricao());
 
@@ -97,9 +164,9 @@ public class ControllerPontoDeVenda implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Nenhum item selecionado!");
 
             } else {
-
+                int tamanho = this.pontoDeVendaView.getCodigoBarra().getText().length();
                 Produto produto = new Produto();
-                produto = ProdutoService.carregarProduto(this.pontoDeVendaView.getCodigoBarra().getText().trim());
+                produto = ProdutoService.carregarProduto(this.pontoDeVendaView.getCodigoBarra().getText().substring(tamanho - 13).trim());
 
                 tabela.addRow(new Object[]{
                     produto.getId(),
@@ -110,22 +177,115 @@ public class ControllerPontoDeVenda implements ActionListener {
 
                 });
 
+                utilities.Utilities.limpaComponentes(true, this.pontoDeVendaView.getjPanelMeio());
+
+                this.pontoDeVendaView.getCodigoBarra().setEnabled(true);
+                this.pontoDeVendaView.getProdutoNome1().setEnabled(false);
+                this.pontoDeVendaView.getNomeCliente().setEnabled(false);
+                this.pontoDeVendaView.getIdCliente().setEnabled(false);
+                this.pontoDeVendaView.getHoraDeEmissao().setEnabled(false);
+                this.pontoDeVendaView.getDataDeEmissao().setEnabled(false);
+                this.pontoDeVendaView.getQuantidade().setEnabled(false);
+                this.pontoDeVendaView.getValorUnitario().setEnabled(true);
+                this.pontoDeVendaView.getTotal().setEnabled(false);
+                this.pontoDeVendaView.getIdFuncionario().setEnabled(false);
+                this.pontoDeVendaView.getIDVenda().setEnabled(false);
+
+                if (this.pontoDeVendaView.getTabelaListaProduto().getRowCount() != 0) {
+
+                    float resultado = 0;
+
+                    for (int i = 0; i < tabela.getRowCount(); i++) {
+                        // Obter o status da coluna 4 e o valor da coluna 2
+                        Object statusObj = tabela.getValueAt(i, 4);
+                        Object valorObj = tabela.getValueAt(i, 2);
+                        Object qtdObj = tabela.getValueAt(i, 3);
+                        // Verificar se os objetos são do tipo esperado antes de fazer o cast
+                        if (statusObj instanceof String) {
+                            String status = (String) statusObj;
+
+                            // Tenta converter o valor diretamente para float
+                            try {
+                                int quantidade = Integer.parseInt(qtdObj.toString());
+                                float valor = Float.parseFloat(valorObj.toString());
+
+                                valor = valor * quantidade;
+                                // Verificar o status e calcular o valor
+                                if ("A".equalsIgnoreCase(status)) {
+
+                                    resultado += valor;
+                                } else if ("C".equalsIgnoreCase(status)) {
+                                    resultado -= valor;
+                                }
+                            } catch (NumberFormatException ea) {
+                                JOptionPane.showMessageDialog(null, "Erro ao converter valor para float.");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Tipo de status não é String.");
+                        }
+                    }
+
+                    this.pontoDeVendaView.getTotal().setText(String.valueOf(resultado));
+                }
             }
 
-        } else if (e.getSource() == this.pontoDeVendaView.getCancelaItem()) {
+        } else if (e.getSource()
+                == this.pontoDeVendaView.getCancelaItem()) {
 
-           
             if (tabela.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(null, "Não é possivel cancelar itens, a tabela esta vazia!!!");
             } else {
                 tabela.setValueAt('C', this.pontoDeVendaView.getTabelaListaProduto().getSelectedRow(), 4);
+
+                float resultado = 0;
+
+                for (int i = 0; i < tabela.getRowCount(); i++) {
+                    // Obter o status da coluna 4 e o valor da coluna 2
+                    Object qtdObj = tabela.getValueAt(i, 3);
+                    Object statusObj = tabela.getValueAt(i, 4);
+                    Object valorObj = tabela.getValueAt(i, 2);
+                    // Verificar se os objetos são do tipo esperado antes de fazer o cast
+                    if (statusObj instanceof String) {
+                        String status = (String) statusObj;
+                        // Tenta converter o valor diretamente para float
+                        try {
+                            int quantidade = Integer.parseInt(qtdObj.toString());
+                            float valor = Float.parseFloat(valorObj.toString());
+                            // Verificar o status e calcular o valor
+
+                            valor = quantidade * valor;
+
+                            if ("A".equalsIgnoreCase(status)) {
+                                resultado += valor;
+                            } else if ("C".equalsIgnoreCase(status)) {
+                                resultado -= valor;
+                            }
+                        } catch (NumberFormatException ea) {
+                            JOptionPane.showMessageDialog(null, "Erro ao converter valor para float.");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Tipo de status não é String.");
+                    }
+                }
+
+                this.pontoDeVendaView.getTotal().setText(String.valueOf(resultado));
+
                 JOptionPane.showMessageDialog(null, "Produto Cancelado!");
             }
 
-        } else if (e.getSource() == this.pontoDeVendaView.getFechaCaixa()) {
+        } else if (e.getSource()
+                == this.pontoDeVendaView.getFechaCaixa()) {
 
             JOptionPane.showConfirmDialog(null, "Vai fechar o caixa?");
 
+        } else if (e.getSource()
+                == this.pontoDeVendaView.getClienteButton()) {
+            ClienteView clienteView = new ClienteView(null, true);
+            ControllerClienteView controllerClienteView = new ControllerClienteView(clienteView);
+            clienteView.setVisible(true);
+
+            this.pontoDeVendaView.getNomeCliente().setText(controllerClienteView.clienteNome);
+            this.pontoDeVendaView.getIdCliente().setText(Integer.toString(controllerClienteView.clienteID));
         }
 
     }

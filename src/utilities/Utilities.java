@@ -138,5 +138,35 @@ public class Utilities {
 
         return aux;
     }
+    
+    
+    
+    
+    public static void ativaDesativaFormatedField(boolean ativa, JPanel jPanel) {
+
+        Component[] componentes = jPanel.getComponents();
+
+        for (Component componente : componentes) {
+
+            if (componente instanceof JFormattedTextField) {
+
+                if (((JFormattedTextField) componente).getAction().equals("0")) {
+
+                    componente.setEnabled(ativa);
+                }
+                
+                else {
+                    componente.setEnabled(!ativa);
+                    
+                     if (componente instanceof JTextField) {
+
+                 
+                }
+            }
+        }
+
+    }
+            
+        }
 
 }

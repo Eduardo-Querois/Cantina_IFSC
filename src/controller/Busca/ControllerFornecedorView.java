@@ -74,8 +74,8 @@ public class ControllerFornecedorView implements ActionListener {
                     fornecedorAtual.getEmail(),
                     fornecedorAtual.getStatus(),
                     fornecedorAtual.getEndereco().getLogradouro(),
-                    fornecedorAtual.getEndereco().getCidade(),
-                    fornecedorAtual.getEndereco().getBairro(),
+                    fornecedorAtual.getEndereco().getCidade().getDescricao(),
+                    fornecedorAtual.getEndereco().getBairro().getDescricao(),
                     fornecedorAtual.getEndereco().getCep(),
                     fornecedorAtual.getComplementoEndereco()
 

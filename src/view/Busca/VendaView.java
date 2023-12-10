@@ -16,17 +16,17 @@ import javax.swing.JTextField;
  *
  * @author aluno
  */
-public class BuscaPontoDeVendaView extends javax.swing.JDialog {
+public class VendaView extends javax.swing.JDialog {
 
     /**
      * Creates new form (BuscaCompraView
      */
-    public BuscaPontoDeVendaView(java.awt.Frame parent, boolean modal) {
+    public VendaView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    BuscaPontoDeVendaView() {
+    VendaView() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -63,7 +63,7 @@ public class BuscaPontoDeVendaView extends javax.swing.JDialog {
         jLtitulo.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLtitulo.setForeground(new java.awt.Color(255, 255, 255));
         jLtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLtitulo.setText("Compra");
+        jLtitulo.setText("Venda");
         jPanelTitulo.add(jLtitulo);
 
         jPanelMeio.setPreferredSize(new java.awt.Dimension(800, 530));
@@ -73,7 +73,7 @@ public class BuscaPontoDeVendaView extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Cliente", "Itens", "Total", "Colaborador", "DataEmissao", "HoraEmissao"
+                "ID", "Cliente", "Total", "DataEmissao", "HoraEmissao", "Observação", "Colaborador", "status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -297,14 +297,18 @@ public class BuscaPontoDeVendaView extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuscaPontoDeVendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuscaPontoDeVendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuscaPontoDeVendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuscaPontoDeVendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -312,7 +316,7 @@ public class BuscaPontoDeVendaView extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            BuscaPontoDeVendaView dialog = new BuscaPontoDeVendaView(new javax.swing.JFrame(), true);
+            VendaView dialog = new VendaView(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

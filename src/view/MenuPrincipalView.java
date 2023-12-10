@@ -21,7 +21,7 @@ import controller.cadastro.ControllerCadastroCliente;
 import controller.cadastro.ControllerCadastroFornecedor;
 import controller.cadastro.ControllerCadastroFuncionario;
 import javax.swing.JMenuItem;
-import view.Busca.BuscaPontoDeVendaView;
+import view.Busca.VendaView;
 import view.Cadastro.CadastroClienteView;
 import view.Cadastro.CadastroFornecedorView;
 import view.Cadastro.CadastroFuncionarioView;

@@ -145,9 +145,12 @@ public class Contas {
                 this.getFlagTipoConta() + " "+
                 this.getStatus() + " " +
                 this.venda.getId() + " " +
-                this.venda.getDataHoraVenda() + " " +
-                this.venda.getValorDesconto() + " " +
-                this.venda.getFlagTipoDesconto()+ " "+
+                this.venda.getDataVenda() + " " +
+                this.venda.getHoraVenda() + " " +
+         
+//                this.venda.getDataHoraVenda() + " " +
+//                this.venda.getValorDesconto() + " " +
+//                this.venda.getFlagTipoDesconto()+ " "+
                 this.venda.getObservacao() + " " +
                 this.venda.getStatus() + " ";
     }

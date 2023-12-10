@@ -13,6 +13,8 @@ import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.bo.Bairro;
+import model.bo.Cidade;
 import model.bo.Endereco;
 import model.bo.Fornecedor;
 
@@ -144,12 +146,20 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
     @Override
     public Fornecedor retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT F.ID, F.NOME, F.FONE1, F.FONE2, F.EMAIL, F.STATUS, F.COMPLEMENTOENDERECO,"
-                + "F.CNPJ, F.INSCRICAOESTADUAL, F.RAZAOSOCIAL, E.LOGRADOURO,E.CIDADE,E.BAIRRO, E.CEP "
-                + "FROM TBLFORNECEDOR F JOIN TBLENDERECO E ON F.TBLENDERECO_ID = E.ID WHERE F.ID = ?";
+        String sqlExecutar = "SELECT F.ID, F.NOME, F.FONE1, F.FONE2, F.EMAIL, F.STATUS, F.COMPLEMENTOENDERECO, F.CNPJ, F.INSCRICAOESTADUAL, F.RAZAOSOCIAL, E.LOGRADOURO,"
+                + "C.DESCRICAO AS CIDADE,"
+                + "B.DESCRICAO AS BAIRRO,"
+                + "E.CEP "
+                + "FROM TBLFORNECEDOR F "
+                + "JOIN TBLENDERECO E ON F.TBLENDERECO_ID = E.ID "
+                + "JOIN TBLCIDADE C ON E.TBLCIDADE_ID = C.ID "
+                + "JOIN TBLBAIRRO B ON E.TBLBAIRRO_ID = B.ID "
+                + "WHERE F.ID = ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
 
+        Bairro bairro = new Bairro();
+        Cidade cidade = new Cidade();
         Endereco endereco = new Endereco();
         Fornecedor fornecedor = new Fornecedor();
 
@@ -159,9 +169,10 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
             rst = pstm.executeQuery();
 
             while (rst.next()) {
-                
-                
+
                 fornecedor.setEndereco(endereco);
+                endereco.setBairro(bairro);
+                endereco.setCidade(cidade);
                 fornecedor.setId(rst.getInt("id"));
                 fornecedor.setNome(rst.getString("nome"));
                 fornecedor.setFone1(rst.getString("fone1"));
@@ -174,10 +185,9 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
                 fornecedor.setRazaoSocial(rst.getString("razaoSocial"));
                 fornecedor.getEndereco().setLogradouro(rst.getString("logradouro"));
                 fornecedor.getEndereco().setCep(rst.getString("cep"));
-                fornecedor.getEndereco().getBairro().setDescricao(rst.getString("baiiro"));
-                fornecedor.getEndereco().getCidade().setDescricao(rst.getString("cidade"));
-                
-               
+                fornecedor.getEndereco().getBairro().setDescricao(rst.getString("BAIRRO"));
+                fornecedor.getEndereco().getCidade().setDescricao(rst.getString("CIDADE"));
+
             }
 
         } catch (SQLException ex) {
@@ -196,20 +206,29 @@ public class DAOFornecedor implements InterfaceDAO<Fornecedor> {
 
         String sqlExecutar = "SELECT F.ID, F.NOME, F.FONE1, F.FONE2, F.EMAIL, F.STATUS, F.COMPLEMENTOENDERECO,"
                 + "F.CNPJ, F.INSCRICAOESTADUAL, F.RAZAOSOCIAL, E.LOGRADOURO,E.CIDADE,E.BAIRRO, E.CEP "
-                + "FROM TBLFORNECEDOR F JOIN TBLENDERECO E ON F.TBLENDERECO_ID = E.ID WHERE F."+ colunaFiltro +" LIKE ?";
+                + "FROM TBLFORNECEDOR F JOIN TBLENDERECO E ON F.TBLENDERECO_ID = E.ID WHERE F." + colunaFiltro + " LIKE ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
         List<Fornecedor> fornecedorList = new ArrayList<>();
 
+        
+        Bairro bairro = new Bairro();
+        Cidade cidade = new Cidade();
+        Endereco endereco = new Endereco();
+        Fornecedor fornecedor = new Fornecedor();
+        
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, "%" + parString + "%");
             rst = pstm.executeQuery();
 
+          
+            
             while (rst.next()) {
-                
-                Fornecedor fornecedor = new Fornecedor();
-                Endereco endereco = new Endereco();
+
+                fornecedor.setEndereco(endereco);
+                endereco.setBairro(bairro);
+                endereco.setCidade(cidade);
                 
                 fornecedor.setEndereco(endereco);
                 fornecedor.setId(rst.getInt("id"));

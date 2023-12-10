@@ -186,7 +186,6 @@ public class FornecedorView extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMaxWidth(60);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
         }
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

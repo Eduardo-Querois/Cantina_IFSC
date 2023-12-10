@@ -37,7 +37,7 @@ public class DAOItemVenda implements InterfaceDAO<ItemVenda> {
                 + " TBLCARTEIRINHA_id, TBLPRODUTO_id, TBLVENDA_id) "
                 + " VALUES(?,?,?, (SELECT id FROM TBLCARTEIRINHA WHERE codigoBarra LIKE ? ),"
                 + " (SELECT id FROM TBLPRODUTO WHERE codigoBarra LIKE ?,"
-                + "(SELECT id FROM TBLVENDA WHERE observacao LIKE ?))";
+                + "(SELECT id FROM TBLVENDA WHERE  TBLFUNCIONARIO_ID = ? AND TBLCARTEIRINHA_ID = ? AND DATAVENDA = ? AND HORAVENDA = ?))";
 
         PreparedStatement pstm = null;
 
@@ -48,7 +48,10 @@ public class DAOItemVenda implements InterfaceDAO<ItemVenda> {
             pstm.setString(3, objeto.getStatus());
             pstm.setInt(4, objeto.getCarteirinha().getId());
             pstm.setInt(5, objeto.getProduto().getId());
-            pstm.setInt(6, objeto.getVenda().getId());
+            pstm.setInt(6, objeto.getProduto().getId());
+            pstm.setInt(7,objeto.getCarteirinha().getId());
+            pstm.setString(8, objeto.getVenda().getDataVenda());
+            pstm.setString(9, objeto.getVenda().getHoraVenda());
 
             pstm.execute();
         } catch (SQLException ex) {

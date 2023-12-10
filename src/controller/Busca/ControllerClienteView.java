@@ -28,6 +28,7 @@ public class ControllerClienteView implements ActionListener {
     public String clienteRG;
     public String clienteMatricula;
     public String clienteDataNascimento;
+    public int clienteID;
 
     ClienteView clienteView;
 
@@ -49,6 +50,7 @@ public class ControllerClienteView implements ActionListener {
             clienteRG = (String) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 4);
             clienteMatricula = (String) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 1);
             clienteDataNascimento = (String) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 5);
+            clienteID =   (int) this.clienteView.getjTable1().getValueAt(this.clienteView.getjTable1().getSelectedRow(), 0);
 
             ClienteService.carregar();
             this.clienteView.dispose();

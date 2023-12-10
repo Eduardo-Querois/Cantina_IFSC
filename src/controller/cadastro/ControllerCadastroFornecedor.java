@@ -105,8 +105,9 @@ public class ControllerCadastroFornecedor implements ActionListener {
                 this.cadastroFornecedorView.getRazaoSocial().setText(fornecedor.getRazaoSocial().toString() + "");
                 this.cadastroFornecedorView.getEnderecoLogradouro().setText(fornecedor.getEndereco().getLogradouro() + "");
                 this.cadastroFornecedorView.getCEP().setText(fornecedor.getEndereco().getCep() + "");
-                this.cadastroFornecedorView.getCidade().setText(fornecedor.getEndereco().getCidade() + "");
-                this.cadastroFornecedorView.getBairro().setText(fornecedor.getEndereco().getBairro() + "");
+                this.cadastroFornecedorView.getBairro().setText(fornecedor.getEndereco().getBairro().getDescricao() + "");
+                this.cadastroFornecedorView.getCidade().setText(fornecedor.getEndereco().getCidade().getDescricao() + "");
+           
                 
                 this.cadastroFornecedorView.getID().setEnabled(false);
                 this.cadastroFornecedorView.getNome().setEnabled(true);

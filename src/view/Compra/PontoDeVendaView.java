@@ -7,6 +7,7 @@ package view.Compra;
 
 import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -236,13 +237,24 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         this.Comandos = Comandos;
     }
 
-    public JMenuItem getCalculaTotal() {
-        return calculaTotal;
+    public JMenuItem getFinalizaVenda() {
+        return finalizaVenda;
     }
 
-    public void setCalculaTotal(JMenuItem calculaTotal) {
-        this.calculaTotal = calculaTotal;
+    public void setFinalizaVenda(JMenuItem finalizaVenda) {
+        this.finalizaVenda = finalizaVenda;
     }
+
+    public JComboBox<String> getStatus() {
+        return Status;
+    }
+
+    public void setStatus(JComboBox<String> Status) {
+        this.Status = Status;
+    }
+
+
+    
 
     public JMenuItem getCancelaItem() {
         return cancelaItem;
@@ -299,6 +311,23 @@ public class PontoDeVendaView extends javax.swing.JDialog {
     public void setIdFuncionario(JTextField idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
+
+    public JButton getClienteButton() {
+        return ClienteButton;
+    }
+
+    public void setClienteButton(JButton ClienteButton) {
+        this.ClienteButton = ClienteButton;
+    }
+
+    public JTextField getIDVenda() {
+        return IDVenda;
+    }
+
+    public void setIDVenda(JTextField IDVenda) {
+        this.IDVenda = IDVenda;
+    }
+    
     
     
     
@@ -315,7 +344,7 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         jPanelTitulo = new javax.swing.JPanel();
         jLtitulo = new javax.swing.JLabel();
         jPanelMeio = new javax.swing.JPanel();
-        Cliente = new javax.swing.JButton();
+        ClienteButton = new javax.swing.JButton();
         Total = new javax.swing.JTextField();
         NomeCliente = new javax.swing.JTextField();
         idCliente = new javax.swing.JTextField();
@@ -339,6 +368,10 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         jLabelProduto1 = new javax.swing.JLabel();
         idFuncionario = new javax.swing.JTextField();
         jLabelIdFuncionario = new javax.swing.JLabel();
+        IDVenda = new javax.swing.JTextField();
+        JLabelDVenda = new javax.swing.JLabel();
+        Status = new javax.swing.JComboBox<>();
+        JLabelStatus = new javax.swing.JLabel();
         jPanelFim = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -350,7 +383,7 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         lerCodigoBarra = new javax.swing.JMenuItem();
         passaInfo = new javax.swing.JMenuItem();
         cancelaItem = new javax.swing.JMenuItem();
-        calculaTotal = new javax.swing.JMenuItem();
+        finalizaVenda = new javax.swing.JMenuItem();
         fechaCaixa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -370,86 +403,90 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         jPanelMeio.setPreferredSize(new java.awt.Dimension(800, 530));
         jPanelMeio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
-        Cliente.setActionCommand("0");
-        Cliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Cliente.setPreferredSize(new java.awt.Dimension(5, 19));
-        Cliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Cliente.addActionListener(new java.awt.event.ActionListener() {
+        ClienteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        ClienteButton.setActionCommand("0");
+        ClienteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ClienteButton.setPreferredSize(new java.awt.Dimension(5, 19));
+        ClienteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ClienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteActionPerformed(evt);
+                ClienteButtonActionPerformed(evt);
             }
         });
-        jPanelMeio.add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 263, 50, 30));
+        jPanelMeio.add(ClienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 50, 30));
 
+        Total.setActionCommand("1");
         Total.setEnabled(false);
-        jPanelMeio.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 407, 412, 67));
+        jPanelMeio.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 490, 510, 67));
 
         NomeCliente.setActionCommand("1");
         NomeCliente.setEnabled(false);
-        jPanelMeio.add(NomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 265, 336, -1));
+        jPanelMeio.add(NomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 336, -1));
 
         idCliente.setActionCommand("1");
         idCliente.setEnabled(false);
-        jPanelMeio.add(idCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 265, 80, -1));
+        jPanelMeio.add(idCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 80, -1));
 
         try {
             DataDeEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        DataDeEmissao.setActionCommand("1");
         DataDeEmissao.setEnabled(false);
         DataDeEmissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DataDeEmissaoActionPerformed(evt);
             }
         });
-        jPanelMeio.add(DataDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 160, -1));
+        jPanelMeio.add(DataDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 160, -1));
 
         jLabelIdCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelIdCliente.setText("ID Cliente");
-        jPanelMeio.add(jLabelIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 242, -1, -1));
+        jPanelMeio.add(jLabelIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         jLabelDataDeEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelDataDeEmissao.setText("Data de Emissão");
-        jPanelMeio.add(jLabelDataDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 421, -1, -1));
+        jPanelMeio.add(jLabelDataDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
 
         try {
             HoraDeEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        HoraDeEmissao.setActionCommand("1");
         HoraDeEmissao.setEnabled(false);
         HoraDeEmissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HoraDeEmissaoActionPerformed(evt);
             }
         });
-        jPanelMeio.add(HoraDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 160, -1));
+        jPanelMeio.add(HoraDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, 160, -1));
 
         jLabelHoraDeEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelHoraDeEmissao.setText("Hora de Emissão");
-        jPanelMeio.add(jLabelHoraDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 421, -1, -1));
+        jPanelMeio.add(jLabelHoraDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, -1, -1));
 
         jLabelNomeCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelNomeCliente.setText("Nome Cliente");
-        jPanelMeio.add(jLabelNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 242, -1, -1));
+        jPanelMeio.add(jLabelNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
 
         jLabelCodigoBarra.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelCodigoBarra.setText("Codígo de Barra");
-        jPanelMeio.add(jLabelCodigoBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 11, -1, -1));
+        jPanelMeio.add(jLabelCodigoBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        CodigoBarra.setActionCommand("0");
+        CodigoBarra.setActionCommand("<none>");
+        CodigoBarra.setAutoscrolls(false);
         CodigoBarra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CodigoBarraActionPerformed(evt);
             }
         });
-        jPanelMeio.add(CodigoBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 34, 1113, 45));
+        jPanelMeio.add(CodigoBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1113, 45));
 
         jLabelProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelProduto.setText("Quantidade");
-        jPanelMeio.add(jLabelProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 92, -1, -1));
+        jPanelMeio.add(jLabelProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, -1, -1));
 
         Quantidade.setActionCommand("1");
         Quantidade.setEnabled(false);
@@ -458,19 +495,19 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                 QuantidadeActionPerformed(evt);
             }
         });
-        jPanelMeio.add(Quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 111, 74, 45));
+        jPanelMeio.add(Quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 74, 45));
 
-        Observacao.setActionCommand("1");
+        Observacao.setActionCommand("0");
         Observacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ObservacaoActionPerformed(evt);
             }
         });
-        jPanelMeio.add(Observacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 329, 450, 80));
+        jPanelMeio.add(Observacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 450, 80));
 
         jLabelObs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelObs.setText("Observação");
-        jPanelMeio.add(jLabelObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+        jPanelMeio.add(jLabelObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         TabelaListaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -482,7 +519,7 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(TabelaListaProduto);
 
-        jPanelMeio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 92, 510, 303));
+        jPanelMeio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 510, 303));
 
         valorUnitario.setActionCommand("0");
         valorUnitario.addActionListener(new java.awt.event.ActionListener() {
@@ -490,19 +527,19 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                 valorUnitarioActionPerformed(evt);
             }
         });
-        jPanelMeio.add(valorUnitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 185, 450, 45));
+        jPanelMeio.add(valorUnitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 450, 45));
 
         jLabelValorUnitario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelValorUnitario.setText("Valor Unitario");
-        jPanelMeio.add(jLabelValorUnitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 162, -1, -1));
+        jPanelMeio.add(jLabelValorUnitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         ProdutoNome1.setActionCommand("1");
         ProdutoNome1.setEnabled(false);
-        jPanelMeio.add(ProdutoNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 111, 450, 45));
+        jPanelMeio.add(ProdutoNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 450, 45));
 
         jLabelProduto1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelProduto1.setText("Produto");
-        jPanelMeio.add(jLabelProduto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 92, -1, -1));
+        jPanelMeio.add(jLabelProduto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         idFuncionario.setActionCommand("1");
         idFuncionario.setEnabled(false);
@@ -511,11 +548,36 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                 idFuncionarioActionPerformed(evt);
             }
         });
-        jPanelMeio.add(idFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 446, 80, -1));
+        jPanelMeio.add(idFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 80, -1));
 
         jLabelIdFuncionario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelIdFuncionario.setText("ID Cliente");
-        jPanelMeio.add(jLabelIdFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 411, -1, -1));
+        jLabelIdFuncionario.setText("ID Funcionario");
+        jPanelMeio.add(jLabelIdFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, -1, -1));
+
+        IDVenda.setActionCommand("1");
+        IDVenda.setEnabled(false);
+        IDVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDVendaActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(IDVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 60, 80, -1));
+
+        JLabelDVenda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        JLabelDVenda.setText("ID Venda");
+        jPanelMeio.add(JLabelDVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 60, 20));
+
+        Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[V] Venda", "[C] Cancelado" }));
+        Status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatusActionPerformed(evt);
+            }
+        });
+        jPanelMeio.add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
+
+        JLabelStatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        JLabelStatus.setText("Status");
+        jPanelMeio.add(JLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, 20));
 
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
         jPanelFim.setForeground(new java.awt.Color(0, 102, 153));
@@ -539,7 +601,7 @@ public class PontoDeVendaView extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Calcular Total [ F5 ]");
+        jLabel4.setText("Finalizar Venda [ F5 ]");
         jPanelFim.add(jLabel4);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -573,14 +635,14 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         });
         Comandos.add(cancelaItem);
 
-        calculaTotal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        calculaTotal.setText("calculaTotal");
-        calculaTotal.addActionListener(new java.awt.event.ActionListener() {
+        finalizaVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        finalizaVenda.setText("finalizaVenda");
+        finalizaVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calculaTotalActionPerformed(evt);
+                finalizaVendaActionPerformed(evt);
             }
         });
-        Comandos.add(calculaTotal);
+        Comandos.add(finalizaVenda);
 
         fechaCaixa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         fechaCaixa.setText("fechaCaixa");
@@ -605,10 +667,10 @@ public class PontoDeVendaView extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelMeio, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(jPanelFim, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelMeio, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelFim, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -646,18 +708,26 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelaItemActionPerformed
 
-    private void calculaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculaTotalActionPerformed
+    private void finalizaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizaVendaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_calculaTotalActionPerformed
+    }//GEN-LAST:event_finalizaVendaActionPerformed
 
     private void idFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFuncionarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idFuncionarioActionPerformed
 
-    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
+    private void ClienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteButtonActionPerformed
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_ClienteActionPerformed
+    }//GEN-LAST:event_ClienteButtonActionPerformed
+
+    private void IDVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDVendaActionPerformed
+
+    private void StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StatusActionPerformed
 
    
 
@@ -722,20 +792,24 @@ public class PontoDeVendaView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cliente;
+    private javax.swing.JButton ClienteButton;
     private javax.swing.JTextField CodigoBarra;
     private javax.swing.JMenu Comandos;
     private javax.swing.JFormattedTextField DataDeEmissao;
     private javax.swing.JFormattedTextField HoraDeEmissao;
+    private javax.swing.JTextField IDVenda;
+    private javax.swing.JLabel JLabelDVenda;
+    private javax.swing.JLabel JLabelStatus;
     private javax.swing.JTextField NomeCliente;
     private javax.swing.JTextField Observacao;
     private javax.swing.JTextField ProdutoNome1;
     private javax.swing.JTextField Quantidade;
+    private javax.swing.JComboBox<String> Status;
     private javax.swing.JTable TabelaListaProduto;
     private javax.swing.JTextField Total;
-    private javax.swing.JMenuItem calculaTotal;
     private javax.swing.JMenuItem cancelaItem;
     private javax.swing.JMenuItem fechaCaixa;
+    private javax.swing.JMenuItem finalizaVenda;
     private javax.swing.JTextField idCliente;
     private javax.swing.JTextField idFuncionario;
     private javax.swing.JLabel jLabel1;
