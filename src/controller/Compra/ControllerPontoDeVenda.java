@@ -100,9 +100,7 @@ public class ControllerPontoDeVenda implements ActionListener {
 
                     itemVenda.setQtdProduto(Float.parseFloat((String) tabela.getValueAt(i, 3)));
                     itemVenda.setValorUnitario(Float.parseFloat((String) tabela.getValueAt(i, 2)));
-
                     itemVenda.getProduto().setDescricao((String) tabela.getValueAt(i, 1));
-
                     itemVenda.setStatus((String) tabela.getValueAt(i, 4));
 
                 }

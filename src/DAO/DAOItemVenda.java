@@ -33,25 +33,34 @@ public class DAOItemVenda implements InterfaceDAO<ItemVenda> {
     public void create(ItemVenda objeto) {
 
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = " INSERT INTO TBLITEMVENDA(QTDPRODUTO,VALORUNITARIO,STATUS, "
+        String sqlExecutar = " INSERT INTO TBLITEMVENDA"
+                + "(QTDPRODUTO,VALORUNITARIO,STATUS, "
                 + " TBLCARTEIRINHA_id, TBLPRODUTO_id, TBLVENDA_id) "
-                + " VALUES(?,?,?, (SELECT id FROM TBLCARTEIRINHA WHERE codigoBarra LIKE ? ),"
-                + " (SELECT id FROM TBLPRODUTO WHERE codigoBarra LIKE ?,"
-                + "(SELECT id FROM TBLVENDA WHERE  TBLFUNCIONARIO_ID = ? AND TBLCARTEIRINHA_ID = ? AND DATAVENDA = ? AND HORAVENDA = ?))";
+                + " VALUES"
+                + "(?,?,?,(SELECT id FROM TBLCARTEIRINHA WHERE TBLCLIENTE_ID LIKE ? ),"
+                + "?,"
+                + "?";
 
         PreparedStatement pstm = null;
 
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
-            pstm.setFloat(1, objeto.getQtdProduto());
-            pstm.setFloat(2, objeto.getValorUnitario());
-            pstm.setString(3, objeto.getStatus());
-            pstm.setString(4, objeto.getCarteirinha().getCodigoBarra());
-            pstm.setInt(5, objeto.getProduto().getId());
-            pstm.setInt(6, objeto.getProduto().getId());
-            pstm.setInt(7,objeto.getCarteirinha().getId());
-            pstm.setString(8, objeto.getVenda().getDataVenda());
-            pstm.setString(9, objeto.getVenda().getHoraVenda());
+
+            PontoDeVendaView pontoDeVendaView = new PontoDeVendaView(null, true);
+            ControllerPontoDeVenda controllerPontoDeVenda = new ControllerPontoDeVenda(pontoDeVendaView);
+
+            for (int i = 0; i < pontoDeVendaView.getTabelaListaProduto().getRowCount(); i++) {
+
+                int quant = (int) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 3);            
+                pstm.setInt(1,(int) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 3));
+                pstm.setFloat(2, (float) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 2) / quant);
+                pstm.setString(3, (String) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 4));          
+                pstm.setInt(4, objeto.getVenda().getCliente().getId());
+                pstm.setInt(5, objeto.getVenda().getProduto().getId());
+                pstm.setInt(6, objeto.getVenda().getId());
+            }
+
+            
 
             pstm.execute();
         } catch (SQLException ex) {
