@@ -4,6 +4,7 @@
  */
 package controller.Compra;
 
+import Service.ItemVendaService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import model.bo.Produto;
 import model.bo.Venda;
 import view.Compra.PontoDeVendaView;
 import Service.ProdutoService;
+import Service.VendaService;
 import controller.Busca.ControllerClienteView;
 import java.text.SimpleDateFormat;
 import view.Busca.ClienteView;
@@ -62,67 +64,54 @@ public class ControllerPontoDeVenda implements ActionListener {
             this.pontoDeVendaView.getDataDeEmissao().setText(dataFormatada);
             this.pontoDeVendaView.getHoraDeEmissao().setText(horaFormatada);
 
-            
-        
-            if(utilities.Utilities.campoVazio(this.pontoDeVendaView.getjPanelMeio()) == true){
-                JOptionPane.showMessageDialog(null, "Existem campos Vazios!");
-            
+            if (this.pontoDeVendaView.getTabelaListaProduto().getRowCount() == 0) {
+                JOptionPane.showMessageDialog(null, "Não é possivel finalizar a venda!");
+
             } else {
-                
+
                 Venda venda = new Venda();
                 ItemVenda itemVenda = new ItemVenda();
                 Funcionario funcionario = new Funcionario();
                 Cliente cliente = new Cliente();
                 Produto produto = new Produto();
-                
+
                 itemVenda.setProduto(produto);
                 itemVenda.setVenda(venda);
                 venda.setFuncionario(funcionario);
                 venda.setCliente(cliente);
-                
-                
+
                 venda.setObservacao(this.pontoDeVendaView.getObservacao().getText().toString().trim());
-                
-                if(this.pontoDeVendaView.getStatus().getSelectedIndex() == 0){
-                venda.setStatus(this.pontoDeVendaView.getStatus().getSelectedItem().toString().replace("[V] Venda", "V").trim());
-                }else {
-                venda.setStatus(this.pontoDeVendaView.getStatus().getSelectedItem().toString().replace("[C] Cancelado", "C").trim());
+
+                if (this.pontoDeVendaView.getStatus().getSelectedIndex() == 0) {
+                    venda.setStatus(this.pontoDeVendaView.getStatus().getSelectedItem().toString().replace("[V] Venda", "V").trim());
+                } else {
+                    venda.setStatus(this.pontoDeVendaView.getStatus().getSelectedItem().toString().replace("[C] Cancelado", "C").trim());
                 }
-                
+
                 venda.getFuncionario().setId(Integer.parseInt(this.pontoDeVendaView.getIdFuncionario().getText().trim()));
                 venda.getCliente().setId(Integer.parseInt(this.pontoDeVendaView.getIdCliente().getText().trim()));
-                
-                
-                
-            
-            
-            
+
+                venda.setDataVenda(this.pontoDeVendaView.getDataDeEmissao().getText().trim());
+                venda.setHoraVenda(this.pontoDeVendaView.getHoraDeEmissao().getText().trim());
+
+                venda.setValorVenda(Float.valueOf(this.pontoDeVendaView.getTotal().getText().trim()));
+
+                for (int i = 0; i < tabela.getRowCount(); i++) {
+
+                    itemVenda.setQtdProduto(Float.parseFloat((String) tabela.getValueAt(i, 3)));
+                    itemVenda.setValorUnitario(Float.parseFloat((String) tabela.getValueAt(i, 2)));
+
+                    itemVenda.getProduto().setDescricao((String) tabela.getValueAt(i, 1));
+
+                    itemVenda.setStatus((String) tabela.getValueAt(i, 4));
+
+                }
+
+                VendaService.adicionar(venda);
+                ItemVendaService.adicionar(itemVenda);
+
             }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         } else if (e.getSource() == this.pontoDeVendaView.getLerCodigoBarra()) {
 
             if (this.pontoDeVendaView.getCodigoBarra().getText().equalsIgnoreCase("")) {

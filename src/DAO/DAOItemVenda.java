@@ -46,7 +46,7 @@ public class DAOItemVenda implements InterfaceDAO<ItemVenda> {
             pstm.setFloat(1, objeto.getQtdProduto());
             pstm.setFloat(2, objeto.getValorUnitario());
             pstm.setString(3, objeto.getStatus());
-            pstm.setInt(4, objeto.getCarteirinha().getId());
+            pstm.setString(4, objeto.getCarteirinha().getCodigoBarra());
             pstm.setInt(5, objeto.getProduto().getId());
             pstm.setInt(6, objeto.getProduto().getId());
             pstm.setInt(7,objeto.getCarteirinha().getId());

@@ -327,6 +327,22 @@ public class PontoDeVendaView extends javax.swing.JDialog {
     public void setIDVenda(JTextField IDVenda) {
         this.IDVenda = IDVenda;
     }
+
+    public JPanel getPanelInfo() {
+        return PanelInfo;
+    }
+
+    public void setPanelInfo(JPanel PanelInfo) {
+        this.PanelInfo = PanelInfo;
+    }
+
+    public JPanel getPanelCli() {
+        return PanelCli;
+    }
+
+    public void setPanelCli(JPanel PanelCli) {
+        this.PanelCli = PanelCli;
+    }
     
     
     
@@ -344,34 +360,36 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         jPanelTitulo = new javax.swing.JPanel();
         jLtitulo = new javax.swing.JLabel();
         jPanelMeio = new javax.swing.JPanel();
-        ClienteButton = new javax.swing.JButton();
         Total = new javax.swing.JTextField();
-        NomeCliente = new javax.swing.JTextField();
-        idCliente = new javax.swing.JTextField();
-        DataDeEmissao = new javax.swing.JFormattedTextField();
-        jLabelIdCliente = new javax.swing.JLabel();
-        jLabelDataDeEmissao = new javax.swing.JLabel();
-        HoraDeEmissao = new javax.swing.JFormattedTextField();
-        jLabelHoraDeEmissao = new javax.swing.JLabel();
-        jLabelNomeCliente = new javax.swing.JLabel();
         jLabelCodigoBarra = new javax.swing.JLabel();
         CodigoBarra = new javax.swing.JTextField();
         jLabelProduto = new javax.swing.JLabel();
         Quantidade = new javax.swing.JTextField();
-        Observacao = new javax.swing.JTextField();
-        jLabelObs = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaListaProduto = new javax.swing.JTable();
         valorUnitario = new javax.swing.JTextField();
         jLabelValorUnitario = new javax.swing.JLabel();
         ProdutoNome1 = new javax.swing.JTextField();
         jLabelProduto1 = new javax.swing.JLabel();
+        PanelInfo = new javax.swing.JPanel();
+        Status = new javax.swing.JComboBox<>();
+        JLabelStatus = new javax.swing.JLabel();
         idFuncionario = new javax.swing.JTextField();
         jLabelIdFuncionario = new javax.swing.JLabel();
         IDVenda = new javax.swing.JTextField();
         JLabelDVenda = new javax.swing.JLabel();
-        Status = new javax.swing.JComboBox<>();
-        JLabelStatus = new javax.swing.JLabel();
+        PanelCli = new javax.swing.JPanel();
+        ClienteButton = new javax.swing.JButton();
+        HoraDeEmissao = new javax.swing.JFormattedTextField();
+        DataDeEmissao = new javax.swing.JFormattedTextField();
+        Observacao = new javax.swing.JTextField();
+        idCliente = new javax.swing.JTextField();
+        jLabelIdCliente = new javax.swing.JLabel();
+        jLabelNomeCliente = new javax.swing.JLabel();
+        jLabelObs = new javax.swing.JLabel();
+        jLabelDataDeEmissao = new javax.swing.JLabel();
+        jLabelHoraDeEmissao = new javax.swing.JLabel();
+        NomeCliente = new javax.swing.JTextField();
         jPanelFim = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -403,73 +421,9 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         jPanelMeio.setPreferredSize(new java.awt.Dimension(800, 530));
         jPanelMeio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ClienteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
-        ClienteButton.setActionCommand("0");
-        ClienteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ClienteButton.setPreferredSize(new java.awt.Dimension(5, 19));
-        ClienteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ClienteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteButtonActionPerformed(evt);
-            }
-        });
-        jPanelMeio.add(ClienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 50, 30));
-
         Total.setActionCommand("1");
         Total.setEnabled(false);
         jPanelMeio.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 490, 510, 67));
-
-        NomeCliente.setActionCommand("1");
-        NomeCliente.setEnabled(false);
-        jPanelMeio.add(NomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 336, -1));
-
-        idCliente.setActionCommand("1");
-        idCliente.setEnabled(false);
-        jPanelMeio.add(idCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 80, -1));
-
-        try {
-            DataDeEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        DataDeEmissao.setActionCommand("1");
-        DataDeEmissao.setEnabled(false);
-        DataDeEmissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DataDeEmissaoActionPerformed(evt);
-            }
-        });
-        jPanelMeio.add(DataDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 160, -1));
-
-        jLabelIdCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelIdCliente.setText("ID Cliente");
-        jPanelMeio.add(jLabelIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
-
-        jLabelDataDeEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelDataDeEmissao.setText("Data de Emissão");
-        jPanelMeio.add(jLabelDataDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
-
-        try {
-            HoraDeEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        HoraDeEmissao.setActionCommand("1");
-        HoraDeEmissao.setEnabled(false);
-        HoraDeEmissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HoraDeEmissaoActionPerformed(evt);
-            }
-        });
-        jPanelMeio.add(HoraDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, 160, -1));
-
-        jLabelHoraDeEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelHoraDeEmissao.setText("Hora de Emissão");
-        jPanelMeio.add(jLabelHoraDeEmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, -1, -1));
-
-        jLabelNomeCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelNomeCliente.setText("Nome Cliente");
-        jPanelMeio.add(jLabelNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
 
         jLabelCodigoBarra.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelCodigoBarra.setText("Codígo de Barra");
@@ -496,18 +450,6 @@ public class PontoDeVendaView extends javax.swing.JDialog {
             }
         });
         jPanelMeio.add(Quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 74, 45));
-
-        Observacao.setActionCommand("0");
-        Observacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ObservacaoActionPerformed(evt);
-            }
-        });
-        jPanelMeio.add(Observacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 450, 80));
-
-        jLabelObs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelObs.setText("Observação");
-        jPanelMeio.add(jLabelObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         TabelaListaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -541,6 +483,16 @@ public class PontoDeVendaView extends javax.swing.JDialog {
         jLabelProduto1.setText("Produto");
         jPanelMeio.add(jLabelProduto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
+        Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[V] Venda", "[C] Cancelado" }));
+        Status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatusActionPerformed(evt);
+            }
+        });
+
+        JLabelStatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        JLabelStatus.setText("Status");
+
         idFuncionario.setActionCommand("1");
         idFuncionario.setEnabled(false);
         idFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -548,11 +500,9 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                 idFuncionarioActionPerformed(evt);
             }
         });
-        jPanelMeio.add(idFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 80, -1));
 
         jLabelIdFuncionario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelIdFuncionario.setText("ID Funcionario");
-        jPanelMeio.add(jLabelIdFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, -1, -1));
 
         IDVenda.setActionCommand("1");
         IDVenda.setEnabled(false);
@@ -561,23 +511,186 @@ public class PontoDeVendaView extends javax.swing.JDialog {
                 IDVendaActionPerformed(evt);
             }
         });
-        jPanelMeio.add(IDVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 60, 80, -1));
 
         JLabelDVenda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         JLabelDVenda.setText("ID Venda");
-        jPanelMeio.add(JLabelDVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 60, 20));
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[V] Venda", "[C] Cancelado" }));
-        Status.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout PanelInfoLayout = new javax.swing.GroupLayout(PanelInfo);
+        PanelInfo.setLayout(PanelInfoLayout);
+        PanelInfoLayout.setHorizontalGroup(
+            PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelInfoLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelInfoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(JLabelStatus))
+                    .addComponent(Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelIdFuncionario)
+                    .addGroup(PanelInfoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(idFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelInfoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(JLabelDVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(IDVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+        PanelInfoLayout.setVerticalGroup(
+            PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelInfoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelInfoLayout.createSequentialGroup()
+                        .addComponent(JLabelDVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(IDVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(PanelInfoLayout.createSequentialGroup()
+                            .addComponent(jLabelIdFuncionario)
+                            .addGap(13, 13, 13)
+                            .addComponent(idFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelInfoLayout.createSequentialGroup()
+                            .addComponent(JLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        jPanelMeio.add(PanelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, -1, -1));
+
+        ClienteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        ClienteButton.setActionCommand("0");
+        ClienteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ClienteButton.setPreferredSize(new java.awt.Dimension(5, 19));
+        ClienteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ClienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StatusActionPerformed(evt);
+                ClienteButtonActionPerformed(evt);
             }
         });
-        jPanelMeio.add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
 
-        JLabelStatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        JLabelStatus.setText("Status");
-        jPanelMeio.add(JLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, 20));
+        try {
+            HoraDeEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        HoraDeEmissao.setActionCommand("1");
+        HoraDeEmissao.setEnabled(false);
+        HoraDeEmissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HoraDeEmissaoActionPerformed(evt);
+            }
+        });
+
+        try {
+            DataDeEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        DataDeEmissao.setActionCommand("1");
+        DataDeEmissao.setEnabled(false);
+        DataDeEmissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DataDeEmissaoActionPerformed(evt);
+            }
+        });
+
+        Observacao.setActionCommand("0");
+        Observacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ObservacaoActionPerformed(evt);
+            }
+        });
+
+        idCliente.setActionCommand("1");
+        idCliente.setEnabled(false);
+
+        jLabelIdCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelIdCliente.setText("ID Cliente");
+
+        jLabelNomeCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelNomeCliente.setText("Nome Cliente");
+
+        jLabelObs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelObs.setText("Observação");
+
+        jLabelDataDeEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelDataDeEmissao.setText("Data de Emissão");
+
+        jLabelHoraDeEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelHoraDeEmissao.setText("Hora de Emissão");
+
+        NomeCliente.setActionCommand("1");
+        NomeCliente.setEnabled(false);
+
+        javax.swing.GroupLayout PanelCliLayout = new javax.swing.GroupLayout(PanelCli);
+        PanelCli.setLayout(PanelCliLayout);
+        PanelCliLayout.setHorizontalGroup(
+            PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCliLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelObs)
+                    .addComponent(Observacao, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelCliLayout.createSequentialGroup()
+                        .addComponent(jLabelDataDeEmissao)
+                        .addGap(181, 181, 181)
+                        .addComponent(jLabelHoraDeEmissao))
+                    .addGroup(PanelCliLayout.createSequentialGroup()
+                        .addComponent(DataDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(130, 130, 130)
+                        .addComponent(HoraDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(PanelCliLayout.createSequentialGroup()
+                            .addComponent(jLabelIdCliente)
+                            .addGap(58, 58, 58)
+                            .addComponent(jLabelNomeCliente)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelCliLayout.createSequentialGroup()
+                            .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(40, 40, 40)
+                            .addComponent(NomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+        PanelCliLayout.setVerticalGroup(
+            PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCliLayout.createSequentialGroup()
+                .addGroup(PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCliLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelIdCliente)
+                            .addComponent(jLabelNomeCliente))
+                        .addGap(3, 3, 3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCliLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addComponent(jLabelObs)
+                .addGap(13, 13, 13)
+                .addComponent(Observacao, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDataDeEmissao)
+                    .addComponent(jLabelHoraDeEmissao))
+                .addGap(3, 3, 3)
+                .addGroup(PanelCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DataDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HoraDeEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        jPanelMeio.add(PanelCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 470, 280));
 
         jPanelFim.setBackground(new java.awt.Color(0, 102, 153));
         jPanelFim.setForeground(new java.awt.Color(0, 102, 153));
@@ -802,6 +915,8 @@ public class PontoDeVendaView extends javax.swing.JDialog {
     private javax.swing.JLabel JLabelStatus;
     private javax.swing.JTextField NomeCliente;
     private javax.swing.JTextField Observacao;
+    private javax.swing.JPanel PanelCli;
+    private javax.swing.JPanel PanelInfo;
     private javax.swing.JTextField ProdutoNome1;
     private javax.swing.JTextField Quantidade;
     private javax.swing.JComboBox<String> Status;
