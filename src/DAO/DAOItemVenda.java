@@ -33,44 +33,67 @@ public class DAOItemVenda implements InterfaceDAO<ItemVenda> {
     public void create(ItemVenda objeto) {
 
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = " INSERT INTO TBLITEMVENDA"
-                + "(QTDPRODUTO,VALORUNITARIO,STATUS, "
-                + " TBLCARTEIRINHA_id, TBLPRODUTO_id, TBLVENDA_id) "
-                + " VALUES"
-                + "(?,?,?,(SELECT id FROM TBLCARTEIRINHA WHERE TBLCLIENTE_ID LIKE ? ),"
-                + "?,"
-                + "?";
+        String sqlExecutar = " INSERT INTO TBLITEMVENDA (QTDPRODUTO,VALORUNITARIO,STATUS,"
+                + " TBLCARTEIRINHA_ID, TBLPRODUTO_ID, TBLVENDA_ID) VALUES"
+                + " (?,?,?,"
+                + " (SELECT A.id from tblcarteirinha A join tblcliente C on A.tblcliente_id = C.id Where A.tblcliente_id = ? limit 1 )"
+                + " ,?, ?)" ;
 
         PreparedStatement pstm = null;
 
+        Venda venda = new Venda();
+        Carteirinha carterinha = new Carteirinha();
+        Cliente cliente = new Cliente();
+        Produto produto = new Produto();
+        
+        objeto.setVenda(venda);
+        objeto.setProduto(produto);
+        objeto.setCarteirinha(carterinha);
+        
+        carterinha.setCliente(cliente);
+        venda.setCliente(cliente);
+        
+        
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
-
-            PontoDeVendaView pontoDeVendaView = new PontoDeVendaView(null, true);
-            ControllerPontoDeVenda controllerPontoDeVenda = new ControllerPontoDeVenda(pontoDeVendaView);
-
-            for (int i = 0; i < pontoDeVendaView.getTabelaListaProduto().getRowCount(); i++) {
-
-                int quant = (int) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 3);            
-                pstm.setInt(1,(int) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 3));
-                pstm.setFloat(2, (float) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 2) / quant);
-                pstm.setString(3, (String) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 4));          
+            
+                pstm.setInt(1, (int) objeto.getQtdProduto());
+                pstm.setFloat(2, objeto.getValorUnitario());
+                pstm.setString(3, objeto.getStatus());
                 pstm.setInt(4, objeto.getVenda().getCliente().getId());
-                pstm.setInt(5, objeto.getVenda().getProduto().getId());
+                pstm.setInt(5, objeto.getProduto().getId());
                 pstm.setInt(6, objeto.getVenda().getId());
-            }
 
+                
+//            PontoDeVendaView pontoDeVendaView = new PontoDeVendaView(null, true);
+//            ControllerPontoDeVenda controllerPontoDeVenda = new ControllerPontoDeVenda(pontoDeVendaView);
+//
+//            
+//            for (int i = 0; i < pontoDeVendaView.getTabelaListaProduto().getRowCount(); i++) {
+//                
+//                int quant = (int) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 3);
+//                
+//                
+//                pstm.setInt(1,(int) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 3));
+//                pstm.setFloat(2, (float) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 2) / quant);
+//                pstm.setString(3, (String) pontoDeVendaView.getTabelaListaProduto().getValueAt(i, 4));          
+//                pstm.setInt(4, objeto.getVenda().getCliente().getId());
+//                pstm.setInt(5, objeto.getVenda().getProduto().getId());
+//                pstm.setInt(6, objeto.getVenda().getId());
+//           
+               pstm.execute();
+            
             
 
-            pstm.execute();
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             ConnectionFactory.closeConnection(conexao, pstm);
 
-        }
+        }}
 
-    }
+    
 
     @Override
     public void retrieve(ItemVenda objeto) {

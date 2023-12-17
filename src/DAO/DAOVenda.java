@@ -35,7 +35,7 @@ public class DAOVenda implements InterfaceDAO<Venda> {
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = "INSERT INTO TBLVENDA "
                 + "(VALORVENDA,DATAVENDA,HORAVENDA,OBSERVACAO,STATUS,TBLFUNCIONARIO_ID,TBLCARTEIRINHA_ID) "
-                + "VALUES (?,?,?,?,?,?,(SELECT ID FROM TBLCARTEIRINHA WHERE TBLCLIENTE_ID = ? LIMIT 1))";
+                + "VALUES (?,?,?,?,?,?,(SELECT ID FROM TBLCARTEIRINHA WHERE TBLCLIENTE_ID = ?))";
 
         PreparedStatement pstm = null;
 

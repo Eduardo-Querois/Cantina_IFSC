@@ -21,6 +21,7 @@ import controller.Busca.ControllerClienteView;
 import java.text.SimpleDateFormat;
 import view.Busca.ClienteView;
 import java.util.Date;
+import model.bo.Carteirinha;
 import model.bo.Cliente;
 import model.bo.Funcionario;
 
@@ -74,9 +75,11 @@ public class ControllerPontoDeVenda implements ActionListener {
                 Funcionario funcionario = new Funcionario();
                 Cliente cliente = new Cliente();
                 Produto produto = new Produto();
+                Carteirinha carteirinha = new Carteirinha();
 
                 itemVenda.setProduto(produto);
                 itemVenda.setVenda(venda);
+                itemVenda.setCarteirinha(carteirinha);
                 venda.setFuncionario(funcionario);
                 venda.setCliente(cliente);
 
@@ -90,24 +93,21 @@ public class ControllerPontoDeVenda implements ActionListener {
 
                 venda.getFuncionario().setId(Integer.parseInt(this.pontoDeVendaView.getIdFuncionario().getText().trim()));
                 venda.getCliente().setId(Integer.parseInt(this.pontoDeVendaView.getIdCliente().getText().trim()));
-
                 venda.setDataVenda(this.pontoDeVendaView.getDataDeEmissao().getText().trim());
                 venda.setHoraVenda(this.pontoDeVendaView.getHoraDeEmissao().getText().trim());
-
                 venda.setValorVenda(Float.valueOf(this.pontoDeVendaView.getTotal().getText().trim()));
-
+                
                 for (int i = 0; i < tabela.getRowCount(); i++) {
 
                     itemVenda.setQtdProduto(Float.parseFloat((String) tabela.getValueAt(i, 3)));
                     itemVenda.setValorUnitario(Float.parseFloat((String) tabela.getValueAt(i, 2)));
                     itemVenda.getProduto().setDescricao((String) tabela.getValueAt(i, 1));
                     itemVenda.setStatus((String) tabela.getValueAt(i, 4));
-
+                    itemVenda.getVenda().getCliente().setId(Integer.valueOf(this.pontoDeVendaView.getIdCliente().toString()));
                 }
 
                 VendaService.adicionar(venda);
                 ItemVendaService.adicionar(itemVenda);
-
             }
 
         } else if (e.getSource() == this.pontoDeVendaView.getLerCodigoBarra()) {
@@ -190,6 +190,13 @@ public class ControllerPontoDeVenda implements ActionListener {
                         // Verificar se os objetos são do tipo esperado antes de fazer o cast
                         if (statusObj instanceof String) {
                             String status = (String) statusObj;
+                            
+                            ItemVenda itemVenda = new ItemVenda();
+                            itemVenda.setQtdProduto((Float.valueOf((String)tabela.getValueAt(i, 3))));
+                            itemVenda.setValorUnitario( Float.valueOf((String)tabela.getValueAt(i, 2)));
+                            itemVenda.setStatus((String) tabela.getValueAt(i, 4));
+                            
+                            ItemVendaService.adicionar(itemVenda);
 
                             // Tenta converter o valor diretamente para float
                             try {
@@ -263,7 +270,14 @@ public class ControllerPontoDeVenda implements ActionListener {
         } else if (e.getSource()
                 == this.pontoDeVendaView.getFechaCaixa()) {
 
-            JOptionPane.showConfirmDialog(null, "Vai fechar o caixa?");
+           int result = JOptionPane.showConfirmDialog(null, "Vai fechar o caixa?");
+            
+            if(result == JOptionPane.YES_OPTION){
+                this.pontoDeVendaView.dispose();
+            }
+            
+            
+            
 
         } else if (e.getSource()
                 == this.pontoDeVendaView.getClienteButton()) {
